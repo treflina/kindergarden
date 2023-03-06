@@ -12,7 +12,7 @@ Dockerfile
 /applications/documents/migrations/*
 /applications/gallery/migrations/*
 /applications/thematic/migrations/*
-/home/migrations
+/home/migrations/*
 /search/migrations/*
 
 # Python and others
