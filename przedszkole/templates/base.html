@@ -1,0 +1,70 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %} {% if page.seo_title %} {{ page.seo_title }} {%
+            else %}{{ page.title }} {% endif %} {% endblock %}- Przedszkole
+            Publiczne w Turawie{% block title_suffix %} {% wagtail_site as
+            current_site %} {% if current_site and current_site.site_name %}- {{
+            current_site.site_name }} {% endif %} {% endblock %}
+        </title>
+        {% if page.search_description %}
+        <meta name="description" content="{{ page.search_description }}" />
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% if request.in_preview_panel %}
+        <base target="_blank" />
+        {% endif %} {# Global stylesheets #}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/hamburger.min.css' %}"
+        />
+        <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/style.min.css' %}"
+        />
+
+        {% block extra_css %} {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %} {% block content %}{% endblock %}
+
+        <script
+            type="text/javascript"
+            src="{% static 'js/script.min.js' %}"
+        ></script>
+          <script
+            type="text/javascript"
+            src="{% static 'js/lightbox-plus-jquery.js' %}"
+        ></script>
+
+        {% block extra_js %}
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--crayons" id="header">
+            <h1 class="heading__box-title">Regulamin</h1>
+        </div>
+        <div class="content wrapper">
+            <h2>Organizacja Przedszkola</h2>
+            <ol class="concept__list">
+                <li class="concept__list-item">Przedszkole funkcjonuje przez cały rok szkolny, z wyjątkiem przerw
+                    ustalonych przez organ prowadzący, na wniosek
+                    dyrektora przedszkola i Rady Rodziców. Przerwa wakacyjna trwa 1 miesiąc (lipiec bądź sierpień).</li>
+                <li class="concept__list-item">W okresie przerw, dyrektor przedszkola może zmniejszyć liczbę oddziałów
+                    lub zapewnić opiekę dzieciom rodziców
+                    pracujących, w innym przedszkolu dyżurującym na terenie gminy.</li>
+                <li class="concept__list-item">Przedszkole czynne jest od godziny 6:30 do godz.16:30.</li>
+                <li class="concept__list-item">Dzieci uczęszczające do placówki są zgrupowane w dwóch oddziałach wg tego
+                    samego lub zbliżonego wieku.</li>
+                <li class="concept__list-item">Przyjęć dzieci do przedszkola dokonuje dyrektor. W przypadku liczby
+                    dzieci przekraczającej ilość miejsc, dyrektor
+                    powołuje komisję rekrutacyjną.
+                </li>
+                <li class="concept__list-item">Rekrutacja dzieci do przedszkola odbywa sie według harmonogramu
+                    rekrutacji ustalonego przez organ prowadzący.</li>
+                <li class="concept__list-item">Organizację pracy w ciągu dnia określa ramowy rozkład dnia.</li>
+                <li class="concept__list-item">Przedszkole realizuje podstawę programową na podstawie wybranego programu
+                    wychowania przedszkolnego.</li>
+            </ol>
+
+            <h2>Obowiązki Rodziców</h2>
+            <ol class="concept__list">
+                <li class="concept__list-item">Rodzice zobowiązani są do regularnego i terminowego uiszczania opłaty za
+                    wyżywienie i opłaty za świadczenia w zakresie
+                    ponad ustalone podstawy programowe wychowania przedszkolnego.</li>
+                <li class="concept__list-item">Dziecko powinno być przyprowadzane i odbierane z przedszkola przez
+                    rodziców (opiekunów) lub osobę upoważnioną przez
+                    nich, zapewiającą pełne bezpieczeństwo.</li>
+                <li class="concept__list-item">Rodzice winni brać żywy i czynny udział w życiu przedszkola oraz dla
+                    pełnej realizacji celów statutowych winni
+                    współpracować z gronem pedagogicznym.</li>
+                <li class="concept__list-item">Dziecko zgłoszone i zakwalifikowane do przedszkola powinno uczęszczać
+                    regularnie.</li>
+                <li class="concept__list-item">Dziecko uczęszczajace do przedszkola powinno posiadać:
+                    <ul class="concept__list">
+                        <li class="concept__list-item">obuwie zmienne, kalosze,</li>
+                        <li class="concept__list-item">pościel, piżamę - dzieci leżakujące,</li>
+                        <li class="concept__list-item">strój gimnastyczny - dzieci z grupy starszej.</li>
+
+                    </ul>
+                </li>
+            </ol>
+            <h2>Prawa Rodziców</h2>
+            <ol class="concept__list">
+                <li class="concept__list-item">Ogół rodziców dzieci uczęszczających do przedszkola uchwala zasady
+                    tworzenia Rady Rodziców.</li>
+                <li class="concept__list-item">Rada Rodziców może występować do Rady Pedagogicznej i Dyrektora
+                    przedszkola z wnioskami i opiniami dotyczącymi
+                    wszystkich spraw placówki.</li>
+                <li class="concept__list-item">W celu wspierania działalności stautowej przedszkola Rada Rodziców może
+                    gromadzić fundusze z dobrowolnych składek
+                    oraz innych źródeł.</li>
+                <li class="concept__list-item">Rodzice mają prawo do:
+                    <ul class="concept__list">
+                        <li class="concept__list-item">znajomości zadań wynikajacych z planu miesięcznego i rocznego
+                            planu pracy,</li>
+                        <li class="concept__list-item">uzyskania rzetelnej informacji o dziecku, jego zachowaniu i
+                            rozwoju,</li>
+                        <li class="concept__list-item">możliwości wyrażania i przekazywania organowi prowadzącemu i
+                            organowi nadzorujacemu opinii na temat pracy
+                            przedszkola.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </main>
+    {%include 'includes/footer.html'%}
+    </div>
+    {% endblock%}

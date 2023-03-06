@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--crayons" id="header">
+            <h1 class="heading__box-title">Ramowy rozkład dnia</h1>
+        </div>
+        <div class="wrapper ">
+            <div class="schedule mtb-5">
+                <div class="schedule__group1">
+                    <h3 class="schedule__heading">Grupa młodsza</h3>
+                    <p class="schedule__activity-time">6:30 - 8:00</p>
+                    <p class="schedule__activity-description">Schodzenie się dzieci, zabawa dowolna wynikająca z
+                        zainteresowań dziecka, zajęcia dodatkowe.</p>
+                    <p class="schedule__activity-time">8:00 - 8:30</p>
+                    <p class="schedule__activity-description">Zabawa dowolna, praca indywidualna z dziećmi, pomoc dzieci
+                        w
+                        przygotowaniu do zajęć.</p>
+                    <p class="schedule__activity-time">8:30 - 9:00</p>
+                    <p class="schedule__activity-description">Porządkowanie sali, zabiegi higieniczno - sanitarne,
+                        przygotowanie do śniadania.</p>
+                    <p class="schedule__activity-time">9:00 - 9:30</p>
+                    <p class="schedule__activity-description">Śniadanie.</p>
+                    <p class="schedule__activity-time">9:30 - 10:00</p>
+                    <p class="schedule__activity-description">Zajęcia organizowane z całą grupą.</p>
+                    <p class="schedule__activity-time">10:00 - 11:30</p>
+                    <p class="schedule__activity-description">Zabawy swobodne organizowane w ogrodzie przedszkolnym lub
+                        w sali, spacery, wycieczki.</p>
+                    <p class="schedule__activity-time">11:30 - 12:00</p>
+                    <p class="schedule__activity-description">Przygotowanie do obiadu, czynności samoobsługowe i
+                        porządkowe, zabiegi higieniczne.</p>
+                    <p class="schedule__activity-time">12:00 - 12:30</p>
+                    <p class="schedule__activity-description">Obiad.</p>
+                    <p class="schedule__activity-time">12:30 - 13:00</p>
+                    <p class="schedule__activity-description">Czynności samoobsługowe w łazience, przygotowanie do
+                        odpoczynku.</p>
+                    <p class="schedule__activity-time">13:00 - 14:15</p>
+                    <p class="schedule__activity-description">Leżakowanie.</p>
+                    <p class="schedule__activity-time">14:15 - 14:30</p>
+                    <p class="schedule__activity-description">Czynności samoobsługowe i higieniczne, przygotowanie do
+                        podwieczorku.</p>
+                    <p class="schedule__activity-time">14:30 - 15:00</p>
+                    <p class="schedule__activity-description">Podwieczorek.</p>
+                    <p class="schedule__activity-time">15:00 - 16:30</p>
+                    <p class="schedule__activity-description">Aktywność własna dzieci, gry i zabawy dydaktyczne, zajęcia
+                        dodatkowe, zabawy w ogrodzie przedszkolnym i w sali.</p>
+                </div>
+                <div class="schedule__group2">
+                    <h3 class="schedule__heading">Grupa starsza</h3>
+                    <p class="schedule__activity-time">8:00 - 8:30</p>
+                    <p class="schedule__activity-description">Schodzenie się dzieci, zabawa dowolna wynikająca z
+                        zainteresowań dziecka, praca indywidualna z dziećmi, pomoc dzieci w przygotowaniu do zajęć.</p>
+                    <p class="schedule__activity-time">8:30 - 9:00</p>
+                    <p class="schedule__activity-description">Porządkowanie sali, zabiegi higieniczno - sanitarne,
+                        przygotowanie do śniadania.</p>
+                    <p class="schedule__activity-time">9:00 - 9:15</p>
+                    <p class="schedule__activity-description">Śniadanie.</p>
+                    <p class="schedule__activity-time">9:15 - 9:30</p>
+                    <p class="schedule__activity-description">Czynności higieniczno - sanitarne w łazience.</p>
+                    <p class="schedule__activity-time">9:30 - 10:30</p>
+                    <p class="schedule__activity-description">Zajęcia organizowane z całą grupą.</p>
+                    <p class="schedule__activity-time">10:30 - 11:45</p>
+                    <p class="schedule__activity-description">Zabawy swobodne w sali bądź organizowane w ogrodzie
+                        przedszkolnym.</p>
+                    <p class="schedule__activity-time">11:45 - 12:00</p>
+                    <p class="schedule__activity-description">Przygotowanie do obiadu, czynności samoobsługowe i
+                        porządkowe, zabiegi higieniczne.</p>
+                    <p class="schedule__activity-time">12:00 - 12:30</p>
+                    <p class="schedule__activity-description">Obiad.</p>
+                    <p class="schedule__activity-time">12:30 - 13:00</p>
+                    <p class="schedule__activity-description">Czynności samoobsługowe i porządkowe, zabiegi higieniczne.
+                    </p>
+                    <p class="schedule__activity-time">13:00 - 14:15</p>
+                    <p class="schedule__activity-description">Zabawy dowolne na świeżym powietrzu, zajęcia dodatkowe.
+                    </p>
+                    <p class="schedule__activity-time">14:15 - 14:30</p>
+                    <p class="schedule__activity-description">Czynności samoobsługowe i higieniczne, przygotowanie do
+                        podwieczorku.</p>
+                    <p class="schedule__activity-time">14:30 - 15:00</p>
+                    <p class="schedule__activity-description">Podwieczorek.</p>
+                    <p class="schedule__activity-time">15:00 - 15:30</p>
+                    <p class="schedule__activity-description">Aktywność własna dzieci, gry i zabawy dydaktyczne,
+                        zabawy w ogrodzie przedszkolnym i w sali.</p>
+                </div>
+
+
+            </div>
+    </main>
+    {%include 'includes/footer.html'%}
+    </div>
+    {% endblock%}

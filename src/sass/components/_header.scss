@@ -1,0 +1,121 @@
+@use '../colors'as *;
+
+.header {
+    grid-row: 2/3;
+    grid-column: full-start/full-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    min-height: 70vh;
+    background-image: url('../img/colored-pencils-xl.jpg');
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    color: white;
+    z-index: -1;
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        min-width: 40%;
+        max-width: 60rem;
+        margin-right: 7rem;
+        padding: 3rem;
+        z-index: -2;
+
+
+        &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right bottom, rgba($color-primary-first, .85), rgba($color-primary-second, .85));
+            box-shadow: 3px 3px 5px rgba(black, 0.6);
+            border-radius: 8px;
+            z-index: -3;
+        }
+    }
+
+    &__title {
+        padding-bottom: 1rem;
+        font-size: 2.8rem;
+        font-family: 'Kalam', cursive;
+        line-height: 1.2;
+        text-align: center;
+        animation: moveInLeft 2s ease-out;
+    }
+
+    &__text {
+        padding-top: 1rem;
+        font-size: 1.8rem;
+        line-height: 1.5;
+    }
+}
+
+@media(max-width: 992px) {
+    .header {
+        background-image: url('../img/colored-pencils-sm.jpg');
+
+    }
+}
+
+@media(max-width: 768px) {
+    .header {
+        justify-content: center;
+        clip-path: none;
+
+        &__box {
+            margin-right: 0;
+            padding: 1rem;
+        }
+
+        &__title {
+            font-size: 2.5rem;
+        }
+
+        &__text {
+            font-size: 1.6rem; ///
+        }
+    }
+}
+
+@media (max-width: 500px) {
+
+    .header {
+        padding: 1rem;
+
+        &__box {
+            padding: 2rem;
+        }
+    }
+}
+
+@media(max-width: 360px) {
+
+    .header {
+        &__title {
+            font-size: 2.3rem;
+        }}
+}
+
+
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}

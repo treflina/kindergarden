@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags%}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="photogallery">
+            <div class="photogallery__heading" id="header">
+                <a href="{% slugurl 'galeria' %}?group={% if group.name == 'grupa młodsza' %}grupamlodsza{% else %}grupastarsza{%endif%}" class="photogallery__heading--back"><i class="ti ti-chevrons-left"></i></i>Powrót</a>
+                <p class="photogallery__heading--title">{{ collection.name }}</p>
+            </div>
+            <div class="wrapper photogallery__content">
+                {% for image in gallery %}
+                {% image image width-600 as img %}
+                <a class="photogallery-image-link gallery-image" href="{{image.file.url}}" data-lightbox="gallery-set" data-alt="{{image.alt_descr}}"> <span><img class="photogallery-image " src="{{img.url}}" /></span></a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    {%include 'includes/footer.html'%}
+</div>
+
+{% endblock%}

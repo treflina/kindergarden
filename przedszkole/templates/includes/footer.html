@@ -1,0 +1,22 @@
+{% load static %}
+
+<footer class="footer">
+    <div class="footer__links">
+        <a class="footer__links-item footer__links-item--group" href="#">RODO</a>
+        <a class="footer__links-item footer__links-item--group" href="#">Deklaracja dostępności</a>
+        <a class="footer__links-item footer__links-item--group" href="{% url 'aboutus_app:sitemap' %}">Mapa strony</a>
+        <a class="footer__links-item footer__links-bip" href="http://ppturawa.oswiata-turawa.pl/7/strona-glowna-bip.html" title="Przejdź do Biuletynu Informacji Publicznej">
+            <img
+                class="footer__links-bipimg"
+                src="{% static 'img/bip.png' %}"
+                alt="Logo Biuletynu Informacji Publicznej"
+            />
+        </a>
+    </div>
+     <p class="footer__text footer__text--two">Projekt i wykonanie: LSłyszka</p>
+    <p class="footer__text footer__text--one">
+        &copy; <span class="footer__year">{% now "Y" %}</span> Przedszkole Publiczne
+        w&nbsp;Turawie
+    </p>
+
+</footer>

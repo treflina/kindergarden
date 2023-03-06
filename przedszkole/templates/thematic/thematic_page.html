@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--school" id="header">
+            <h1 class="heading__box-title">Tematyka zajęć - {% if group_choice == 'grupamlodsza' %} grupa młodsza {% else %} grupa starsza {% endif %}</h1>
+        </div>
+
+        <section class="sidenav">
+            <ul class="sidenav__months wrapper">
+                <li class='sidenav__month-link 8 {% if month_num == "9" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '9' %}">Wrzesień</a></li>
+                <li class='sidenav__month-link 9 {% if month_num == "10" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '10' %}">Październik</a></li>
+                <li class='sidenav__month-link 10 {% if month_num == "11" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '11' %}">Listopad</a></li>
+                <li class='sidenav__month-link 11 {% if month_num == "12" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '12' %}">Grudzień</a></li>
+                <li class='sidenav__month-link 0 {% if month_num == "1" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '1' %}">Styczeń</a></li>
+                <li class='sidenav__month-link 1 {% if month_num == "2" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '2' %}">Luty</a></li>
+                <li class='sidenav__month-link 2 {% if month_num == "3" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_view' group_choice '3' %}">Marzec</a></li>
+                <li class='sidenav__month-link 3 {% if month_num == "4" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_view' group_choice '4' %}">Kwiecień</a></li>
+                <li class='sidenav__month-link 4 {% if month_num == "5" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_view' group_choice '5' %}">Maj</a></li>
+                <li class='sidenav__month-link 5 {% if month_num == "6" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_view' group_choice '6' %}">Czerwiec</a></li>
+            </ul>
+        </section>
+
+        <section class="activities wrapper">
+            {% for loop_cycle in thematic_page.thematic_content.all %}
+            <div class="content">
+                <h2 class="content__heading mtb-3">{{ loop_cycle.heading | safe}}</h2>
+                <div class="content__list">{{ loop_cycle.text_content | safe }}</div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    {%include 'includes/footer.html'%}
+</div>
+
+{% endblock%}

@@ -1,0 +1,17 @@
+.heading-secondary {
+    margin-bottom: 2rem;
+    text-align: center;
+    grid-area: heading;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-family: 'Kalam',
+        cursive;
+}
+
+@media (min-width:500px) {
+
+    .heading-secondary {
+        font-size: 3.5rem;
+    }
+
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--crayons" id="header">
+            <h1 class="heading__box-title">Opłaty i konto</h1>
+        </div>
+        <div class="content wrapper">
+            <h2>Odpłatności</h2>
+            <p>
+                Odpłatność za przedszkole należy wpłacać na konto Banku Spółdzielczego w Łubnianach oddział w Turawie.
+            </p>
+            <p>Nr konta: 47 8897 0004 2001 0016 8654 0003</p>
+        </div>
+    </main>
+
+    {%include 'includes/footer.html'%}
+</div>
+{% endblock%}
+
