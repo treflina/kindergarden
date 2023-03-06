@@ -25,12 +25,8 @@ const paths = {
 
 function sassCompiler(done) {
     src(paths.sass)
-        .pipe(sourcemaps.init())
         .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
-        .pipe(cssnano({zindex: false}))
-        .pipe(rename({ suffix: ".min" }))
-        .pipe(sourcemaps.write())
         .pipe(dest(paths.sassDest));
     done();
 }
