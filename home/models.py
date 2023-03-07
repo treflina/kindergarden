@@ -33,7 +33,7 @@ class HomePageGallery(Orderable):
         # "wagtailimages.Image"
         CustomImage,
         null=True,
-        blank=False,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
         verbose_name="zdjęcie",
