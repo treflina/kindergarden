@@ -35,9 +35,9 @@
         content: url('/static/img/file-pdf-fill.svg');
     }
 
-    a[href$='txt']::before {
-        content: url('/static/img/file-pdf-text.svg');
-    }
+    // a[href$='txt']::before {
+    //     content: url('/static/img/file-pdf-text.svg');
+    // }
 
 
     a[href$='jpg']::before,
