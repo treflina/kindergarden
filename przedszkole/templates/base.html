@@ -37,16 +37,9 @@
             href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"
         />
         <link
-            rel="stylesheet"
-            type="text/css"
-            href="{% static 'css/hamburger.min.css' %}"
-        />
+            rel="stylesheet" type="text/css" href="{% static 'css/hamburger.min.css' %}" />
         <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="{% static 'css/style.min.css' %}"
-        />
+        <link rel="stylesheet" type="text/css"  href="{% static 'css/style.min.css' %}" />
 
         {% block extra_css %} {% endblock %}
     </head>
@@ -54,14 +47,8 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %} {% block content %}{% endblock %}
 
-        <script
-            type="text/javascript"
-            src="{% static 'js/script.min.js' %}"
-        ></script>
-          <script
-            type="text/javascript"
-            src="{% static 'js/lightbox-plus-jquery.js' %}"
-        ></script>
+        <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
 
         {% block extra_js %}
 

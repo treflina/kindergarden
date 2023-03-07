@@ -8,7 +8,7 @@
     align-items: center;
     position: relative;
     min-height: 70vh;
-    background-image: url('../img/colored-pencils-xl.jpg');
+    background-image: url('/static/img/colored-pencils-xl.jpg');
     background-position: top;
     background-size: cover;
     background-attachment: fixed;
@@ -61,7 +61,7 @@
 
 @media(max-width: 992px) {
     .header {
-        background-image: url('../img/colored-pencils-sm.jpg');
+        background-image: url('/static/img/colored-pencils-sm.jpg');
 
     }
 }
