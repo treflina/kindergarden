@@ -20,7 +20,7 @@ from wagtail.models import Collection
 from wagtail.fields import StreamField
 from wagtail.models import Page, Orderable
 from applications.thematic.models import MonthFilter, GroupsFilter, ThematicPage
-from applications.gallery.models import GalleryListingPage
+from applications.gallery.models import GalleryListingPage, CustomImage
 
 from . import blocks
 
@@ -30,7 +30,8 @@ class HomePageGallery(Orderable):
 
     page = ParentalKey("home.HomePage", related_name="home_gallery_images")
     home_gallery_image = models.ForeignKey(
-        "wagtailimages.Image",
+        # "wagtailimages.Image"
+        CustomImage,
         null=True,
         blank=False,
         on_delete=models.SET_NULL,
