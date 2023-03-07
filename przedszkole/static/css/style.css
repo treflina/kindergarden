@@ -1142,9 +1142,7 @@
 .documents a[href$=pdf]::before {
   content: url("/static/img/file-pdf-fill.svg");
 }
-.documents a[href$=txt]::before {
-  content: url("/static/img/file-pdf-text.svg");
-}
+
 .documents a[href$=jpg]::before,
 .documents a[href$=png]::before {
   content: url("/static/img/file-earmark-image.svg");
