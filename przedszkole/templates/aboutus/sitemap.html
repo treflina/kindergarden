@@ -8,23 +8,68 @@
     <main class="main-subpage">
         <div class="content wrapper">
             <h1>Mapa strony</h1>
-            <ul>
-                <li class="sitemap-item">O nas</li>
-                <ul>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:schedule' %}" class="sitemap-link">Ramowy rozkład dnia</a></li>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:payments' %}" class="sitemap-link">Opłaty i konta</a></li>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:regulations' %}" class="sitemap-link">Regulamin</a></li>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:procedures' %}" class="sitemap-link">Procedury</a></li>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:concept' %}" class="sitemap-link">Koncepcja pracy przedszkola</a></li>
-                    <li class="sitemap-item"><a href="#" class="sitemap-link">Statut</a></li>
-                </ul>
-                <li class="sitemap-item">Do pobrania</li>
-                <ul>
-                    <li class="sitemap-item"><a href="{% url 'documents_app:general' %}" class="sitemap-link">Rekrutacja / inne dokumenty</a>
+            <ul class="sitemap ml-3">
+                <li class="sitemap-item sitemap-item--outside">O nas</li>
+                <ul class="sitemap__inner">
+                    <li class="sitemap-item">
+                        <a href="{% url 'aboutus_app:schedule' %}" class="sitemap-link link-underlined">Ramowy rozkład dnia</a>
                     </li>
-                    <li class="sitemap-item"><a href="#" class="sitemap-link">Materiały od nauczycieli</a></li>
-                    <li class="sitemap-item"><a href="#" class="sitemap-link">Materiały logopedyczne</a></li>
+                    <li class="sitemap-item">
+                        <a href="{% url 'aboutus_app:payments' %}" class="sitemap-link link-underlined">Opłaty i konta</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="{% url 'aboutus_app:regulations' %}" class="sitemap-link link-underlined">Regulamin</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="{% url 'aboutus_app:procedures' %}" class="sitemap-link link-underlined">Procedury</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="{% url 'aboutus_app:concept' %}" class="sitemap-link link-underlined">Koncepcja pracy przedszkola</a>
+                    </li>
+                    <li class="sitemap-item"><a href="#" class="sitemap-link link-underlined">Statut</a></li>
                 </ul>
+                <li class="sitemap-item sitemap-item--outside">Do pobrania</li>
+                <ul class="sitemap__inner">
+                    <li class="sitemap-item">
+                        <a href="{% url 'todownload_app:general' %}" class="sitemap-link link-underlined">Rekrutacja / inne dokumenty</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="#" class="sitemap-link link-underlined">Materiały od nauczycieli</a>
+                    </li>
+                    <li class="sitemap-item"><a href="#" class="sitemap-link link-underlined">Materiały logopedyczne</a>
+                    </li>
+                </ul>
+                <li class="sitemap-item sitemap-item--outside">
+                    <a href="{% slugurl 'home' %}#news" class="sitemap-link link-underlined">Aktualności</a>
+                </li>
+                <li class="sitemap-item sitemap-item--outside">Tematyka zajęć</li>
+                <ul class="sitemap__inner">
+                    <li class="sitemap-item">
+                        <a href="{%slugurl 'tematyka'%}?group=1" class="sitemap-link link-underlined">Grupa młodsza</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="{%slugurl 'tematyka'%}?group=2" class="sitemap-link link-underlined">Grupa starsza</a>
+                    </li>
+                </ul>
+                <li class="sitemap-item sitemap-item--outside">Galeria zdjęć</li>
+                <ul class="sitemap__inner">
+                    <li class="sitemap-item">
+                        <a href="{%slugurl 'galeria'%}?group=grupamlodsza" class="sitemap-link link-underlined">Grupa młodsza</a>
+                    </li>
+                    <li class="sitemap-item">
+                        <a href="{%slugurl 'galeria'%}?group=grupastarsza" class="sitemap-link link-underlined">Grupa starsza</a>
+                    </li>
+                </ul>
+                <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
+                    <a href="#" class="sitemap-link link-underlined">RODO</a>
+                </li>
+                <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
+                    <a href="#" class="sitemap-link link-underlined">Deklaracja dostępności</a>
+                </li>
+                <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
+                    <a href="#" class="sitemap-link link-underlined">Kontakt</a>
+                </li>
+
             </ul>
 
         </div>

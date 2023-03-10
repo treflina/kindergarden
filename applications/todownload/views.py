@@ -7,18 +7,18 @@ from utils import convert_bytes, extract_extension
 
 
 def general(request):
-    documents = Document.objects.filter(collection__name="dyrektor")
-    for doc in documents:
+    todownload = Document.objects.filter(collection__name="dyrektor")
+    for doc in todownload:
         doc.file_size_converted = convert_bytes(doc.file_size)
         doc.type = extract_extension(doc.file)
 
-    context = {"documents": documents}
-    return render(request, "documents/documents.html", context)
+    context = {"todownload": todownload, "page_title": "Do pobrania"}
+    return render(request, "todownload/todownload.html", context)
 
 
 def teachers(request):
-    return render(request, "documents/documents.html")
+    return render(request, "todownload/todownload.html")
 
 
 def speechtherapist(request):
-    return render(request, "documents/documents.html")
+    return render(request, "todownload/todownload.html")

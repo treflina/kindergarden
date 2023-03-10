@@ -91,40 +91,39 @@ class HomePage(RoutablePageMixin, Page):
         context["month"] = self.month_num
         return context
 
-    @route(
-        r"^(?P<group_slug>[-\w]*)/tematyka/(?P<month_slug>[-\w]*)/$",
-        name="thematic_view",
-    )
-    def thematic_view(self, request, group_slug=None, month_slug=None):
-        """Find thematic page based on slugs."""
+    # @route(
+    #     r"^(?P<group_slug>[-\w]*)/tematyka/(?P<month_slug>[-\w]*)/$",
+    #     name="thematic_view",
+    # )
+    # def thematic_view(self, request, group_slug=None, month_slug=None):
+    #     """Find thematic page based on slugs."""
 
-        context = self.get_context(request)
+    #     context = self.get_context(request)
 
-        try:
-            month = MonthFilter.objects.get(slug=month_slug)
-            month_num = str(int(month_slug) - 1)
-        except (AttributeError, MonthFilter.DoesNotExist) as ex:
-            month_slug = None
-            return render(request, "404.html")
+    #     try:
+    #         month = MonthFilter.objects.get(slug=month_slug)
+    #         month_num = str(int(month_slug) - 1)
+    #     except (AttributeError, MonthFilter.DoesNotExist) as ex:
+    #         month_slug = None
+    #         return render(request, "404.html")
 
-        try:
-            group = GroupsFilter.objects.get(slug=group_slug)
-        except (AttributeError, GroupsFilter.DoesNotExist):
-            group_slug = None
-            return render(request, "404.html")
+    #     try:
+    #         group = GroupsFilter.objects.get(slug=group_slug)
+    #     except (AttributeError, GroupsFilter.DoesNotExist):
+    #         group_slug = None
+    #         return render(request, "404.html")
 
-        if group_slug is not None and month_slug is not None:
-            thematic_page = (
-                ThematicPage.objects.live()
-                .filter(group_id=group.id, month_id=month.id)
-                .last()
-            )
-        else:
-            return render(request, "404.html")
+    #     if group_slug is not None and month_slug is not None:
+    #         thematic_page = (
+    #             ThematicPage.objects.live()
+    #             .filter(group_id=group.id, month_id=month.id)
+    #             .last()
+    #         )
+    #     else:
+    #         return render(request, "404.html")
 
-        context["thematic_page"] = thematic_page
-        context["month_num"] = month_slug
-        context["group_choice"] = group_slug
-        print(context)
+    #     context["thematic_page"] = thematic_page
+    #     context["month_num"] = month_slug
+    #     context["group_choice"] = group_slug
 
-        return render(request, "thematic/thematic_page.html", context)
+    #     return render(request, "thematic/thematic_page.html", context)

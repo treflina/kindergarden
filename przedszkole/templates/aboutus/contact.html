@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags env_extras %}
 {% block content %}
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
@@ -26,16 +26,18 @@
                     <p class="map__txt map__txt-sm">Przedszkole znajduje się w sąsiedztwie Szkoły Podstawowej w Turawie
                         oraz Hali Sportowej. Kierując się na północ
                         ulicą Opolską, po przejechaniu mostu na Małej Panwi, należy skręcić w lewo.</p>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.8640903566284!2d18.074310215627094!3d50.74100957951654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710570241763b11%3A0xfae836086ad8bde0!2sPrzedszkole%20Publiczne!5e0!3m2!1spl!2spl!4v1677909873188!5m2!1spl!2spl"
-                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Mapa przedstawiająca lokalizację przedszkola"></iframe>
-                </div>
+
+                    <div class="map__google-map" id="map"></div>
+                    </div>
             </div>
         </div>
     </main>
 
     {%include 'includes/footer.html'%}
 </div>
+<script type="text/javascript" src="{% static 'js/map.min.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={% get_env_var 'GOOGLE_MAP_API_KEY' %}&callback=initMap">
+</script>
+
+
 {% endblock%}

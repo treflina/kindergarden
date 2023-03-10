@@ -1,50 +1,106 @@
-{% load  static wagtailcore_tags %}
+{% load static wagtailcore_tags %}
 
 <nav class="nav">
-        <div class="nav__logo">
-            <a href="{% url 'wagtail_serve' '' %}"><img  class="nav__logo-img" src="{% static 'img/frontcircled.png' %}" alt="Zdjęcie frontu budynku przedszkola"></a>
-        </div>
-        <div class="skipnav"><a href="#header">Pomiń nawigację</a></div>
-        <button class="hamburger hamburger--spring" type="button">
-            <span class="hamburger-box"><span class="hamburger-inner"></span></span>
-            <span class="hamburger-text">Menu</span>
-        </button>
-        <ul class="nav-list" id="menu-list">
-            <li class="nav__item">
-                <a class="nav__item-link nav-link" href="{% url 'wagtail_serve' '' %}">Strona główna</a>
-            </li>
-            <li class="nav__item">
-                <a class="nav__item-link" href="#aboutus" >o nas <i class="ti ti-chevron-down"></i></a>
-                <div class="nav__dropdown">
-                    <a href="{% url 'aboutus_app:schedule' %}" class="nav__dropdown-link nav-link">Ramowy rozkład dnia</a>
-                    <a href="{% url 'aboutus_app:payments' %}" class="nav__dropdown-link nav-link">Opłaty i konta</a>
-                    <a href="{% url 'aboutus_app:regulations' %}" class="nav__dropdown-link nav-link">Regulamin</a>
-                    <a href="{% url 'aboutus_app:procedures' %}" class="nav__dropdown-link nav-link">Procedury</a>
-                    <a href="{% url 'aboutus_app:concept' %}" class="nav__dropdown-link nav-link">Koncepcja pracy przedszkola</a>
-                    <a href="#" class="nav__dropdown-link nav-link">Statut</a>
-                </div>
-            </li>
-            <li class="nav__item">
-                <a class="nav__item-link" href="#todownload" >do pobrania <i class="ti ti-chevron-down"></i></a>
-                <div class="nav__dropdown">
-                    <a href="{% url 'documents_app:general' %}" class="nav__dropdown-link nav-link">Rekrutacja / Inne dokumenty</a>
-                    <a href="#" class="nav__dropdown-link nav-link">Materiały od nauczycieli</a>
-                    <a href="#" class="nav__dropdown-link nav-link">Materiały logopedyczne</a>
-                </div>
-            </li>
-            <li class="nav__item">
-                <a href="{% slugurl 'home' %}#news" class="nav__item-link nav-link">aktualności</a>
-            </li>
-            <li class="nav__item"><a href="{% slugurl 'home' %}#groups" class="nav__item-link nav-link">grupy</a></li>
+    <div class="nav__logo">
+        <a href="{% url 'wagtail_serve' '' %}"
+            ><img
+                class="nav__logo-img"
+                src="{% static 'img/frontcircled.png' %}"
+                alt="Zdjęcie frontu budynku przedszkola"
+        /></a>
+    </div>
+    <div class="skipnav"><a href="#header">Pomiń nawigację</a></div>
+    <button class="hamburger hamburger--spring" type="button">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+        <span class="hamburger-text">Menu</span>
+    </button>
+    <ul class="nav-list" id="menu-list">
+        <li class="nav__item">
+            <a
+                class="nav__item-link nav-link link-underlined"
+                href="{% url 'wagtail_serve' '' %}"
+                >Strona główna</a
+            >
+        </li>
+        <li class="nav__item">
+            <a class="nav__item-link link-underlined" href="#aboutus"
+                >o nas <i class="ti ti-chevron-down"></i
+            ></a>
+            <div class="nav__dropdown">
+                <a
+                    href="{% url 'aboutus_app:schedule' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Ramowy rozkład dnia</a
+                >
+                <a
+                    href="{% url 'aboutus_app:payments' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Opłaty i konta</a
+                >
+                <a
+                    href="{% url 'aboutus_app:regulations' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Regulamin</a
+                >
+                <a
+                    href="{% url 'aboutus_app:procedures' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Procedury</a
+                >
+                <a
+                    href="{% url 'aboutus_app:concept' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Koncepcja pracy przedszkola</a
+                >
+                <a href="#" class="nav__dropdown-link nav-link">Statut</a>
+            </div>
+        </li>
+        <li class="nav__item">
+            <a class="nav__item-link link-underlined" href="#todownload"
+                >do pobrania <i class="ti ti-chevron-down"></i
+            ></a>
+            <div class="nav__dropdown">
+                <a
+                    href="{% url 'todownload_app:general' %}"
+                    class="nav__dropdown-link nav-link"
+                    >Rekrutacja / Inne dokumenty</a
+                >
+                <a href="#" class="nav__dropdown-link nav-link"
+                    >Materiały od nauczycieli</a
+                >
+                <a href="#" class="nav__dropdown-link nav-link"
+                    >Materiały logopedyczne</a
+                >
+            </div>
+        </li>
+        <li class="nav__item">
+            <a
+                href="{% slugurl 'home' %}#news"
+                class="nav__item-link nav-link link-underlined"
+                >aktualności</a
+            >
+        </li>
+        <li class="nav__item">
+            <a
+                href="{% slugurl 'home' %}#groups"
+                class="nav__item-link nav-link link-underlined"
+                >grupy</a
+            >
+        </li>
 
-            <li class="nav__item"><a class="nav__item-link nav-link" href="{% url 'aboutus_app:contact' %}">kontakt</a></li>
-        </ul>
+        <li class="nav__item">
+            <a
+                class="nav__item-link nav-link link-underlined"
+                href="{% url 'aboutus_app:contact' %}"
+                >kontakt</a
+            >
+        </li>
+    </ul>
 
-        <!-- <div class="nav__fontpanel">
+    <!-- <div class="nav__fontpanel">
             <button class="nav__fontpanel-btn nav__fontpanel-btn--bigger" title="Zwiększ wielkość czcionki">+</button>
             <button class="nav__fontpanel-btn nav__fontpanel-btn--reset"
                 title="Ustaw domyślną wielkość czcionki">A</button>
             <button class="nav__fontpanel-btn nav__fontpanel-btn--smaller" title="Zmniejsz wielkość czcionki">-</button>
         </div> -->
-    </nav>
-
+</nav>

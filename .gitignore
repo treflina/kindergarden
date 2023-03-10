@@ -1,15 +1,17 @@
 /secret.json
 /package-lock.json
 .dockerignore
+.gitignore
 Dockerfile
 
 # Django project
 /media/*
 /static/
+src/
 *.sqlite3
 
 /applications/aboutus/migrations/*
-/applications/documents/migrations/*
+/applications/todownload/migrations/*
 /applications/gallery/migrations/*
 /applications/thematic/migrations/*
 /home/migrations/*

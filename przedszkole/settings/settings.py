@@ -40,6 +40,7 @@ DEBUG = get_secret("DEBUG")
 ALLOWED_HOSTS = get_secret("ALLOWED_HOSTS")
 
 SECRET_KEY = get_secret("SECRET_KEY")
+GOOGLE_MAP_API_KEY = get_secret("GOOGLE_MAP_API_KEY")
 
 
 # Application definition
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     "search",
     "applications.thematic",
     "applications.aboutus",
-    "applications.documents",
+    "applications.todownload",
     "applications.gallery",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -101,6 +102,10 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            'libraries':{
+            'env_extras': 'applications.aboutus.templatetags.env_extras',
+
+            }
         },
     },
 ]
@@ -171,7 +176,7 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
-    
+
 ]
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated

@@ -93,7 +93,8 @@ const mainFunctions = parallel(
     sassCompiler,
     cssCompiler,
     javaScript,
-    convertImages
+
 );
 exports.cleanStuff = cleanStuff;
+exports.convertImages = convertImages;
 exports.default = series(mainFunctions, runserver, startBrowserSync, watchForChanges);

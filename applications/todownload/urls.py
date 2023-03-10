@@ -1,7 +1,7 @@
 from django.urls import include, path
 from . import views
 
-app_name = "documents_app"
+app_name = "todownload_app"
 
 urlpatterns = [
     path("dopobrania/dyrektor", views.general, name="general"),

@@ -104,38 +104,10 @@
             z-index: 1;
 
             &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                display: inline-block;
-                width: 100%;
                 height: 3px;
                 background-color: white;
-                transform: scaleX(0);
-                transform-origin: right;
-                transition: transform .3s;
-            }
-
-            &:hover::before {
-                transform: scaleX(1);
-                transform-origin: left;
-            }
-
-
-            // &:hover+.nav__dropdown>.nav__dropdown-link,
-            // &:focus+.nav__dropdown>.nav__dropdown-link {
-            //     display: block;
-            //     opacity: 1;
-
-            // }
-
-            // &:hover+.nav__dropdown,
-            // &:focus+.nav__dropdown {
-            //     z-index: 1000;
-            // }
         }
-    }
+    }}
 
     &__dropdown {
         display: none; ///

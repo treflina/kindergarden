@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Page not found{% endblock %}
-
-{% block body_class %}template-404{% endblock %}
-
 {% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <h2>Przepraszamy, strona nie została znaleziona.</h2>
+    {%include 'includes/footer.html'%}
+</div>
+{% endblock%}
 
 
-<h2>Przepraszamy, Strona nie została znaleziona.</h2>
-{% endblock %}

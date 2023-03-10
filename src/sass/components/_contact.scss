@@ -16,7 +16,14 @@
         padding-bottom: .5rem;
         font-size: 1.5rem;
     }
+
+    &__google-map {
+        height: 400px;
+        width: 100%;
+    }
+
 }
+
 
 .contact__box {
     display: inline-flex;
@@ -98,4 +105,3 @@
     }
 
 }
-
