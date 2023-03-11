@@ -38,10 +38,12 @@ class HomePageGallery(Orderable):
         related_name="+",
         verbose_name="zdjęcie",
     )
-    alt_attr = models.CharField(
-        max_length=250, blank=True, null=True, verbose_name="opis alternatywny"
-    )
-    panels = [FieldPanel("home_gallery_image"), FieldPanel("alt_attr")]
+    # alt_attr = models.CharField(
+    #     max_length=250, blank=True, null=True, verbose_name="opis alternatywny"
+    # )
+    panels = [FieldPanel("home_gallery_image"),
+                # FieldPanel("alt_attr")
+                ]
 
 
 class HomePageAccordion(Orderable):
@@ -79,10 +81,10 @@ class HomePage(RoutablePageMixin, Page):
         MultiFieldPanel(
             [
                 InlinePanel(
-                    "home_gallery_images", max_num=14, min_num=14, label="Zdjęcie"
+                    "home_gallery_images", label="Zdjęcie"
                 )
             ],
-            heading="Galeria na stronie głównej",
+            heading="Galeria na stronie głównej (14 zdjęć)",
         ),
     ]
 
@@ -90,40 +92,3 @@ class HomePage(RoutablePageMixin, Page):
         context = super().get_context(request, *args, **kwargs)
         context["month"] = self.month_num
         return context
-
-    # @route(
-    #     r"^(?P<group_slug>[-\w]*)/tematyka/(?P<month_slug>[-\w]*)/$",
-    #     name="thematic_view",
-    # )
-    # def thematic_view(self, request, group_slug=None, month_slug=None):
-    #     """Find thematic page based on slugs."""
-
-    #     context = self.get_context(request)
-
-    #     try:
-    #         month = MonthFilter.objects.get(slug=month_slug)
-    #         month_num = str(int(month_slug) - 1)
-    #     except (AttributeError, MonthFilter.DoesNotExist) as ex:
-    #         month_slug = None
-    #         return render(request, "404.html")
-
-    #     try:
-    #         group = GroupsFilter.objects.get(slug=group_slug)
-    #     except (AttributeError, GroupsFilter.DoesNotExist):
-    #         group_slug = None
-    #         return render(request, "404.html")
-
-    #     if group_slug is not None and month_slug is not None:
-    #         thematic_page = (
-    #             ThematicPage.objects.live()
-    #             .filter(group_id=group.id, month_id=month.id)
-    #             .last()
-    #         )
-    #     else:
-    #         return render(request, "404.html")
-
-    #     context["thematic_page"] = thematic_page
-    #     context["month_num"] = month_slug
-    #     context["group_choice"] = group_slug
-
-    #     return render(request, "thematic/thematic_page.html", context)
