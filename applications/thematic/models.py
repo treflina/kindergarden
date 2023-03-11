@@ -95,6 +95,9 @@ class ThematicIndexPage(Page):
     subpage_types = ["thematic.ThematicPage"]
     parent_page_types = ["home.HomePage"]
 
+    class Meta:
+        verbose_name = "Tematyka - strona nadrzędna"
+
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
@@ -112,6 +115,9 @@ class ThematicIndexPage(Page):
 
 class ThematicPage(Page):
     """Thematic detail page model."""
+
+    subpage_types = []
+    parent_page_types = ["thematic.ThematicIndexPage"]
 
     template = "thematic/thematic_page.html"
 
@@ -139,6 +145,9 @@ class ThematicPage(Page):
         FieldPanel("group"),
         FieldPanel("month"),
     ]
+
+    class Meta:
+        verbose_name = "Tematyka na dany miesiąc"
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)

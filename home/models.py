@@ -88,6 +88,9 @@ class HomePage(RoutablePageMixin, Page):
         ),
     ]
 
+    class Meta:
+        verbose_name = "Strona główna"
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["month"] = self.month_num
