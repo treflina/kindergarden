@@ -33,6 +33,9 @@ class GalleryListingPage(RoutablePageMixin, Page):
     subpage_types = ["gallery.GalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
 
+    class Meta:
+        verbose_name = "Galeria - strona nadrzędna"
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
@@ -68,6 +71,9 @@ class GalleryDetailPage(Page):
     subpage_types = []
     parent_page_types = ["gallery.GalleryListingPage"]
     password_required_template = "gallery/password_required.html"
+
+    class Meta:
+        verbose_name = "Galeria zdjęć"
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)

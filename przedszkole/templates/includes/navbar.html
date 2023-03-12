@@ -16,42 +16,31 @@
     </button>
     <ul class="nav-list" id="menu-list">
         <li class="nav__item">
-            <a
-                class="nav__item-link nav-link link-underlined"
-                href="{% url 'wagtail_serve' '' %}"
-                >Strona główna</a
-            >
+            <a class="nav__item-link nav-link link-underlined" href="{% url 'wagtail_serve' '' %}">Strona główna</a>
         </li>
         <li class="nav__item">
-            <a class="nav__item-link link-underlined" href="#aboutus"
-                >o nas <i class="ti ti-chevron-down"></i
-            ></a>
+            <a class="nav__item-link link-underlined" href="#aboutus">o nas <i class="ti ti-chevron-down"></i></a>
             <div class="nav__dropdown">
                 <a
                     href="{% url 'aboutus_app:schedule' %}"
                     class="nav__dropdown-link nav-link"
-                    >Ramowy rozkład dnia</a
-                >
+                    >Ramowy rozkład dnia</a>
                 <a
                     href="{% url 'aboutus_app:payments' %}"
                     class="nav__dropdown-link nav-link"
-                    >Opłaty i konta</a
-                >
+                    >Opłaty i konta</a>
                 <a
                     href="{% url 'aboutus_app:regulations' %}"
                     class="nav__dropdown-link nav-link"
-                    >Regulamin</a
-                >
+                    >Regulamin</a>
                 <a
                     href="{% url 'aboutus_app:procedures' %}"
                     class="nav__dropdown-link nav-link"
-                    >Procedury</a
-                >
+                    >Procedury</a>
                 <a
                     href="{% url 'aboutus_app:concept' %}"
                     class="nav__dropdown-link nav-link"
-                    >Koncepcja pracy przedszkola</a
-                >
+                    >Koncepcja pracy przedszkola</a>
                 <a href="#" class="nav__dropdown-link nav-link">Statut</a>
             </div>
         </li>
@@ -63,37 +52,31 @@
                 <a
                     href="{% url 'todownload_app:general' %}"
                     class="nav__dropdown-link nav-link"
-                    >Rekrutacja / Inne dokumenty</a
-                >
+                    >Rekrutacja / Inne dokumenty</a>
                 <a href="#" class="nav__dropdown-link nav-link"
-                    >Materiały od nauczycieli</a
-                >
+                    >Materiały od nauczycieli</a>
                 <a href="#" class="nav__dropdown-link nav-link"
-                    >Materiały logopedyczne</a
-                >
+                    >Materiały logopedyczne</a>
             </div>
         </li>
         <li class="nav__item">
             <a
                 href="{% slugurl 'home' %}#news"
                 class="nav__item-link nav-link link-underlined"
-                >aktualności</a
-            >
+                >aktualności</a>
         </li>
         <li class="nav__item">
             <a
                 href="{% slugurl 'home' %}#groups"
                 class="nav__item-link nav-link link-underlined"
-                >grupy</a
-            >
+                >grupy</a>
         </li>
 
         <li class="nav__item">
             <a
                 class="nav__item-link nav-link link-underlined"
                 href="{% url 'aboutus_app:contact' %}"
-                >kontakt</a
-            >
+                >kontakt</a>
         </li>
     </ul>
 

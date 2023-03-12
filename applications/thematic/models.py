@@ -11,7 +11,7 @@ from wagtail.admin.panels import (
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page, Orderable
-from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from wagtail.contrib.routable_page.models import RoutablePageMixin, path
 from wagtail.snippets.models import register_snippet
 
 import home
@@ -88,29 +88,45 @@ class GroupsFilter(models.Model):
 
 register_snippet(GroupsFilter)
 
-class ThematicIndexPage(Page):
+
+class ThematicIndexPage(RoutablePageMixin, Page):
     """Parent page for thematic pages"""
 
     template = "thematic/thematic_index_page.html"
     subpage_types = ["thematic.ThematicPage"]
     parent_page_types = ["home.HomePage"]
 
+    max_count = 2
+
+    @path("month/<str:month>/")
+    @path("current/")
+    def thematic_for_month(self, request, month=None):
+        """
+        View function for the events for year page
+        """
+        if month is None:
+            current_month = date.today().month
+            if current_month in [7, 8]:
+                month = "6"
+            else:
+                month = str(current_month)
+
+        thematic_page = (
+            ThematicPage.objects.child_of(self)
+            .filter(month__slug=month)
+            .specific()
+            .last()
+        )
+        if thematic_page is None:
+            thematic_page = []
+
+        return self.render(
+            request,
+            context_overrides={"thematic_page": thematic_page, "month_num": month},
+        )
+
     class Meta:
         verbose_name = "Tematyka - strona nadrzędna"
-
-
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        month_num = date.today().month
-        if request.GET.get("group", None):
-            group = str(request.GET.get("group"))
-            month = str(request.GET.get("month", month_num))
-            obj = ThematicPage.objects.filter(group__slug=group, month__slug=month).last()
-            context["thematic_page"] = obj
-            context["month_num"] = month
-            context["group_choice"] = group
-
-        return context
 
 
 class ThematicPage(Page):
@@ -122,34 +138,28 @@ class ThematicPage(Page):
     template = "thematic/thematic_page.html"
 
     month = models.ForeignKey(
-
         "thematic.MonthFilter",
         on_delete=models.SET_NULL,
         null=True,
         blank=False,
         verbose_name="miesiąc",
     )
-    group = models.ForeignKey(
-        "thematic.GroupsFilter",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=False,
-        verbose_name="grupa",
-    )
+    # group = models.ForeignKey(
+    #     "thematic.GroupsFilter",
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=False,
+    #     verbose_name="grupa",
+    # )
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [InlinePanel("thematic_content", min_num=1, label="Treść")],
             heading="Tematyka zajęć, ważne dni, cele, inne",
         ),
-        FieldPanel("group"),
+        # FieldPanel("group"),
         FieldPanel("month"),
     ]
 
     class Meta:
         verbose_name = "Tematyka na dany miesiąc"
-
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        context["month_num"] = str(date.today().month)
-        return context

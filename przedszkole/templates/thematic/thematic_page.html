@@ -1,2 +1,26 @@
-{%include 'thematic_page.html'%}
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
 
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--school" id="header">
+            {% comment %} <h1 class="heading__box-title">Tematyka zajęć - {% if slugurl == 'tematyka1' %} grupa młodsza {% else %} grupa starsza {% endif %}</h1> {% endcomment %}
+            <h1 class="heading__box-title">{{ page.get_parent.title }}</h1>
+        </div>
+
+        <section class="activities wrapper">
+            {% for loop_cycle in page.thematic_content.all %}
+            <div class="content">
+                <h2 class="content__heading mtb-3">{{ loop_cycle.heading | safe}}</h2>
+                <div class="content__list">{{ loop_cycle.text_content | safe }}</div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    {%include 'includes/footer.html'%}
+</div>
+
+{% endblock%}

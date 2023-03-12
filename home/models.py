@@ -41,9 +41,10 @@ class HomePageGallery(Orderable):
     # alt_attr = models.CharField(
     #     max_length=250, blank=True, null=True, verbose_name="opis alternatywny"
     # )
-    panels = [FieldPanel("home_gallery_image"),
-                # FieldPanel("alt_attr")
-                ]
+    panels = [
+        FieldPanel("home_gallery_image"),
+        # FieldPanel("alt_attr")
+    ]
 
 
 class HomePageAccordion(Orderable):
@@ -79,11 +80,7 @@ class HomePage(RoutablePageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel("accordion_content"),
         MultiFieldPanel(
-            [
-                InlinePanel(
-                    "home_gallery_images", label="Zdjęcie"
-                )
-            ],
+            [InlinePanel("home_gallery_images", label="Zdjęcie")],
             heading="Galeria na stronie głównej (14 zdjęć)",
         ),
     ]
