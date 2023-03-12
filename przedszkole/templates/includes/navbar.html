@@ -2,12 +2,8 @@
 
 <nav class="nav">
     <div class="nav__logo">
-        <a href="{% url 'wagtail_serve' '' %}"
-            ><img
-                class="nav__logo-img"
-                src="{% static 'img/frontcircled.png' %}"
-                alt="Zdjęcie frontu budynku przedszkola"
-        /></a>
+        <a href="{% url 'wagtail_serve' '' %}">
+            <img class="nav__logo-img" src="{% static 'img/frontcircled.png' %}" alt="Zdjęcie frontu budynku przedszkola"/></a>
     </div>
     <div class="skipnav"><a href="#header">Pomiń nawigację</a></div>
     <button class="hamburger hamburger--spring" type="button">
@@ -21,62 +17,31 @@
         <li class="nav__item">
             <a class="nav__item-link link-underlined" href="#aboutus">o nas <i class="ti ti-chevron-down"></i></a>
             <div class="nav__dropdown">
-                <a
-                    href="{% url 'aboutus_app:schedule' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Ramowy rozkład dnia</a>
-                <a
-                    href="{% url 'aboutus_app:payments' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Opłaty i konta</a>
-                <a
-                    href="{% url 'aboutus_app:regulations' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Regulamin</a>
-                <a
-                    href="{% url 'aboutus_app:procedures' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Procedury</a>
-                <a
-                    href="{% url 'aboutus_app:concept' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Koncepcja pracy przedszkola</a>
+                <a href="{% url 'aboutus_app:schedule' %}" class="nav__dropdown-link nav-link">Ramowy rozkład dnia</a>
+                <a href="{% url 'aboutus_app:payments' %}" class="nav__dropdown-link nav-link">Opłaty i konta</a>
+                <a href="{% url 'aboutus_app:regulations' %}" class="nav__dropdown-link nav-link">Regulamin</a>
+                <a href="{% url 'aboutus_app:procedures' %}" class="nav__dropdown-link nav-link">Procedury</a>
+                <a href="{% url 'aboutus_app:concept' %}" class="nav__dropdown-link nav-link">Koncepcja pracy przedszkola</a>
                 <a href="#" class="nav__dropdown-link nav-link">Statut</a>
             </div>
         </li>
         <li class="nav__item">
-            <a class="nav__item-link link-underlined" href="#todownload"
-                >do pobrania <i class="ti ti-chevron-down"></i
-            ></a>
+            <a class="nav__item-link link-underlined" href="#todownload">do pobrania <i class="ti ti-chevron-down"></i></a>
             <div class="nav__dropdown">
-                <a
-                    href="{% url 'todownload_app:general' %}"
-                    class="nav__dropdown-link nav-link"
-                    >Rekrutacja / Inne dokumenty</a>
-                <a href="#" class="nav__dropdown-link nav-link"
-                    >Materiały od nauczycieli</a>
-                <a href="#" class="nav__dropdown-link nav-link"
-                    >Materiały logopedyczne</a>
+                <a href="{% url 'todownload_app:general' %}" class="nav__dropdown-link nav-link">Rekrutacja / Inne dokumenty</a>
+                <a href="#" class="nav__dropdown-link nav-link">Materiały od nauczycieli</a>
+                <a href="#" class="nav__dropdown-link nav-link">Materiały logopedyczne</a>
             </div>
         </li>
         <li class="nav__item">
-            <a
-                href="{% slugurl 'home' %}#news"
-                class="nav__item-link nav-link link-underlined"
-                >aktualności</a>
+            <a href="{% slugurl 'home' %}#news" class="nav__item-link nav-link link-underlined">aktualności</a>
         </li>
         <li class="nav__item">
-            <a
-                href="{% slugurl 'home' %}#groups"
-                class="nav__item-link nav-link link-underlined"
-                >grupy</a>
+            <a href="{% slugurl 'home' %}#groups" class="nav__item-link nav-link link-underlined">grupy</a>
         </li>
 
         <li class="nav__item">
-            <a
-                class="nav__item-link nav-link link-underlined"
-                href="{% url 'aboutus_app:contact' %}"
-                >kontakt</a>
+            <a class="nav__item-link nav-link link-underlined" href="{% url 'aboutus_app:contact' %}">kontakt</a>
         </li>
     </ul>
 
