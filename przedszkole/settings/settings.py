@@ -212,7 +212,7 @@ WAGTAILDOCS_SERVE_METHOD = "serve_view"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # CORS_ALLOW_METHODS = [
 #     "DELETE",

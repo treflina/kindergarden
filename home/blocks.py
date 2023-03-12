@@ -2,6 +2,10 @@ from wagtail import blocks
 from wagtail.templatetags.wagtailcore_tags import richtext
 from wagtail.contrib.table_block.blocks import TableBlock
 
+custom_table_options = {
+    'startCols': 4,
+    'language': 'en-US'
+}
 
 class TitleTextAndTableBlock(blocks.StructBlock):
     """Title, text and table block"""
@@ -16,7 +20,7 @@ class TitleTextAndTableBlock(blocks.StructBlock):
         features=["bold", "italic", "ol", "ul", "link", "document-link", "hr", "image"],
     )
     table = TableBlock(
-        required=False, label="Tabela (opcjonalnie)", template="home/table_block.html"
+        required=False, label="Tabela (opcjonalnie)", template="home/table_block.html", table_options=custom_table_options
     )
 
     class Meta:  # noqa
