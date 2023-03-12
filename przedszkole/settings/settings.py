@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import json
+import mimetypes
 
 from django.core.exceptions import ImproperlyConfigured
 from django.contrib.messages import constants as messages
@@ -234,3 +235,4 @@ CSRF_TRUSTED_ORIGINS = get_secret("CSRF_TRUSTED_ORIGINS")
 #     "x-csrftoken",
 #     "x-requested-with",
 # ]
+mimetypes.add_type("text/javascript", ".js", True)
