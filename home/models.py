@@ -47,17 +47,17 @@ class HomePageGallery(Orderable):
     ]
 
 
-class HomePageAccordion(Orderable):
-    """News accordion content"""
+# class HomePageAccordion(Orderable):
+#     """News accordion content"""
 
-    page = ParentalKey("home.HomePage", related_name="accordion")
-    news_heading = models.CharField(
-        max_length=100, null=True, blank=False, verbose_name="nagłówek"
-    )
-    news_text = RichTextField(
-        features=["bold", "italic", "ol", "ul", "link", "hr"], verbose_name="treść"
-    )
-    panels = [FieldPanel("news_heading"), FieldPanel("news_text")]
+#     page = ParentalKey("home.HomePage", related_name="accordion")
+#     news_heading = models.CharField(
+#         max_length=100, null=True, blank=False, verbose_name="nagłówek"
+#     )
+#     news_text = RichTextField(
+#         features=["bold", "italic", "ol", "ul", "link", "hr"], verbose_name="treść"
+#     )
+#     panels = [FieldPanel("news_heading"), FieldPanel("news_text")]
 
 
 class HomePage(RoutablePageMixin, Page):

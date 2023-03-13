@@ -1,7 +1,7 @@
 {% load table_block_tags static %}
 
-<div role="region" aria-labelledby="HeadersRow" tabindex="0" class="colheaders">
-    <table class="tb-block" id="HeadersRow">
+<div role="region" aria-labelledby="HeadersRow-{{block.id}}" tabindex="0" class="colheaders">
+    <table class="tb-block" id="HeadersRow-{{block.id}}">
         {% if table_caption %}
         <caption class="caption-block">{{ table_caption }}</caption>
         {% endif %}

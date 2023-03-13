@@ -7,7 +7,7 @@ from utils import convert_bytes, extract_extension
 
 
 def general(request):
-    todownload = Document.objects.filter(collection__name="dyrektor")
+    todownload = Document.objects.filter(collection__name="dyrektor").order_by("created_at")
     title = "Rekrutacja i inne dokumenty"
     for doc in todownload:
         doc.file_size_converted = convert_bytes(doc.file_size)
