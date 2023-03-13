@@ -73,11 +73,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -86,6 +84,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "przedszkole.urls"
@@ -235,4 +234,3 @@ CSRF_TRUSTED_ORIGINS = get_secret("CSRF_TRUSTED_ORIGINS")
 #     "x-csrftoken",
 #     "x-requested-with",
 # ]
-mimetypes.add_type("text/javascript", ".js", True)

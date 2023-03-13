@@ -1,5 +1,4 @@
-{% load wagtailcore_tags static %} {% comment %} {% for news in self.accordion_content
-%} {% endcomment %}
+{% load wagtailcore_tags static %} 
 <div class="news__item">
     <button class="news__btn">
         <span class="news__btn-arrow"
@@ -12,20 +11,4 @@
         {% include_block value.bound_blocks.table %}
     </div>
 </div>
-{% comment %} {% endfor %} {% endcomment %} {% comment %} {% for card in
-self.cards %}
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">{{ card.title }}</h5>
-        <p class="card-text">{{ card.text }}</p>
-        {% if card.button_page %}
-        <a href="{{ card.button_page.url }}" class="btn btn-primary">
-            Learn More
-        </a>
-        {% elif card.button_url %}
-        <a href="{{ card.button_url }}" class="btn btn-primary"> Learn More </a>
-        {% endif %}
-    </div>
-</div>
-{% endfor %} {% endcomment %}

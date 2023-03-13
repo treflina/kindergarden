@@ -4,7 +4,7 @@ from wagtail.contrib.table_block.blocks import TableBlock
 
 custom_table_options = {
     'startCols': 4,
-    'language': 'en-US'
+    'language': 'pl-PL'
 }
 
 class TitleTextAndTableBlock(blocks.StructBlock):
