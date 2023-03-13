@@ -29,8 +29,8 @@
             <a class="nav__item-link link-underlined" href="#todownload">do pobrania <i class="ti ti-chevron-down"></i></a>
             <div class="nav__dropdown">
                 <a href="{% url 'todownload_app:general' %}" class="nav__dropdown-link nav-link">Rekrutacja / Inne dokumenty</a>
-                <a href="#" class="nav__dropdown-link nav-link">Materiały od nauczycieli</a>
-                <a href="#" class="nav__dropdown-link nav-link">Materiały logopedyczne</a>
+                <a href="{% url 'todownload_app:teachers' %}" class="nav__dropdown-link nav-link">Materiały od nauczycieli</a>
+                <a href="{% url 'todownload_app:speechtherapist' %}" class="nav__dropdown-link nav-link">Materiały logopedyczne</a>
             </div>
         </li>
         <li class="nav__item">
