@@ -23,7 +23,6 @@ def teachers(request):
     for doc in todownload:
         doc.file_size_converted = convert_bytes(doc.file_size)
         doc.type = extract_extension(doc.file)
-        print(doc)
 
     context = {"todownload": todownload, "page_title": "Do pobrania", "title": title}
     return render(request, "todownload/todownload.html", context)
