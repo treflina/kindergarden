@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
+from django.views.generic.base import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+
 
 from search import views as search_views
 
@@ -15,6 +17,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("", include("applications.aboutus.urls")),
     path("", include("applications.todownload.urls")),
+    path("sitemap.xml", TemplateView.as_view(template_name="sitemap.xml", content_type="text/xml")),
 ]
 
 
