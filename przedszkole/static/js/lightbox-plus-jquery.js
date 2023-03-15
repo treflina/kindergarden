@@ -11132,23 +11132,22 @@ return jQuery;
 
 	// Swipe functionality
 
-	  this.$lightbox.find(".lb-image").on("swiperight", function () {
-          if (self.currentImageIndex === 0) {
-              self.changeImage(self.album.length - 1);
-          } else {
-              self.changeImage(self.currentImageIndex - 1);
-          }
-          return false;
-      });
+	let touchstartX = 0;
+    let touchendX = 0;
 
-      this.$lightbox.find(".lb-image").on("swipeleft", function () {
-          if (self.currentImageIndex === self.album.length - 1) {
-              self.changeImage(0);
-          } else {
-              self.changeImage(self.currentImageIndex + 1);
-          }
-          return false;
-      });
+    function handleGesture() {
+        if (touchendX < touchstartX) $(".lb-prev").trigger("click");
+        if (touchendX > touchstartX) $(".lb-next").trigger("click");
+    }
+
+    $(document).on("touchstart", ".lb-nav", (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+    });
+
+    $(document).on("touchend", ".lb-nav", (e) => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+    });
 
     // Attach event handlers to the newly minted DOM elements
     this.$overlay.hide().on('click', function() {
