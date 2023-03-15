@@ -37,12 +37,12 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %} {% block content %}{% endblock %}
-
-        <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
-
-        {% block extra_js %}
+        {% wagtailuserbar %} {% block content %}
 
         {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+         <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
     </body>
 </html>

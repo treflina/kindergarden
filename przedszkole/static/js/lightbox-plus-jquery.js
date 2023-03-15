@@ -11128,7 +11128,27 @@ return jQuery;
       right: parseInt(this.$image.css('border-right-width'), 10),
       bottom: parseInt(this.$image.css('border-bottom-width'), 10),
       left: parseInt(this.$image.css('border-left-width'), 10)
-    };
+	};
+
+	// Swipe functionality
+
+	  this.$lightbox.find(".lb-image").on("swiperight", function () {
+          if (self.currentImageIndex === 0) {
+              self.changeImage(self.album.length - 1);
+          } else {
+              self.changeImage(self.currentImageIndex - 1);
+          }
+          return false;
+      });
+
+      this.$lightbox.find(".lb-image").on("swipeleft", function () {
+          if (self.currentImageIndex === self.album.length - 1) {
+              self.changeImage(0);
+          } else {
+              self.changeImage(self.currentImageIndex + 1);
+          }
+          return false;
+      });
 
     // Attach event handlers to the newly minted DOM elements
     this.$overlay.hide().on('click', function() {
