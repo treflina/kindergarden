@@ -57,7 +57,7 @@
    <section class="gallery grid-container">
         {% for loop_cycle in self.home_gallery_images.all %}
         {% image loop_cycle.home_gallery_image max-500x300 as img %}
-        <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.alt_descr }}" class="gallery__img" loading="lazy">
+        <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.home_gallery_image.alt_descr }}" class="gallery__img" loading="lazy">
         </figure>
         {% endfor %}
 
