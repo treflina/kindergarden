@@ -1,0 +1,220 @@
+@use '../colors'as *;
+
+.main-subpage {
+    grid-column: 1/-1;
+    padding-bottom: 7rem;
+
+    .content {
+
+        h2 {
+            margin: 5rem 0 4rem;
+        }
+
+        h3 {
+            color: $color-primary-second;
+            margin: 3rem 0;
+        }
+
+        h4 {
+            margin: 2rem 0;
+        }
+
+        &__list {
+
+            padding: 2rem;
+            padding-left: 5rem;
+            box-shadow: 1px 1px 3px black;
+            border-radius: 5px;
+            background: #f5f7f2;
+            list-style-position: outside;
+        }
+    }
+
+
+
+    .concept__list {
+        margin-left: 3rem;
+    }
+
+    .concept-signature {
+        margin: 3rem 0;
+        float: right;
+    }
+
+    .heading__box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 1rem;
+        min-height: 20vh;
+        width: 100%;
+        margin: 0 auto;
+
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+        z-index: -2;
+
+        &--crayons {
+            background-image: url('/static/img/crayons-m.jpg');
+            background-position: top;
+        }
+
+        &--road {
+            background-image: url('/static/img/school2-xl.jpg');
+            background-position: bottom;
+        }
+
+        &--paint {
+            background-image: url('/static/img/paint-xl.jpg');
+            background-position: top;
+        }
+
+        &--school {
+            background-image: url('/static/img/crayons2-xl.jpg');
+            background-position: bottom;
+        }
+
+        &-title {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            min-width: 40%;
+            text-align: center;
+            line-height: 1.2;
+            text-transform: uppercase;
+            font-weight: 300;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to right bottom, rgba(70, 70, 157, .98), rgba(#00703C, .95));
+                box-shadow: 3px 3px 5px rgba(black, 0.6);
+                border-radius: 8px;
+                z-index: -3;
+            }
+        }
+    }
+
+    figure {
+        display: inline-block;
+        margin-bottom: 3rem;
+    }
+
+    blockquote {
+        display: inline-block;
+        border-left: 3px solid $color-primary-second;
+        color: #1a1a1a;
+        font-family: Georgia, Times, "Times New Roman", serif;
+        font-size: 1.25em;
+        font-style: italic;
+        line-height: 1.8em;
+        margin: 1rem 7rem 2rem;
+        padding: 0 2em; /////////
+        position: relative;
+        z-index: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -4px;
+            height: 2em;
+            background-color: white;
+            margin-top: -.5em;
+        }
+
+        &:after {
+            content: "";
+            width: 1em;
+            height: 1em;
+            background-image: url('/static/img/quote.svg');
+            background-size: cover;
+            background-color: white;
+            position: absolute;
+            top: 10%;
+            left: -0.5em;
+            color: white;
+            font-family: "Open Sans";
+            font-style: normal;
+            line-height: 1em;
+            text-align: center;
+            text-indent: -2px;
+            margin-top: -0.5em;
+
+        }
+
+    }
+
+    cite {
+        display: block;
+        margin: .5rem 10rem 0;
+        font-size: 0.75em;
+        text-align: right;
+    }
+
+
+
+    @media (max-width: 767px) {
+
+        .heading__box {
+            padding: .5rem;
+        }
+
+        .heading__box-title {
+            font-size: 2.4rem;
+            overflow-wrap: anywhere;
+        }
+
+        blockquote {
+            display: flex;
+            flex-direction: column;
+            margin: 1em 0;
+            padding: 1em 1em;
+            border-top: 2px solid green;
+            border-bottom: 2px solid green;
+            border-left: none;
+            font-size: 1.8rem;
+            line-height: 1.5;
+
+            &:before {
+                left: 50%;
+                top: 0;
+                height: 4px;
+                margin-top: -3px;
+                margin-left: -1em;
+                width: 2em;
+            }
+
+            &:after {
+                font-size: 1em;
+                left: 50%;
+                top: 0;
+                margin-top: -0.5em;
+                margin-left: -0.5em;
+            }
+        }
+
+        cite {
+            margin: 0 2rem;
+            text-align: right;
+
+        }
+
+        .content {
+
+            h2 {
+                margin: 3rem 0;
+                font-size: 2rem;
+                text-align: center;
+                overflow-wrap: anywhere;
+            }
+        }
+    }
+}

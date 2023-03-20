@@ -1,0 +1,50 @@
+@use '../colors'as *;
+
+.hide {
+    display: none;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.cookie-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 30px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    // animation: show-cookies 0.5s 0.5s forwards;
+    z-index: 10000;
+}
+
+
+.cookie-btn {
+    margin-top: 16px;
+    padding: 8px 30px;
+    font-size: 1.4rem;
+    border: 1px solid black;
+    border-radius: 8px;
+    color: #fff;
+    background-color: $color-primary-first;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.cookie-btn:hover {
+    background-color: rgb(79, 79, 99);
+}
+
+// @keyframes show-cookies {
+//     to {
+//         opacity: 0;
+//         transform: translateY(100%);
+//     }
+
+// }

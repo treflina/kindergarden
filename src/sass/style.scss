@@ -1,0 +1,94 @@
+@use 'colors' as *;
+@use 'components' as *;
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%; // to have min-height working in body container
+    width: 100%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0 3rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    color: black;
+    background-color: white;
+    line-height: 1.5;
+}
+
+button span {
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-rows: min-content max-content repeat(3, auto) min-content;
+    grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
+    min-height: calc(100vh - 10.2rem); //////////
+    //margin-top: 10.2rem;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    grid-column: center-start/center-end;
+    grid-gap: 8rem;
+    grid-row: 3/4;
+    margin: 6rem 0;
+}
+
+// .scroll-fix:before {
+//     display: block;
+//     margin-top: -80px;
+//     height: 80px;
+//     content: "";
+//     pointer-events: none
+// }
+
+
+@media (max-width:1200px) {
+
+    .main {
+        grid-gap: 3rem;
+    }
+
+}
+
+@media (max-width:992px) {
+    .main {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 3rem 0;
+    }
+}
+
+@media (max-width:768px) {
+    body {
+        padding: 0 1rem 0 1rem;
+    }
+}
+@media (max-width:500px) {
+    body {
+        padding: 0 16px 0 16px;
+    }
+}
