@@ -30,7 +30,7 @@
         &-img {
             width: 10rem;
             height: 10rem;
-            margin: auto;
+            margin: auto 0;
             background-size: cover;
             background-position: center;
             border-radius: 50%;
@@ -165,7 +165,6 @@
             }
 
             &-img {
-                margin-top: 1rem;
                 width: 25vw;
                 height: 25vw;
             }
