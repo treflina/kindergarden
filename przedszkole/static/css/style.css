@@ -1568,11 +1568,11 @@ button span {
 }
 @media (max-width: 768px) {
   body {
-    padding: 0 1rem 0 1rem;
+    padding: 0 1rem;
   }
 }
 @media (max-width: 500px) {
   body {
-    padding: 0 16px 0 16px;
+    padding: 0 10px;
   }
 }
