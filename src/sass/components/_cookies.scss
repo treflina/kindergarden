@@ -10,18 +10,16 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 2rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
+    padding: 1rem;
     max-height: 50vh;
     width: 100%;
-    text-align: center;
-    line-height: 1.2;
-    font-size: 1.6rem;
+ 
     background-color: rgba(243, 248, 140, 0.9);
-    // animation: show-cookies 0.5s 0.5s forwards;
     z-index: 10000;
 
 }
@@ -33,6 +31,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    padding-top: 1rem;
     overflow: auto;
 }
 
@@ -41,20 +40,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem 2rem;
-    font-size: 1.6rem;
-    border: 1px solid black;
-    border-radius: 8px;
-    color: #fff;
-    background-color: $color-primary-first;
-    transition: background-color .3s;
-    cursor: pointer;
 }
 
-.cookie-btn:hover {
-    background-color: rgb(79, 79, 99);
-}
+
 
 .cookie {
     font-size: 2rem;

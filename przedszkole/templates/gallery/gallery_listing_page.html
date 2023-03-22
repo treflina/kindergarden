@@ -18,7 +18,7 @@
                               <img src="{{img.url}}" alt="{{item.image.alt_descr}}">
                               <div class="photogallery__card-descr">
                                     <p class="photogallery__card-title">{{ item.name }}</p>
-                                    <a class="photogallery__card-link" href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}">Zobacz galerię</a>
+                                    <a class="photogallery__card-link main-button" href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}">Zobacz galerię</a>
                               </div>
                         </div>
                         {% endfor %}

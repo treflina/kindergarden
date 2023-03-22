@@ -28,6 +28,7 @@ function sassCompiler(done) {
         .pipe(sourcemaps.init())
         .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
+        .pipe(dest(paths.sassDest))
         .pipe(cssnano({zindex: false}))
         .pipe(rename({ suffix: ".min" }))
         .pipe(sourcemaps.write())
