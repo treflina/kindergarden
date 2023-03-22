@@ -958,7 +958,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .main-subpage .heading__box-title {
   position: relative;
   display: inline-block;
-  padding: 2rem 1rem;
+  padding: 2rem 20px;
   min-width: 50%;
   text-align: center;
   line-height: 1.2;
