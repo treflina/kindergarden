@@ -6,9 +6,11 @@
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
-<div class="container scroll-fix">
+<div class="container">
     <header class="header" id="header">
-        <div class="header__box">
+<div class="header__wrapper">
+        <div class="header__box ">
+
             <h1 class="header__title">Przedszkole Publiczne w&nbsp;Turawie</h1>
             <p class="header__text header__text--top">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
                 Świata".
@@ -16,7 +18,9 @@
                 Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
                 rozwijającej ich zdolności i&nbsp;zainteresowania.
             <p class="header__text header__text--bottom">Dziękujemy za odwiedziny i&nbsp;Państwa zainteresowanie!</p>
+
         </div>
+</div>
     </header>
 
     <main class="main" id="main">
@@ -54,10 +58,11 @@
             </section>
     </main>
 
-   <section class="gallery grid-container">
+    <section class="gallery grid-container">
         {% for loop_cycle in self.home_gallery_images.all %}
         {% image loop_cycle.home_gallery_image max-500x300 as img %}
-        <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.home_gallery_image.alt_descr }}" class="gallery__img" loading="lazy">
+        <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.home_gallery_image.alt_descr }}"
+                class="gallery__img" loading="lazy">
         </figure>
         {% endfor %}
 
