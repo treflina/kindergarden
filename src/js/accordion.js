@@ -40,7 +40,7 @@ accordionBtns.forEach((button) => {
 });
 
 const detectMob = () => {
-     return window.innerWidth <= 800 && window.innerHeight <= 600;
+     return window.innerWidth <= 800 && window.innerHeight <= 1000;
  }
 
 const openFirstNews = () => {
