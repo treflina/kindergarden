@@ -39,19 +39,34 @@ accordionBtns.forEach((button) => {
     });
 });
 
+const detectMob = () => {
+     return window.innerWidth <= 800 && window.innerHeight <= 600;
+ }
+
+const openFirstNews = () => {
+    const firstNews = document.getElementById("accordion-section-1");
+    const firstNewsBtn = document.getElementById("accordion-open-1");
+    firstNews.classList.add("active");
+    firstNews.setAttribute("aria-hidden", false);
+    firstNewsBtn.setAttribute("aria-expanded", false);
+};
+
+if (!detectMob()) {
+    openFirstNews();
+}
+
+
 const closeAccordionItem = () => {
     const allActiveItems = document.querySelectorAll(".news__info");
     allActiveItems.forEach((item) => item.classList.remove("active"));
 };
 
 const clickOutsideAccordion = (e) => {
-
     if (e.target.classList.contains("body")) {
         const i = e.target;
         closeAccordionItem();
         return;
-    }
-    else if (
+    } else if (
         e.target.classList.contains("news__btn") ||
         e.target.classList.contains("news__info") ||
         e.target.classList.contains("news__info-text") ||
