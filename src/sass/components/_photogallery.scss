@@ -72,6 +72,18 @@
             font-weight: 700;
             font-size: 1.8rem;
             color: royalblue;
+
+            span,
+            .chevrons-left {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .chevrons-left {
+                width: 2rem;
+                height: 2rem;
+                fill: inherit;
+            }
         }
 
         &--title {

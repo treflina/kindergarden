@@ -21,12 +21,12 @@ window.onload = function () {
 
     // navbar
 
-    const navDropdownBtn = document.querySelector(".nav__item-link");
-    function myFunction() {
+    const navDropdownBtn = document.querySelector(".nav__item-link--collapsible");
+    function handleDropdown() {
         document.querySelector(".nav__dropdown").classList.toggle("show");
     }
 
-    navDropdownBtn.addEventListener("click", myFunction);
+    navDropdownBtn.addEventListener("click", handleDropdown);
 
     const navMobile = document.querySelector(".nav-links");
     const navBtn = document.querySelector(".hamburger");

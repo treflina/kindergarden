@@ -83,16 +83,31 @@
         position: relative;
 
         &-link {
-            // main links - without dropdown links
+            // main links - without links insode dropdown
             padding: 1rem 0;
             color: white;
             margin-left: 20px;
             text-transform: uppercase;
 
+
+            .chevron-down {
+                display: inline-block;
+                vertical-align: bottom;
+                width: 2rem;
+                height: 2rem;
+                fill: inherit;
+            }
+
+            &--collapsible {
+                cursor: default;
+            }
+
+
             &::before {
                 height: 3px;
                 background-color: white;
             }
+
         }
     }
 
@@ -121,6 +136,7 @@
             }
         }
     }
+
 
 
     .show {
@@ -214,8 +230,7 @@
 
             &:hover,
             &:focus,
-            &:active
-             {
+            &:active {
                 background-color: #6A67D0;
             }
         }

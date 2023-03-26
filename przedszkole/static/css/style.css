@@ -5,7 +5,7 @@
 }
 .news__heading {
   margin-top: 1rem;
-  color: #00703C;
+  color: rgb(0, 112, 60);
 }
 .news__accordion {
   max-width: 930px;
@@ -38,21 +38,21 @@
   color: #fff;
   background-color: rgb(70, 70, 157);
 }
-.news__btn:hover > .news__btn-arrow .ti, .news__btn:focus > .news__btn-arrow .ti {
-  color: #fff;
+.news__btn:hover > .news__btn-arrow .circle-chevron-down, .news__btn:focus > .news__btn-arrow .circle-chevron-down {
+  fill: #fff;
 }
-.news__btn.expanded:hover > .news__btn-arrow .ti, .news__btn.expanded:focus > .news__btn-arrow .ti {
+.news__btn.expanded:hover > .news__btn-arrow .circle-chevron-down, .news__btn.expanded:focus > .news__btn-arrow .circle-chevron-down {
   transform: rotate(-180deg);
 }
 .news__btn-arrow {
   margin-right: 1rem;
-  color: white;
   font-weight: bold;
 }
-.news__btn-arrow .ti {
+.news__btn-arrow .circle-chevron-down {
   display: inline-block;
-  color: #00703C;
-  font-size: 3rem;
+  fill: rgb(0, 112, 60);
+  width: 3rem;
+  height: 3rem;
   transition: transform 0.3s;
 }
 .news__info {
@@ -147,9 +147,14 @@
   font-size: 2.2rem;
   padding-bottom: 0.5em;
 }
+.groups__box-txt {
+  display: inline-block;
+  vertical-align: middle;
+}
 .groups__box-link {
   position: relative;
   padding-bottom: 0.3em;
+  display: inline-block;
   font-size: 1.8rem;
   color: black;
   text-decoration: none;
@@ -159,12 +164,18 @@
 .groups__box-link:hover, .groups__box-link:focus {
   color: rgb(70, 70, 157);
 }
+.groups__box-link .square-rounded-arrow-right {
+  width: 1.9rem;
+  height: 1.9rem;
+  display: inline-block;
+  vertical-align: middle;
+  color: inherit;
+}
 .groups__box-link--animate {
   display: inline-block;
   padding-right: 5px;
-  font-size: 2rem;
   color: black;
-  transform: scale(1);
+  transform: scale(1.05);
   transition: transform 0.1s, color 0.3s;
 }
 .groups__box-link:hover > .groups__box-link--animate {
@@ -651,7 +662,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .nav {
   position: relative;
   width: 100%;
-  background-color: #00703C;
+  background-color: rgb(0, 112, 60);
   z-index: 99;
 }
 .nav-wrapper {
@@ -703,6 +714,16 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   color: white;
   margin-left: 20px;
   text-transform: uppercase;
+}
+.nav__item-link .chevron-down {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 2rem;
+  height: 2rem;
+  fill: inherit;
+}
+.nav__item-link--collapsible {
+  cursor: default;
 }
 .nav__item-link::before {
   height: 3px;
@@ -911,7 +932,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   margin: 5rem 0 4rem;
 }
 .main-subpage .content h3 {
-  color: #00703C;
+  color: rgb(0, 112, 60);
   margin: 3rem 0;
 }
 .main-subpage .content h4 {
@@ -991,7 +1012,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .main-subpage blockquote {
   display: inline-block;
-  border-left: 3px solid #00703C;
+  border-left: 3px solid rgb(0, 112, 60);
   color: #1a1a1a;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 1.25em;
@@ -1162,7 +1183,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .schedule__activity-time {
   padding: 2rem 0 0;
-  color: #00703C;
+  color: rgb(0, 112, 60);
   font-weight: bold;
   text-align: left;
 }
@@ -1178,7 +1199,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   }
   .schedule__activity-time {
     padding: 0.5rem 0 0;
-    color: #00703C;
+    color: rgb(0, 112, 60);
     font-weight: bold;
     text-align: right;
   }
@@ -1189,7 +1210,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   }
   .schedule__activity-time {
     padding: 0.5rem 0 0.5rem;
-    color: #00703C;
+    color: rgb(0, 112, 60);
     font-weight: bold;
     text-align: right;
   }
@@ -1237,7 +1258,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .todownload__link:hover, .todownload__link:focus {
   text-decoration: underline;
   text-underline-offset: 5px;
-  color: #00703C;
+  color: rgb(0, 112, 60);
 }
 
 .photogallery__card {
@@ -1302,6 +1323,16 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   font-weight: 700;
   font-size: 1.8rem;
   color: royalblue;
+}
+.photogallery__heading--back span,
+.photogallery__heading--back .chevrons-left {
+  display: inline-block;
+  vertical-align: middle;
+}
+.photogallery__heading--back .chevrons-left {
+  width: 2rem;
+  height: 2rem;
+  fill: inherit;
 }
 .photogallery__heading--title {
   margin-bottom: 2rem;
@@ -1467,13 +1498,13 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .main-button:hover {
   transform: translateY(-3px);
-  background-image: linear-gradient(to right bottom, rgb(70, 70, 157), #00703C);
+  background-image: linear-gradient(to right bottom, rgb(70, 70, 157), rgb(0, 112, 60));
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 .main-button:active, .main-button:focus {
   transform: translateY(-1px);
-  background-image: linear-gradient(to right bottom, rgb(70, 70, 157), #00703C);
+  background-image: linear-gradient(to right bottom, rgb(70, 70, 157), rgb(0, 112, 60));
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
@@ -1507,6 +1538,48 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   .heading-secondary {
     font-size: 3.5rem;
   }
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/static/fonts/poppins-bold-webfont.woff2") format("woff2"), url("/static/fonts/poppins-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/static/fonts/poppins-regular-webfont.woff2") format("woff2"), url("/static/fonts/poppins-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kalam";
+  src: url("/static/fonts/kalam-bold-webfont.woff2") format("woff2"), url("/static/fonts/kalam-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kalam";
+  src: url("/static/fonts/kalam-regular-webfont.woff2") format("woff2"), url("/static/fonts/kalam-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("/static/fonts/opensans-regular-webfont.woff2") format("woff2"), url("/static/fonts/opensans-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("/static/fonts/opensans-bold-webfont.woff2") format("woff2"), url("/static/fonts/opensans-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
 }
 *,
 *::before,
