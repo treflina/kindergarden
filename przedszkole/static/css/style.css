@@ -722,9 +722,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   height: 2rem;
   fill: inherit;
 }
-.nav__item-link--collapsible {
-  cursor: default;
-}
 .nav__item-link::before {
   height: 3px;
   background-color: white;
@@ -834,17 +831,25 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     max-height: 100%;
   }
 }
+@media (max-width: 450px) {
+  .nav-links {
+    max-width: 100%;
+  }
+}
 .contact-page {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-top: 5em;
 }
 
 .map {
   display: inline-flex;
   flex-direction: column;
   flex: 1 0 48%;
+  padding: 2rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 .map__txt-sm {
   padding-bottom: 0.5rem;
@@ -873,6 +878,11 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .contact-heading {
   padding-bottom: 1rem;
   font-size: 1.8rem;
+}
+
+.contact-heading2 {
+  padding-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
 .contact {
@@ -904,6 +914,12 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 @media (max-width: 768px) {
   .contact-page {
     flex-direction: column;
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .map {
+    margin-top: 1em;
   }
   .contact {
     flex-direction: column;
@@ -912,16 +928,24 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     margin-top: 2em;
     -webkit-clip-path: none;
             clip-path: none;
-    overflow-wrap: anywhere;
   }
   .contact__details {
     margin-left: 0;
+    overflow-wrap: anywhere;
   }
   .contact__name {
     margin-bottom: 1em;
   }
   .contact p {
     margin-bottom: 0.3em;
+  }
+}
+@media (max-width: 500px) {
+  .contact-page {
+    flex-direction: column;
+    margin-top: 2em;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 .main-subpage {

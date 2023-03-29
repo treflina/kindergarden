@@ -5,12 +5,16 @@
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-top: 5em;
 }
 
 .map {
     display: inline-flex;
     flex-direction: column;
     flex: 1 0 48%;
+    padding: 2rem;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+
 
     &__txt-sm {
         padding-bottom: .5rem;
@@ -45,6 +49,11 @@
 .contact-heading {
     padding-bottom: 1rem;
     font-size: 1.8rem;
+}
+.contact-heading2 {
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+    // color: $color-primary-first;
 }
 
 .contact {
@@ -81,6 +90,13 @@
 
     .contact-page {
         flex-direction: column;
+        margin-top: 2em;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+    .map {
+        margin-top: 1em;
     }
 
 
@@ -90,10 +106,11 @@
         flex-wrap: wrap;
         margin-top: 2em;
         clip-path: none;
-        overflow-wrap: anywhere;
+
 
         &__details {
             margin-left: 0;
+             overflow-wrap: anywhere;
         }
 
 
@@ -107,3 +124,12 @@
     }
 
 }
+
+@media (max-width:500px) {
+
+    .contact-page {
+        flex-direction: column;
+        margin-top: 2em;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }}

@@ -98,9 +98,9 @@
                 fill: inherit;
             }
 
-            &--collapsible {
-                cursor: default;
-            }
+            // &--collapsible {
+            //     cursor: default;
+            // }
 
 
             &::before {
@@ -241,3 +241,9 @@
         max-height: 100%;
     }
 }
+
+@media (max-width: 450px) {
+
+    .nav-links {
+        max-width: 100%;
+    }}
