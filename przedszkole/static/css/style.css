@@ -329,6 +329,7 @@
 }
 .footer__links-bipimg {
   width: 7rem;
+  height: 100%;
 }
 
 @media (min-width: 66.1em) {
