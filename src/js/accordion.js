@@ -41,6 +41,17 @@ accordionBtns.forEach((button) => {
     });
 });
 
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
 const openFirstNews = () => {
     const firstNews = document.getElementById("accordion-section-1");
     const firstNewsBtn = document.getElementById("accordion-open-1");
@@ -51,45 +62,8 @@ const openFirstNews = () => {
     firstNews.style.maxHeight = `calc(${firstNews.scrollHeight}px + ${firstNews.parentElement.scrollHeight}px)`;
 };
 
-if (!(window.innerWidth <= 800 && window.innerHeight <= 1000)) {
+if (!(window.innerWidth <= 800 && window.innerHeight <= 1000) && !(getCookie('firstNews'))){
+    document.cookie =
+        "firstNews=seen; expires=session; path=/;";
     openFirstNews();
 }
-
-// const closeAccordionItem = () => {
-//     const allActiveItems = document.querySelectorAll(".active");
-//     allActiveItems.forEach((item) => {
-//         item.classList.remove("active");
-//         item.setAttribute("aria-hidden", true);
-//         item.previousElementSibling.setAttribute(
-//             "aria-expanded",
-//             false
-//         );
-//         console.log(item.previousElementSibling);
-//     });
-// };
-
-// const clickOutsideAccordion = (e) => {
-//     if (e.target.classList.contains("body")) {
-//         const i = e.target;
-//         closeAccordionItem();
-//         return;
-//     } else if (
-//         e.target.classList.contains("news__btn") ||
-//         e.target.classList.contains("news__info") ||
-//         e.target.classList.contains("news__info-text") ||
-//         e.target.classList.contains("colheaders") ||
-//         e.target.parentElement.parentElement.classList.contains("colheaders") ||
-//         e.target.parentElement.parentElement.classList.contains("tb-block") ||
-//         e.target.parentElement.parentElement.classList.contains(
-//             "thead-block"
-//         ) ||
-//         e.target.parentElement.parentElement.classList.contains("tbody-block")
-//     ) {
-//         return;
-//     } else {
-//         const i = e.target;
-//         closeAccordionItem();
-//     }
-// };
-
-// window.addEventListener("click", clickOutsideAccordion);
