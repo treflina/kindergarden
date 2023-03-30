@@ -92,6 +92,9 @@
     font-size: 1.7rem;
   }
   .news__info {
+    padding: 0 1rem;
+  }
+  .news__info.active {
     padding: 1rem;
   }
   .news__btn {
