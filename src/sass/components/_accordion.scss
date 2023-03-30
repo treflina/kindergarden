@@ -42,9 +42,14 @@
         line-height: 1.2;
 
         &:hover,
-        &:focus {
+        &:focus,
+        &.expanded {
             color: #fff;
             background-color: $color-primary-first;
+        }
+
+        &.expanded &-arrow .circle-chevron-down {
+            transform: rotate(-180deg);
         }
 
         &:hover>&-arrow .circle-chevron-down,
@@ -73,15 +78,21 @@
     }
 
     &__info {
-        display: none;
-        padding: 20px;
+        display: block;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s linear;
+        opacity: 0;
 
-}}
-
-.active {
-    display: block;
-    max-width: 95vw;
+        &.active {
+            padding: 20px;
+            max-width: 95vw;
+            opacity: 1;
+        }
+    }
 }
+
 
 @media (max-width:1200px) {
 

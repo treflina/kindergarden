@@ -4,11 +4,12 @@
         <span class="news__btn-arrow"><svg class="icon circle-chevron-down">
   <use xlink:href="{% static 'img/sprite.svg#circle-chevron-down' %}"></use>
 </svg></span>
-        {%  include_block value.title %}
+        {% include_block value.title %}
     </button>
     <div class="news__info">
-        <p class="news__info-text">{% include_block value.text %}</p>
-        {% include_block value.bound_blocks.table %}
+        <!-- <div class="news__info-box"> -->
+            <p class="news__info-text">{% include_block value.text %}</p>
+            {% include_block value.bound_blocks.table %}
+        <!-- </div> -->
     </div>
 </div>
-
