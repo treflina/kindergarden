@@ -68,7 +68,7 @@
 }
 
 
-@media(max-width: 768px) {
+@media(max-width: 48em) {
     .header {
         justify-content: center;
         clip-path: none;
@@ -88,7 +88,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 31.25em) {
 
     .header {
 
@@ -104,7 +104,7 @@
 
 }
 
-@media(max-width: 360px) {
+@media(max-width: 22.5em) {
 
     .header {
         &__title {

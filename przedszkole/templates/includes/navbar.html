@@ -12,11 +12,11 @@
             <span class="hamburger-text">Menu</span>
         </button>
         <ul class="nav-links" id="menu-list">
-            <li class="nav__item top-item">
+            <li class="nav__item">
                 <a class="nav__item-link nav-link menu-close link-underlined" href="{% url 'wagtail_serve' '' %}">Strona główna</a>
             </li>
             <li class="nav__item">
-                <a class="nav__item-link nav__item-link--collapsible nav-link link-underlined" href="#aboutus">o nas <svg class="icon chevron-down">
+                <a class="nav__item-link nav-link link-underlined" href="#aboutus">o nas <svg class="icon chevron-down">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use>
                 </svg></a>
                 <ul class="nav__dropdown">
@@ -34,7 +34,7 @@
                 </ul>
             </li>
             <li class="nav__item">
-                <a class="nav__item-link nav__item-link--collapsible nav-link link-underlined" href="#todownload">do pobrania <svg class="icon chevron-down">
+                <a class="nav__item-link nav-link link-underlined" href="#todownload">do pobrania <svg class="icon chevron-down">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use></svg>
                 </a>
                 <ul class="nav__dropdown">
