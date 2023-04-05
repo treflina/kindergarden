@@ -27,9 +27,9 @@ class CustomImage(AbstractImage):
     def save(self, *args, **kwargs):
 
         super().save(*args, **kwargs)
-        if self.width > 1500:
+        if self.width > 799 or self.height> 799:
             img = PILImage.open(self.file.path)
-            img.thumbnail((1500, 1500))
+            img.thumbnail((799, 799))
             width, height = img.size
             img.save(self.file.path)
 
