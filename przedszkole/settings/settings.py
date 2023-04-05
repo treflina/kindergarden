@@ -194,14 +194,6 @@ STATIC_URL = "/static/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-# CACHING
-if not DEBUG:
-    try:
-        from .prod import *
-    except ImportError:
-        pass
-
-
 
 # Wagtail settings
 
