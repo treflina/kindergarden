@@ -22,20 +22,20 @@ class CustomImage(AbstractImage):
     admin_form_fields = Image.admin_form_fields + ("alt_descr",)
 
 
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
-    #     if self.width > 1500:
-    #         img = PILImage.open(self.file.path)
-    #         img.thumbnail((1500, 1500))
-    #         width, height = img.size
-    #         img.save(self.file.path)
+        if self.width > 1500:
+            img = PILImage.open(self.file.path)
+            img.thumbnail((1500, 1500))
+            width, height = img.size
+            img.save(self.file.path)
 
-    #         if  self.width != width or self.height !=height:
-    #             self.width = width
-    #             self.height =height
-    #             self.file_size = self.file.size
-    #             self.save(update_fields=["width", "height", "file_size"])
+            if  self.width != width or self.height !=height:
+                self.width = width
+                self.height =height
+                self.file_size = self.file.size
+                self.save(update_fields=["width", "height", "file_size"])
 
 
 class CustomRendition(AbstractRendition):
