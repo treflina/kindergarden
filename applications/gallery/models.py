@@ -1,4 +1,6 @@
 from PIL import Image as PILImage
+from io import BytesIO
+
 from django.db import models
 from django.shortcuts import render
 
@@ -23,19 +25,26 @@ class CustomImage(AbstractImage):
 
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
 
+        super().save(*args, **kwargs)
         if self.width > 1500:
             img = PILImage.open(self.file.path)
             img.thumbnail((1500, 1500))
             width, height = img.size
             img.save(self.file.path)
 
-            if  self.width != width or self.height !=height:
+            if  self.width != width or self.height != height:
                 self.width = width
-                self.height =height
+                self.height = height
                 self.file_size = self.file.size
                 self.save(update_fields=["width", "height", "file_size"])
+
+            # img = BytesIO(self.file.read())
+            # pil_img = PILImage.open(img)
+            # pil_img.thumbnail((100,100))
+            # width, height = pil_img.size
+            # pil_img.seek(0)
+            # pil_img.save(img, format='JPEG')
 
 
 class CustomRendition(AbstractRendition):
@@ -104,7 +113,6 @@ class GalleryDetailPage(Page):
             context["group"] = collection.get_parent()
             context["gallery"] = gallery
             context["collection"] = collection
-            print(context)
         return context
 
 
