@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags%}
+{% block extra_css %}  <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
 {% block content %}
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}

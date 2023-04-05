@@ -20,15 +20,14 @@
         <base target="_blank" />
         {% endif %} {# Global stylesheets #}
 
+         {% block extra_css %} {% endblock %}
         <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
-        <link rel="preload" as="image" href="{% static 'img/colored-pencils-xl.jpg' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/hamburger.min.css' %}"/>
-        <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" />
         <link rel="stylesheet" type="text/css"  href="{% static 'css/style.min.css' %}" />
 
-        {% block extra_css %} {% endblock %}
+
     </head>
 
     <body class="{% block body_class %}body{% endblock %}">

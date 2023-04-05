@@ -1,11 +1,15 @@
+from PIL import Image as PILImage
 from django.db import models
 from django.shortcuts import render
 
-from wagtail.models import Page
-from wagtail.admin.panels import FieldPanel
+from modelcluster.fields import ParentalKey, ForeignKey
+from wagtail.models import Page, Orderable, Collection
+from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.models import Collection
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+
+from applications.thematic.models import GroupsFilter
+
 
 
 class CustomImage(AbstractImage):
@@ -16,6 +20,22 @@ class CustomImage(AbstractImage):
         help_text="Opis zdjęcia (najczęściej od 5 do 15 słów) mający na celu umożliwienie przekazu treści osobom z niepełnosprawnością.",
     )
     admin_form_fields = Image.admin_form_fields + ("alt_descr",)
+
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.width > 1500:
+            img = PILImage.open(self.file.path)
+            img.thumbnail((1500, 1500))
+            width, height = img.size
+            img.save(self.file.path)
+
+            if  self.width != width or self.height !=height:
+                self.width = width
+                self.height =height
+                self.file_size = self.file.size
+                self.save(update_fields=["width", "height", "file_size"])
 
 
 class CustomRendition(AbstractRendition):
@@ -29,8 +49,8 @@ class CustomRendition(AbstractRendition):
 
 class GalleryListingPage(RoutablePageMixin, Page):
     template = "gallery/gallery_listing_page.html"
-    max_count = 1
-    subpage_types = ["gallery.GalleryDetailPage"]
+
+    subpage_types = ["gallery.GalleryDetailPage", "gallery.GalleryDetailPage2"]
     password_required_template = "gallery/password_required.html"
 
     class Meta:
@@ -67,7 +87,7 @@ class GalleryDetailPage(Page):
     """Parental gallery detail page."""
 
     template = "gallery/gallery_detail_page.html"
-    max_count = 1
+
     subpage_types = []
     parent_page_types = ["gallery.GalleryListingPage"]
     password_required_template = "gallery/password_required.html"
@@ -86,3 +106,48 @@ class GalleryDetailPage(Page):
             context["collection"] = collection
             print(context)
         return context
+
+
+
+
+
+class GalleryDetailPage2(Page):
+
+    template = "gallery/gallery_detail_page.html"
+    subpage_types = []
+    parent_page_types = ["gallery.GalleryListingPage"]
+    password_required_template = "gallery/password_required.html"
+
+    group = models.ForeignKey(
+        "thematic.GroupsFilter",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        verbose_name="grupa",
+    )
+
+    content_panels = Page.content_panels + [
+        MultipleChooserPanel(
+            'gallery_images',
+            label="Gallery images",
+            chooser_field_name="image",
+        ),
+        FieldPanel('group'),
+    ]
+
+class BlogPageGalleryImage(Orderable):
+    """
+    Example related image
+    """
+
+    page = ParentalKey(GalleryDetailPage2, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ForeignKey(
+        CustomImage, on_delete=models.CASCADE, related_name='+'
+    )
+
+
+    panels = [
+        FieldPanel('image'),
+    ]
+
+

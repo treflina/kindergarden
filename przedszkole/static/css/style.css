@@ -59,7 +59,7 @@
   transition: transform 0.3s;
 }
 .news__info {
-  display: block;
+  display: none;
   padding: 0 20px;
   max-height: 0;
   overflow: hidden;
@@ -67,6 +67,7 @@
   opacity: 0;
 }
 .news__info.active {
+  display: block;
   padding: 20px;
   max-width: 95vw;
   opacity: 1;
