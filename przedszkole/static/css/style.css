@@ -1337,7 +1337,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .todownload a[href$=jpg]::before,
 .todownload a[href$=png]::before {
-  content: url("/static/img/file-earmark-image.svg");
+  content: url("/static/img/svg/file-earmark-image.svg");
 }
 .todownload__link {
   text-decoration: none;
