@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static wagtailcore_tags %} {% block content %}
+{% include 'includes/cookies.html' %} {% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--paint" id="header">
+            <h1 class="heading__box-title">Dokumenty do pobrania</h1>
+        </div>
+        <div class="content wrapper">
+            <div class="center-txt mtb-5">
+                {% for subpage in subpages %}
+                <a href="{{ subpage.url }}">{{subpage.heading}} </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    {%include 'includes/footer.html'%}
+</div>
+{% endblock%}

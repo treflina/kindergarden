@@ -1,7 +1,6 @@
 {% load static wagtailcore_tags wagtailuserbar %}
-
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl-PL">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -12,32 +11,26 @@
             {{current_site.site_name }} {% endif %} {% endblock %}
         </title>
         {% if page.search_description %}
-        <meta name="description" content="Strona internetowa Przedszkola Publicznego w Turawie" />
-        {% endif %}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <meta name="description" content="{{ page.search_description }}"/>{% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         {% if request.in_preview_panel %}
-        <base target="_blank" />
+        <base target="_blank"/>
         {% endif %} {# Global stylesheets #}
 
          {% block extra_css %} {% endblock %}
-        <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
-        <link rel="preload" as="image" href="{% static 'img/colored-pencils-xl.jpg' %}">
+        <link href="{% static 'img/favicon/favicon.ico' %}" rel="shortcut icon">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/hamburger.min.css' %}"/>
-        <link rel="stylesheet" type="text/css"  href="{% static 'css/style.min.css' %}" />
-
-
+        <link rel="stylesheet" type="text/css"  href="{% static 'css/style.min.css' %}"/>
     </head>
 
     <body class="{% block body_class %}body{% endblock %}">
         {% wagtailuserbar %} {% block content %}
-
         {% endblock %}
-
         {% block extra_js %}
         {% endblock %}
-         <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
+         <script src="{% static 'js/script.min.js' %}"></script>
     </body>
 </html>

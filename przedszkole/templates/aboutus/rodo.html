@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--crayons" id="header">
+            <h1 class="heading__box-title">RODO</h1>
+        </div>
+        <div class="content wrapper">
+
+            <h2 class="center-txt">Klauzula informacyjna</h2>
+            <p>Zgodnie z art. 13 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27&nbsp;kwietnia 2016 r.
+                w sprawie
+                ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu
+                takich danych oraz
+                uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. 119.1 z
+                04.05.2016) informuję:</p>
+            <h3>Tożsamość administratora</h3>
+            <p>Administratorem danych osobowych jest Przedszkole Publiczne w Turawie z siedzibą w Turawie (46-045) przy
+                ulicy Opolskiej
+                49</p>
+            <h3>Dane kontaktowe administratora</h3>
+            <p>Z administratorem można się skontaktować poprzez adres email: pp.turawa@oswiata-turawa.pl lub pisemnie na
+                adres siedziby
+                administratora.</p>
+            <h3>Dane kontaktowe inspektora ochrony danych</h3>
+            <p>Administrator wyznaczył inspektora ochrony danych Pana Damiana Marczyńskiego, z którym może się Pani/ Pan
+                skontaktować poprzez email:
+                iod@turawa.pl.
+                Z inspektorem ochrony danych można się kontaktować we wszystkich sprawach dotyczących przetwarzania
+                danych osobowych
+                oraz korzystania z praw związanych z przetwarzaniem danych</p>
+            <h3>Cele przetwarzania i podstawa prawna</h3>
+            <p>Pani/Pana dane oraz dane dziecka/podopiecznego będą przetwarzane gdy:</p>
+            <br>
+            <ol class="concept__list">
+                <li>
+                    Jest to niezbędne do wypełnienia obowiązku prawnego ciążącego na administratorze, w szczególności w
+                    odniesieniu do
+                    realizacji działań edukacyjno- wychowawczych oraz sprawozdawczych, na podstawie ustawy z dnia 14&nbsp;grudnia
+                    2016 r. - Prawo oświatowe (Dz. U. 2021 poz. 1082 ze zm.), ustawy z dnia 7&nbsp;września 1991 r. o systemie oświaty (Dz.
+                    U.2022 poz. 2230 z
+                    zm.), ustawy z dnia 15 kwietnia 2011 r. o systemie informacji oświatowej (Dz. U. 2022 poz. 2597 ze
+                    zm.).
+                </li>
+                <li>W pozostałych przypadkach dane osobowe przetwarzane będą wyłącznie na podstawie wcześniej udzielonej
+                    zgody w zakresie i celu określonym w treści zgody.</li>
+            </ol>
+            <h3>Odbiorcy danych lub kategorie odbiorców danych</h3>
+            <p>W związku z przetwarzaniem Pani/Pana danych oraz danych dziecka/podopiecznego w celach wskazanych
+                powyżej, dane osobowe
+                mogą być udostępniane innym odbiorcom lub kategoriom odbiorców danych osobowych, którymi mogą być:</p>
+            <br>
+            <ol class="concept__list">
+                <li>Podmioty upoważnione do odbioru Pani/Pana danych osobowych na podstawie odpowiednich przepisów
+                    prawa.</li>
+                <li>Podmioty, które przetwarzają Pani/Pana dane osobowe w imieniu Administratora na podstawie zawartej
+                    umowy powierzenia
+                    przetwarzania danych osobowych (tzw. podmioty przetwarzające).</li>
+                <li>Media, portale społecznościowe, strony internetowe, w zakresie i celu określonym w udzielonej przez
+                    Pani/Pana zgodzie.</li>
+            </ol>
+            <h3>Okres przechowywania danych</h3>
+            <p>Pani/Pana dane osobowe będą przetwarzane przez okres niezbędny do realizacji wskazanych powyżej celów
+                przetwarzania, w
+                tym również obowiązku archiwizacyjnego wynikającego z przepisów prawa.</p>
+            <h3>Prawa podmiotów danych</h3>
+            <p>Przysługuje Pani/Panu prawo żądania dostępu do treści swoich danych, ich sprostowania, usunięcia lub
+                ograniczenia
+                przetwarzania oraz prawo do wniesienia sprzeciwu wobec przetwarzania danych, a także prawo do
+                przenoszenia swoich
+                danych.
+                W przypadku przetwarzania Pani/Pana danych na podstawie zgody, ma Pani/Pan prawo do cofnięcia zgody w
+                dowolnym momencie
+                bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawia zgody przed jej cofnięciem.
+            </p>
+            <h3>Prawo wniesienia skargi do organu nadzorczego</h3>
+            <p>Przysługuje Pani/Panu prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną danych
+                osobowych:
+                <br>Biuro Prezesa Urzędu Ochrony Danych Osobowych (PUODO)<br>
+                Adres: Stawki 2, 00-193 Warszawa<br>
+                Infolinia: 606-950-000
+            </p>
+            <h3>Informacja o obowiązku lub dowolności podania danych</h3>
+            <p>Podanie danych osobowych jest obligatoryjne w zakresie ujętym przepisami prawa, do których podania jest
+                Pani/Pan
+                zobowiązana, a w pozostałym zakresie jest dobrowolne, jednakże niepodanie danych w tym zakresie będzie
+                skutkowało odmową
+                realizacji usług.</p>
+
+
+
+        </div>
+    </main>
+
+    {%include 'includes/footer.html'%}
+</div>
+{% endblock%}

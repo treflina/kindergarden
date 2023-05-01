@@ -11,7 +11,7 @@
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </div>
 
-        <section class="sidenav">
+        <div class="sidenav">
             <ul class="sidenav__months wrapper">
                 <li class='sidenav__month-link 8 {% if month_num == "9" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '9' %}">Wrzesień</a></li>
                 <li class='sidenav__month-link 9 {% if month_num == "10" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '10' %}">Październik</a></li>
@@ -20,11 +20,11 @@
                 <li class='sidenav__month-link 0 {% if month_num == "1" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '1' %}">Styczeń</a></li>
                 <li class='sidenav__month-link 1 {% if month_num == "2" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '2' %}">Luty</a></li>
                 <li class='sidenav__month-link 2 {% if month_num == "3" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '3' %}">Marzec</a></li>
-                <li class='sidenav__month-link 3 {% if month_num == "4" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_for_month' '4' %}">Kwiecień</a></li>
-                <li class='sidenav__month-link 4 {% if month_num == "5" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_for_month' '5' %}">Maj</a></li>
-                <li class='sidenav__month-link 5 {% if month_num == "6" %} active {% endif %}''><a href="{% routablepageurl page 'thematic_for_month' '6' %}">Czerwiec</a></li>
+                <li class='sidenav__month-link 3 {% if month_num == "4" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '4' %}">Kwiecień</a></li>
+                <li class='sidenav__month-link 4 {% if month_num == "5" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '5' %}">Maj</a></li>
+                <li class='sidenav__month-link 5 {% if month_num == "6" %} active {% endif %}'><a href="{% routablepageurl page 'thematic_for_month' '6' %}">Czerwiec</a></li>
             </ul>
-        </section>
+        </div>
 
         <section class="activities wrapper">
             {% for loop_cycle in thematic_page.thematic_content.all %}

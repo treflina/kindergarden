@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% load static wagtailcore_tags wagtailimages_tags%}
-{% block extra_css %}   <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
+{% block extra_css %}
+<link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
 {% block content %} {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
 
@@ -7,26 +8,21 @@
     <main class="main-subpage">
         <div class="photogallery">
             <div class="photogallery__heading" id="header">
-                <a href="{% slugurl 'galeria' %}?group={% if group.name == 'grupa młodsza' %}grupamlodsza{% else %}grupastarsza{%endif%}"
+                <a href="{{ page.get_parent.specific.get_url }}"
                     class="photogallery__heading--back"><svg class="icon chevrons-left">
                         <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
                 <p class="photogallery__heading--title">
-                    {{ collection.name }}
+                    {{ page.title }}
                 </p>
             </div>
             <div class="wrapper photogallery__content">
-                {% for image in gallery %} {% image image width-600 as img %}
-                <a
-                    class="photogallery-image-link gallery-image"
-                    href="{{image.file.url}}"
+                {% for cycle in self.gallery_images.all %}
+                {% image cycle.image width-600 as img %}
+                <a class="photogallery-image-link gallery-image"
+                    href="{{img.file.url}}"
                     data-lightbox="gallery-set"
-                    data-alt="{{image.alt_descr}}"
-                >
-                    <span
-                        ><img
-                            class="photogallery-image"
-                            src="{{img.url}}" /></span
-                ></a>
+                    data-alt="{{cycle.image.alt_descr}}">
+                    <span><img class="photogallery-image" src="{{img.url}}" /></span></a>
                 {% endfor %}
             </div>
         </div>
@@ -34,8 +30,5 @@
     {%include 'includes/footer.html'%}
 </div>
 
-<script
-    type="text/javascript"
-    src="{% static 'js/lightbox-plus-jquery.js' %}"
-></script>
+<script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
 {% endblock%}

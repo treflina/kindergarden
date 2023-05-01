@@ -4,6 +4,23 @@
     grid-column: 1/-1;
     padding-bottom: 7rem;
 
+
+    .custom_page {
+        ol, ul {
+            margin-left: 2rem;
+
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
     .content {
 
         h2 {
@@ -12,7 +29,7 @@
 
         h3 {
             color: $color-primary-second;
-            margin: 3rem 0;
+            margin: 3rem 0 2rem;
         }
 
         h4 {
@@ -50,7 +67,6 @@
         min-height: 20vh;
         width: 100%;
         margin: 0 auto;
-
         background-size: cover;
         background-attachment: fixed;
         color: white;
@@ -61,7 +77,7 @@
             background-position: top;
         }
 
-        &--road {
+        &--school2 {
             background-image: url('/static/img/school2-xl.jpg');
             background-position: bottom;
         }
@@ -134,7 +150,7 @@
             content: "";
             width: 1em;
             height: 1em;
-            background-image: url('/static/img/quote.svg');
+            background-image: url('/static/img/svg/quote.svg');
             background-size: cover;
             background-color: white;
             position: absolute;

@@ -2,95 +2,73 @@
 {% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
 {% load static %}
 {% now "n" as current_month %}
-
+{% block extra_css %}
+<link rel="preload" as="image" href="{% static 'img/colored-pencils-xl.jpg' %}">{% endblock %}
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
-<div class="container">
-    <header class="header" id="header">
-        <div class="header__wrapper">
-            <div class="header__box ">
-                <h1 class="header__title">Przedszkole Publiczne w&nbsp;Turawie</h1>
-                <p class="header__text header__text--top">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
-                    Świata".
-                    W&nbsp;naszym przedszkolu wkładamy wiele serca, aby ta droga była dla dzieci ciekawa
-                    i&nbsp;fascynująca.
-                    Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
-                    rozwijającej ich zdolności i&nbsp;zainteresowania.</p>
-                <p class="header__text header__text--bottom">Dziękujemy za odwiedziny i&nbsp;Państwa zainteresowanie!
-                </p>
-            </div>
+<header class="header" id="header">
+    <div class="header__wrapper">
+        <div class="header__box ">
+            <h1 class="header__title">Przedszkole Publiczne w&nbsp;Turawie</h1>
+            <p class="header__text header__text--top">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
+                Świata".
+                W&nbsp;naszym przedszkolu wkładamy wiele serca, aby ta droga była dla dzieci ciekawa
+                i&nbsp;fascynująca.
+                Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
+                rozwijającej ich zdolności i&nbsp;zainteresowania.</p>
+            <p class="header__text header__text--bottom">Dziękujemy za odwiedziny i&nbsp;Państwa
+                zainteresowanie!
+            </p>
         </div>
-    </header>
-
-    <main class="main" id="main">
-        <div class="groups" id="groups">
-            <h2 class="heading-secondary groups__heading">Grupy</h2>
-            <div class="groups__boxes">
-                <div class="groups__box groups__box-first">
-                    <div class="groups__box-img groups__box-img--first">
-                    </div>
-                    <div class="groups__box-details">
-                        <h3 class="groups__box-heading">Pszczółki</h3>
-                         <a href="/tematyka1/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
-                                <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                            </svg>
-                         </span><span class="groups__box-txt">Tematyka zajęć</span></a>
-                        <a href="{%slugurl 'galeria'%}?group=grupamlodsza" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
-                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                        </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
-                    </div>
-                </div>
-                <div class="groups__box groups__box-second">
-                    <div class="groups__box-img groups__box-img--second">
-                    </div>
-                    <div class="groups__box-details">
-                        <h3 class="groups__box-heading">Drużyna marzeń</h3>
-                        <a href="/tematyka2/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
-                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                        </svg></span></i><span class="groups__box-txt">Tematyka zajęć</span></a>
-                        <a href="galeria/?group=grupastarsza" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
-                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                        </svg></span></i><span class="groups__box-txt">Galeria zdjęć</span></a>
-                    </div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <section class="main" id="main">
+            <div class="groups" id="groups">
+                <h2 class="heading-secondary groups__heading">Grupy</h2>
+                <div class="groups__boxes">
+                    {% for block in page.groups %}
+                    {% include_block block %}
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="news" id="news">
-            <h2 class="heading-secondary news__heading">Aktualności </h2>
-            <div class="news__accordion">
-                {% for block in page.accordion_content %}
-                {% include_block block %}
-                {% endfor %}
+            <div class="news" id="news">
+                <h2 class="heading-secondary news__heading">Aktualności </h2>
+                <div class="news__accordion">
+                    {% for block in page.accordion_content %}
+                    {% include_block block %}
+                    {% endfor %}
+                </div>
             </div>
-            </section>
-    </main>
+        </section>
+        <section class="gallery grid-container">
+            {% for loop_cycle in self.home_gallery_images.all %}
+            {% image loop_cycle.home_gallery_image max-500x300 as img %}
+            <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.home_gallery_image.alt_descr }}"
+                    class="gallery__img" loading="lazy">
+            </figure>
+            {% endfor %}
+        </section>
 
-    <section class="gallery grid-container">
-        {% for loop_cycle in self.home_gallery_images.all %}
-        {% image loop_cycle.home_gallery_image max-500x300 as img %}
-        <figure class="gallery__item"><img src="{{ img.url }}" alt="{{ loop_cycle.home_gallery_image.alt_descr }}"
-                class="gallery__img" loading="lazy">
-        </figure>
-        {% endfor %}
+        <section class="contact" id="contact">
+            <div class="contact__name bold-txt">Dane kontaktowe:</div>
+            <div class="contact__details">
+                <p class="contact__details-heading bold-txt"><span>Przedszkole Publiczne w&nbsp;Turawie</span></p>
+                <p class="contact__details-adress"><img src="{% static 'img/svg/map-pin.svg' %}" alt="adres">46-045
+                    Turawa,
+                    ul.&nbsp;Opolska&nbsp;49</p>
+                <p class="contact__details-phone"><img src="{% static 'img/svg/phone.svg' %}"
+                        alt="telefon"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
+                <p class="contact__details-email"><img src="{% static 'img/svg/mail.svg' %}"
+                        alt="e-mail"><span>pp.turawa@oswiata-turawa.pl</span></p>
+            </div>
+        </section>
+    </div>
+</main>
+{%include 'includes/footer.html'%}
 
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="contact__name bold-txt">Dane kontaktowe:</div>
-        <div class="contact__details">
-            <p class="contact__details-heading bold-txt"><span>Przedszkole Publiczne w&nbsp;Turawie</span></p>
-            <p class="contact__details-adress"><img src="{% static 'img/map-pin.svg' %}" alt="adres">46-045 Turawa,
-                ul.&nbsp;Opolska&nbsp;49</p>
-            <p class="contact__details-phone"><img src="{% static 'img/phone.svg' %}"
-                    alt="telefon"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
-            <p class="contact__details-email"><img src="{% static 'img/mail.svg' %}"
-                    alt="e-mail"><span>pp.turawa@oswiata-turawa.pl</span></p>
-        </div>
-    </section>
-
-    {%include 'includes/footer.html'%}
-</div>
 
 <script type="text/javascript" src="{% static 'js/accordion.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>

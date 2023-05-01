@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="heading__box heading__box--crayons" id="header">
+            <h1 class="heading__box-title">O nas</h1>
+        </div>
+        <div class="content wrapper custom_page">
+            <ul>
+            {% for p in page.get_children %}
+            <li><a href="{% pageurl p %}">{{ p.title }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    {%include 'includes/footer.html'%}
+</div>
+{% endblock%}

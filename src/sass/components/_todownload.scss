@@ -19,21 +19,21 @@
         padding-left: 1rem;
         padding-right: 2rem;
         margin-left: -3rem;
-        content: url('/static/img/file-earmark.svg');
+        content: url('/static/img/svg/file-earmark.svg');
     }
 
     a[href$='doc']::before,
     a[href$='docx']::before {
-        content: url('/static/img/file-earmark-word.svg');
+        content: url('/static/img/svg/file-earmark-word.svg');
     }
 
     a[href$='xls']::before,
     a[href$='xlsx']::before {
-        content: url('/static/img/file-earmark-spreadsheet.svg');
+        content: url('/static/img/svg/file-earmark-spreadsheet.svg');
     }
 
     a[href$='pdf']::before {
-        content: url('/static/img/file-pdf-fill.svg');
+        content: url('/static/img/svg/file-pdf-fill.svg');
     }
 
     // a[href$='txt']::before {

@@ -87,7 +87,7 @@ button span {
 .container {
     position: relative;
     display: grid;
-    grid-template-rows: min-content max-content repeat(3, auto) min-content;
+    grid-template-rows: repeat(3, auto);
     grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
     min-height: calc(100vh - 10.2rem);
 }
@@ -105,7 +105,6 @@ button span {
     flex-wrap: wrap;
     grid-column: center-start/center-end;
     grid-gap: 8rem;
-    grid-row: 3/4;
     margin: 6rem 0;
 }
 

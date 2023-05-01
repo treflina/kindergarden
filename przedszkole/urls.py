@@ -16,8 +16,10 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("", include("applications.aboutus.urls")),
-    path("", include("applications.todownload.urls")),
-    path("sitemap.xml", TemplateView.as_view(template_name="sitemap.xml", content_type="text/xml")),
+    path(
+        "sitemap.xml",
+        TemplateView.as_view(template_name="sitemap.xml", content_type="text/xml"),
+    ),
 ]
 
 

@@ -21,7 +21,7 @@ body.lb-disable-scrolling {
   text-align: center;
   line-height: 0;
   font-weight: normal;
-  outline: none;
+  // outline: none;
 }
 
 .lightbox .lb-image {
@@ -90,7 +90,7 @@ body.lb-disable-scrolling {
 }
 
 .lb-nav a {
-  outline: none;
+  // outline: none;
   background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
 }
 
@@ -188,7 +188,7 @@ body.lb-disable-scrolling {
   height: 30px;
   background: url('/static/img/close.png') top right no-repeat;
   text-align: right;
-  outline: none;
+  // outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
   -webkit-transition: opacity 0.2s;

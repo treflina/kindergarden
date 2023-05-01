@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags%}
-{% block extra_css %}  <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
+{% block extra_css %}
+<link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
 {% block content %}
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
 
 <div class="container">
-      <main class="main-subpage">
-            <div class="heading__box" id="header">
-                  <h1 class="heading__box-title">Galerie zdjęć - {{group}} </h1>
+    <main class="main-subpage">
+        <div class="heading__box" id="header">
+            <h1 class="heading__box-title"> {{ page.title }} </h1>
+        </div>
+        <div class="content wrapper">
+            <div class="photogallery__list mt-3">
+                {% for item in galleries %}
+                {% image item.gallery_images.last.image fill-400x300 as img %}
+                <div class="photogallery__card">
+                    <img src="{{img.url}}" alt="{{img.alt_descr}}">
+                    <div class="photogallery__card-descr">
+                        <p class="photogallery__card-title">{{ item.title }}</p>
+                        <a class="photogallery__card-link main-button" href="{{item.slug}}">Zobacz galerię</a>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="content wrapper">
-                  <div class="photogallery__list mt-3">
-
-                        {% for item in galleries %}
-                        {% image item.image fill-400x300 as img %}
-                        <div class="photogallery__card">
-                              <img src="{{img.url}}" alt="{{item.image.alt_descr}}">
-                              <div class="photogallery__card-descr">
-                                    <p class="photogallery__card-title">{{ item.name }}</p>
-                                    <a class="photogallery__card-link main-button" href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}">Zobacz galerię</a>
-                              </div>
-                        </div>
-                        {% endfor %}
-                  </div>
-            </div>
-      </main>
-      {%include 'includes/footer.html'%}
+        </div>
+    </main>
+    {%include 'includes/footer.html'%}
 </div>
 {% endblock%}

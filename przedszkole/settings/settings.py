@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "applications.aboutus",
     "applications.todownload",
     "applications.gallery",
+    "applications.menus",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -81,7 +82,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -117,25 +118,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "przedszkole.wsgi.application"
 
-if DEBUG:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+# if DEBUG:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
 
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": get_secret("DB_NAME"),
-            "USER": get_secret("DB_USER"),
-            "PASSWORD": get_secret("DB_PASSWORD"),
-            "HOST": "localhost",
-            "PORT": "",
-        }
+# else:
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": get_secret("DB_NAME"),
+        "USER": get_secret("DB_USER"),
+        "PASSWORD": get_secret("DB_PASSWORD"),
+        "HOST": "localhost",
+        "PORT": "",
     }
+}
 
 
 # Password validation
@@ -218,4 +219,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 CSRF_TRUSTED_ORIGINS = get_secret("CSRF_TRUSTED_ORIGINS")
 # CORS_ALLOWED_ORIGINS = get_secret("CORS_ALLOWED_ORIGINS")
-

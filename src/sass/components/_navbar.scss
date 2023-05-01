@@ -7,6 +7,7 @@
     right: 1.5rem;
     font-size: 1.6rem;
     line-height: 1.5;
+    opacity: 1;
     z-index: 500;
 
     &-inner,
@@ -55,7 +56,7 @@
     }
 
     &-links {
-        display: block;
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -72,8 +73,10 @@
         transition: transform .5s;
 
         &--active {
+            display: block;
             transform: translateX(0);
             opacity: 0.97;
+
         }
 
         li {
@@ -124,14 +127,15 @@
 
     &__dropdown {
         position: static;
-        opacity: 0;
         top: 65px;
+        display: none;
         padding-left: 1rem;
         width: 100%;
         min-width: 300px;
         max-width: 100vw;
         max-height: 0;
         font-size: 1.7rem;
+        opacity: 0;
         overflow: hidden;
         background-color: $color-primary-first;
         transition: max-height .3s ease-in, opacity .3s ease-in;
@@ -154,19 +158,17 @@
 
         &.show {
             max-height: 45rem;
+            display: block;
             opacity: 1;
         }
 
     }
 
-
-
-
-
-
     .skipnav {
-        text-align: center;
+
         line-height: 1.5;
+        text-align: center;
+        overflow-wrap: break-word;
 
     }
 
@@ -188,6 +190,13 @@
         overflow: visible;
         text-decoration: underline;
         color: white;
+
+        position: absolute;
+        top: 50%;
+        left: 120px;
+        transform:translateY(-50%);
+        padding: .5rem;
+
     }
 }
 
@@ -195,12 +204,14 @@
 
     .nav-links {
         max-width: 360px;
+
     }
 }
 
 @media (min-width: 62em) {
     .hamburger {
         display: none;
+        opacity: 0;
     }
 
     .nav {
@@ -235,6 +246,7 @@
         }
 
         &__dropdown {
+
             position: absolute;
             top: 6rem;
             padding-left: 0;
@@ -257,15 +269,24 @@
             }
 
             &.show {
-                opacity: 1;
                 max-height: min-content;
             }
         }
+
+        .skipnav {
+            text-align: left;
+            margin-right: 0;
+        }
+
+        .skipnav a:focus,
+        .skipnav a:active {
+            position: absolute;
+            top: -16px;
+            left: 120px;
+            transform:translateY(0);
+            padding: .5rem;
+            background-color: $color-primary-first;
+        }
     }
 
-
-
-    .skipnav {
-        margin-right: 0;
-    }
 }

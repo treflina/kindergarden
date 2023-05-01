@@ -39,6 +39,7 @@
     background-image: linear-gradient(to right bottom, $color-primary-first, $color-primary-first);
     background-size: 200% auto;
     color: white;
+    outline: none;
     transition: transform .2s,
         box-shadow .2s,
         background-image .5s;
@@ -56,10 +57,22 @@
         background-image: linear-gradient(to right bottom, $color-primary-first, $color-primary-second);
         box-shadow: 0 .5rem 1rem rgba(black, .2);
     }
+
+    &:focus {
+        border: 4px solid yellowgreen;
+    }
 }
 
 .bold-txt {
     font-weight: bold;
+}
+
+.center-txt {
+    text-align: center;
+}
+
+.inner-list {
+    list-style-type: lower-alpha;
 }
 
 .mtb-3 {
@@ -78,6 +91,10 @@
 
 .mt-2 {
     margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
 }
 
 .ml-3 {

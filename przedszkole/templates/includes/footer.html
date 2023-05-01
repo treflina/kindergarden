@@ -1,22 +1,15 @@
 {% load static %}
 
 <footer class="footer">
-    <div class="footer__links">
-        <a class="footer__links-item footer__links-item--group link-underlined" href="#">RODO</a>
-        <a class="footer__links-item footer__links-item--group link-underlined" href="#">Deklaracja dostępności</a>
-        <a class="footer__links-item footer__links-item--group link-underlined" href="{% url 'aboutus_app:sitemap' %}">Mapa strony</a>
-        <a class="footer__links-item footer__links-bip" href="http://ppturawa.oswiata-turawa.pl/7/strona-glowna-bip.html" title="Przejdź do Biuletynu Informacji Publicznej">
-            <img
-                class="footer__links-bipimg"
-                src="{% static 'img/bip.png' %}"
-                alt="Logo Biuletynu Informacji Publicznej"
-            />
-        </a>
-    </div>
-     <p class="footer__text footer__text--two">Projekt i wykonanie: LS</p>
+    <ul class="footer__links">
+    <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% url 'aboutus_app:rodo' %}">RODO</a></li>
+        <li><a class="footer__links-item footer__links-item--group link-underlined" href="#">Deklaracja dostępności</a></li>
+        <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% url 'aboutus_app:sitemap' %}">Mapa strony</a></li>
+        <li><a class="footer__links-item footer__links-bip" href="http://ppturawa.oswiata-turawa.pl/7/strona-glowna-bip.html" title="Przejdź do Biuletynu Informacji Publicznej">
+            <img class="footer__links-bipimg" src="{% static 'img/bip.png' %}" alt="Logo Biuletynu Informacji Publicznej"/></a></li>
+    </ul>
+    <p class="footer__text footer__text--two">Projekt i wykonanie: I.&nbsp;Słychań-Ćwik</p>
     <p class="footer__text footer__text--one">
-        &copy; <span class="footer__year">{% now "Y" %}</span> Przedszkole Publiczne
-        w&nbsp;Turawie
+        &copy; <span class="footer__year">{% now "Y" %}</span> Przedszkole Publiczne w&nbsp;Turawie
     </p>
-
 </footer>
