@@ -30,11 +30,16 @@ class TitleTextAndTableBlock(blocks.StructBlock):
         icon = "edit"
         label = "Nagłówek i tekst"
 
+
 class GroupsNameAndImageBlock(blocks.StructBlock):
     """Block used to define group name with it's logo image"""
 
     group_name = blocks.CharBlock(max_length=15, required=True, label="Nazwa grupy")
-    group_num = blocks.ChoiceBlock(choices=[('1', 'grupa młodsza'), ('2', 'grupa starsza')], label="Wybierz grupę", required=True)
+    group_num = blocks.ChoiceBlock(
+        choices=[("1", "grupa młodsza"), ("2", "grupa starsza")],
+        label="Wybierz grupę",
+        required=True,
+    )
     group_img = ImageChooserBlock(label="Dodaj logo grupy")
 
     class Meta:  # noqa

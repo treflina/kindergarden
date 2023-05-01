@@ -11,7 +11,6 @@ from utils import extract_extension, convert_bytes
 
 
 class ToDownloadIndexPage(Page):
-
     template = "todownload/todownload_index_page.html"
     subpage_types = ["todownload.ToDownloadPage"]
     parent_page_types = ["home.HomePage"]
@@ -27,7 +26,6 @@ class ToDownloadIndexPage(Page):
 
 
 class ToDownloadPage(Page):
-
     template = "todownload/todownload_page.html"
     subpage_types = []
     parent_page_types = ["todownload.ToDownloadIndexPage"]
@@ -48,7 +46,6 @@ class ToDownloadPage(Page):
 
 
 class ToDownloadDocument(Orderable):
-
     page = ParentalKey(
         ToDownloadPage, on_delete=models.CASCADE, related_name="todownload_documents"
     )

@@ -64,14 +64,11 @@ class HomePage(RoutablePageMixin, Page):
         verbose_name="Aktualności",
     )
     groups = StreamField(
-        [
-            ('group_definition', blocks.GroupsNameAndImageBlock())
-            ],
+        [("group_definition", blocks.GroupsNameAndImageBlock())],
         null=True,
         blank=True,
         use_json_field=True,
         verbose_name="Grupy",
-
     )
 
     content_panels = Page.content_panels + [
@@ -80,7 +77,7 @@ class HomePage(RoutablePageMixin, Page):
             [InlinePanel("home_gallery_images", label="Zdjęcie")],
             heading="Galeria na stronie głównej (14 zdjęć - na duży ekran, zdjęcia nr 2, 5, 13 wykorzystane są na mały ekran)",
         ),
-        FieldPanel('groups'),
+        FieldPanel("groups"),
     ]
 
     class Meta:

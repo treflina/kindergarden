@@ -4,7 +4,6 @@ from wagtail.admin.panels import FieldPanel
 
 
 class AboutUsIndexPage(Page):
-
     template = "aboutus/about_us_index_page.html"
     parent_page_types = ["home.HomePage"]
     max_count = 1
@@ -14,13 +13,27 @@ class AboutUsIndexPage(Page):
 
 
 class CustomPage(Page):
-
     template = "aboutus/custom_page.html"
 
-    body = RichTextField(features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'blockquote'], verbose_name="Treść strony")
+    body = RichTextField(
+        features=[
+            "h2",
+            "h3",
+            "bold",
+            "italic",
+            "ol",
+            "ul",
+            "hr",
+            "link",
+            "document-link",
+            "image",
+            "blockquote",
+        ],
+        verbose_name="Treść strony",
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('body'),
+        FieldPanel("body"),
     ]
 
     class Meta:
@@ -28,7 +41,6 @@ class CustomPage(Page):
 
 
 class ConceptPage(Page):
-
     template = "aboutus/concept.html"
     subpage_types = []
     parent_page_types = ["aboutus.AboutUsIndexPage"]
@@ -39,7 +51,6 @@ class ConceptPage(Page):
 
 
 class StatusPage(Page):
-
     template = "aboutus/statut.html"
     subpage_types = []
     parent_page_types = ["aboutus.AboutUsIndexPage"]
@@ -50,7 +61,6 @@ class StatusPage(Page):
 
 
 class SchedulePage(Page):
-
     template = "aboutus/schedule.html"
     subpage_types = []
     parent_page_types = ["aboutus.AboutUsIndexPage"]
@@ -58,6 +68,3 @@ class SchedulePage(Page):
 
     class Meta:
         verbose_name = "Rozkład dnia (nie do edycji)"
-
-
-

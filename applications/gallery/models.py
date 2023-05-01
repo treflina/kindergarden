@@ -23,7 +23,6 @@ class CustomImage(AbstractImage):
     admin_form_fields = Image.admin_form_fields + ("alt_descr",)
 
     def save(self, *args, **kwargs):
-
         super().save(*args, **kwargs)
         if self.width > 1200 or self.height > 1200:
             img = PILImage.open(self.file.path)
@@ -48,14 +47,12 @@ class CustomRendition(AbstractRendition):
 
 
 class GalleryListingPage(Page):
-
     template = "gallery/gallery_listing_page.html"
     parent_page_types = ["home.HomePage"]
     subpage_types = ["gallery.GalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
 
     def get_context(self, request, *args, **kwargs):
-
         context = super().get_context(request, *args, **kwargs)
         galleries = (
             GalleryListingPage.get_children(self)
@@ -71,7 +68,6 @@ class GalleryListingPage(Page):
 
 
 class GalleryDetailPage(Page):
-
     template = "gallery/gallery_detail_page.html"
     subpage_types = []
     parent_page_types = ["gallery.GalleryListingPage"]
@@ -90,7 +86,6 @@ class GalleryDetailPage(Page):
 
 
 class GalleryImage(Orderable):
-
     page = ParentalKey(
         GalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
     )

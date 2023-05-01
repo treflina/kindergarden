@@ -14,17 +14,13 @@ from wagtail.snippets.models import register_snippet
 
 
 class MenuItem(Orderable):
-
     link_title = models.CharField(
-        blank=True,
-        null=True,
-        max_length=50,
-        verbose_name="Tytuł linku do strony"
+        blank=True, null=True, max_length=50, verbose_name="Tytuł linku do strony"
     )
     link_url = models.CharField(
         max_length=500,
         blank=True,
-        verbose_name="Ścieżka URL do strony (jeśli nie wybrałeś strony powyżej)"
+        verbose_name="Ścieżka URL do strony (jeśli nie wybrałeś strony powyżej)",
     )
     link_page = models.ForeignKey(
         "wagtailcore.Page",
@@ -49,7 +45,7 @@ class MenuItem(Orderable):
             return self.link_page.url
         elif self.link_url:
             return self.link_url
-        return '#'
+        return "#"
 
     @property
     def title(self):
@@ -57,7 +53,7 @@ class MenuItem(Orderable):
             return self.link_page.title
         elif self.link_title:
             return self.link_title
-        return 'Brakujący tytuł'
+        return "Brakujący tytuł"
 
 
 @register_snippet
@@ -69,11 +65,14 @@ class Menu(ClusterableModel):
     # slug = models.SlugField()
 
     panels = [
-        MultiFieldPanel([
-            FieldPanel("title"),
-            FieldPanel("slug"),
-        ], heading="Menu"),
-        InlinePanel("menu_items", label="Podstrona w menu")
+        MultiFieldPanel(
+            [
+                FieldPanel("title"),
+                FieldPanel("slug"),
+            ],
+            heading="Menu",
+        ),
+        InlinePanel("menu_items", label="Podstrona w menu"),
     ]
 
     def __str__(self):

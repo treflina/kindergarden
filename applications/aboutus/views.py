@@ -28,10 +28,12 @@ def schedule(request):
         request, "aboutus/schedule.html", context={"page_title": "Rozkład dnia"}
     )
 
+
 def sitemap(request):
     return render(
         request, "aboutus/sitemap.html", context={"page_title": "Mapa strony"}
     )
+
 
 def regulations(request):
     return render(request, "aboutus/regulations.html", {"page_title": "Regulamin"})
@@ -39,6 +41,7 @@ def regulations(request):
 
 def statut(request):
     return render(request, "aboutus/statut.html", {"page_title": "Statut"})
+
 
 def rodo(request):
     return render(request, "aboutus/rodo.html", {"page_title": "Rodo"})
