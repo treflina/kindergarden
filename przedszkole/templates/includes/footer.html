@@ -2,8 +2,8 @@
 
 <footer class="footer">
     <ul class="footer__links">
-    <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% url 'aboutus_app:rodo' %}">RODO</a></li>
-        <li><a class="footer__links-item footer__links-item--group link-underlined" href="#">Deklaracja dostępności</a></li>
+    <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% slugurl 'rodo' %}">RODO</a></li>
+        <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% slugurl 'deklaracja' %}">Deklaracja dostępności</a></li>
         <li><a class="footer__links-item footer__links-item--group link-underlined" href="{% url 'aboutus_app:sitemap' %}">Mapa strony</a></li>
         <li><a class="footer__links-item footer__links-bip" href="http://ppturawa.oswiata-turawa.pl/7/strona-glowna-bip.html" title="Przejdź do Biuletynu Informacji Publicznej">
             <img class="footer__links-bipimg" src="{% static 'img/bip.png' %}" alt="Logo Biuletynu Informacji Publicznej"/></a></li>
