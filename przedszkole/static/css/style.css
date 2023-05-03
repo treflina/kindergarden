@@ -1742,6 +1742,14 @@ button span {
   margin: 6rem 0;
 }
 
+.page-error-info {
+  grid-column: full-start/full-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
 @media (max-width: 1200px) {
   .main {
     grid-gap: 3rem;

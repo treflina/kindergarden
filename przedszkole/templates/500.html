@@ -4,9 +4,11 @@
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
 <div>
-        <h1>Błąd serwera</h1>
-
-        <h2>Przepraszamy, spróbuj ponownie później</h2>
-</div>
- {%include 'includes/footer.html'%}
-{% endblock%}
+    <div class="container">
+        <div class="page-error-info">
+            <h1>Błąd serwera</h1>
+            <h2>Przepraszamy, spróbuj ponownie później</h2>
+        </div>
+        {%include 'includes/footer.html'%}
+    </div>
+    {% endblock%}
