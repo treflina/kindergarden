@@ -89,7 +89,7 @@ class CustomRendition(AbstractRendition):
 
 class GalleryListingPage(RoutablePageMixin, Page):
     template = "gallery/gallery_listing_page.html"
-    max_count = 2
+    max_count = 1
     subpage_types = ["gallery.GalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
 

@@ -14,6 +14,7 @@ class ToDownloadIndexPage(Page):
     template = "todownload/todownload_index_page.html"
     subpage_types = ["todownload.ToDownloadPage"]
     parent_page_types = ["home.HomePage"]
+    max_count = 1
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)

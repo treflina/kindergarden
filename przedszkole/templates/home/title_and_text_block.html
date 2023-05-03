@@ -1,15 +1,15 @@
 {% load wagtailcore_tags static %}
 <div class="news__item">
     <button class="news__btn">
-        <span class="news__btn-arrow"><svg class="icon circle-chevron-down">
+        <span class="news__btn-arrow"><svg class="icon circle-chevron-down" role="presentation">
   <use xlink:href="{% static 'img/sprite.svg#circle-chevron-down' %}"></use>
 </svg></span>
         {% include_block value.title %}
     </button>
     <div class="news__info">
         <!-- <div class="news__info-box"> -->
-            <div class="news__info-text">{% include_block value.text %}</div>
-            {% include_block value.bound_blocks.table %}
+        <div class="news__info-text">{% include_block value.text %}</div>
+        {% include_block value.bound_blocks.table %}
         <!-- </div> -->
     </div>
 </div>

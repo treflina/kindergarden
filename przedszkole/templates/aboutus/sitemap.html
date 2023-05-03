@@ -10,65 +10,68 @@
             <h1>Mapa strony</h1>
             <ul class="sitemap ml-3">
                 <li class="sitemap-item sitemap-item--outside">O nas
-                <ul class="sitemap__inner">
-                    <li class="sitemap-item">
-                        <a href="{% url 'aboutus_app:schedule' %}" class="sitemap-link link-underlined">Ramowy rozkład dnia</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% url 'aboutus_app:payments' %}" class="sitemap-link link-underlined">Opłaty i konta</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% url 'aboutus_app:regulations' %}" class="sitemap-link link-underlined">Regulamin</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% url 'aboutus_app:procedures' %}" class="sitemap-link link-underlined">Procedury</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% url 'aboutus_app:concept' %}" class="sitemap-link link-underlined">Koncepcja pracy przedszkola</a>
-                    </li>
-                    <li class="sitemap-item"><a href="{% url 'aboutus_app:statut' %}" class="sitemap-link link-underlined">Statut</a></li>
-                </ul>
+                    <ul class="sitemap__inner">
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'rozklad' %}" class="sitemap-link link-underlined">Ramowy rozkład dnia</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'oplaty' %}" class="sitemap-link link-underlined">Opłaty i konta</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'regulamin' %}" class="sitemap-link link-underlined">Regulamin</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'procedury' %}" class="sitemap-link link-underlined">Procedury</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'koncepcja' %}" class="sitemap-link link-underlined">Koncepcja pracy przedszkola</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'statut' %}" class="sitemap-link link-underlined">Statut</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">Do pobrania
-                <ul class="sitemap__inner">
-                    <li class="sitemap-item">
-                        <a href="{% slugurl 'dyrektor' %}" class="sitemap-link link-underlined">Rekrutacja / inne dokumenty</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% slugurl 'nauczyciele' %}" class="sitemap-link link-underlined">Materiały od nauczycieli</a>
-                    </li>
-                    <li class="sitemap-item"><a href="{% slugurl 'logopeda' %}" class="sitemap-link link-underlined">Materiały logopedyczne</a>
-                    </li>
-                </ul>
+                    <ul class="sitemap__inner">
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'dyrektor' %}" class="sitemap-link link-underlined">Rekrutacja / inne dokumenty</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'nauczyciele' %}" class="sitemap-link link-underlined">Materiały od nauczycieli</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'logopeda' %}" class="sitemap-link link-underlined">Materiały logopedyczne</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">
                     <a href="{% slugurl 'home' %}#news" class="sitemap-link link-underlined">Aktualności</a>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">Tematyka zajęć
-                <ul class="sitemap__inner">
-                    <li class="sitemap-item">
-                        <a href="/tematyka1/current/" class="sitemap-link link-underlined">Grupa młodsza</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="/tematyka2/current/" class="sitemap-link link-underlined">Grupa starsza</a>
-                    </li>
-                </ul>
+                    <ul class="sitemap__inner">
+                        <li class="sitemap-item">
+                            <a href="/tematyka1/current/" class="sitemap-link link-underlined">Grupa młodsza</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="/tematyka2/current/" class="sitemap-link link-underlined">Grupa starsza</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">Galeria zdjęć
-                <ul class="sitemap__inner">
-                    <li class="sitemap-item">
-                        <a href="{% slugurl 'galeria1' %}" class="sitemap-link link-underlined">Grupa młodsza</a>
-                    </li>
-                    <li class="sitemap-item">
-                        <a href="{% slugurl 'galeria2' %}" class="sitemap-link link-underlined">Grupa starsza</a>
-                    </li>
-                </ul>
+                    <ul class="sitemap__inner">
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'galeria'%}?group=1" class="sitemap-link link-underlined">Grupa młodsza</a>
+                        </li>
+                        <li class="sitemap-item">
+                            <a href="{% slugurl 'galeria'%}?group=2" class="sitemap-link link-underlined">Grupa starsza</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
-                    <a href="{% url 'aboutus_app:rodo' %}" class="sitemap-link link-underlined">RODO</a>
+                    <a href="{% slugurl 'rodo' %}" class="sitemap-link link-underlined">RODO</a>
                 </li>
                 <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
-                    <a href="#" class="sitemap-link link-underlined">Deklaracja dostępności</a>
+                    <a href="{% slugurl 'deklaracja' %}" class="sitemap-link link-underlined">Deklaracja dostępności</a>
                 </li>
                 <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
                     <a href="{% url 'aboutus_app:contact' %}" class="sitemap-link link-underlined">Kontakt</a>

@@ -699,7 +699,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .nav__logo {
   position: relative;
-  font-size: 0;
 }
 .nav__logo-img {
   display: block;
