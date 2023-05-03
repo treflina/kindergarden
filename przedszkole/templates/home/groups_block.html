@@ -9,7 +9,7 @@
                                 <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
                             </svg>
                          </span><span class="groups__box-txt">Tematyka zajęć</span></a>
-        <a href="galeria{% include_block value.group_num %}" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
+        <a href="{%slugurl 'galeria'%}?group={% include_block value.group_num %}" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right">
                             <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
                         </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
     </div>

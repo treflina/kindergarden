@@ -7,7 +7,7 @@
 <div class="container">
     <main class="main-subpage">
         <div class="photogallery">
-            <div class="photogallery__heading" id="header">
+            {% comment %} <div class="photogallery__heading" id="header">
                 <a href="{{ page.get_parent.specific.get_url }}"
                     class="photogallery__heading--back"><svg class="icon chevrons-left">
                         <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
@@ -23,6 +23,24 @@
                     data-lightbox="gallery-set"
                     data-alt="{{cycle.image.alt_descr}}">
                     <span><img class="photogallery-image" src="{{img.url}}" /></span></a>
+                {% endfor %} {% endcomment %}
+                <div class="photogallery__heading" id="header">
+                <a href="{% slugurl 'galeria' %}?group={% if group.name == 'grupa młodsza' %}1{% else %}2{%endif%}"
+                    class="photogallery__heading--back"><svg class="icon chevrons-left">
+                        <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
+                <p class="photogallery__heading--title">
+                    {{ collection.name }}
+                </p>
+            </div>
+            <div class="wrapper photogallery__content">
+                {% for image in gallery %} {% image image width-600 as img %}
+                <a class="photogallery-image-link gallery-image"
+                    href="{{image.file.url}}"
+                    data-lightbox="gallery-set"
+                    data-alt="{{image.alt_descr}}">
+                    <span><img
+                            class="photogallery-image"
+                            src="{{img.url}}" /></span></a>
                 {% endfor %}
             </div>
         </div>

@@ -46,53 +46,113 @@ class CustomRendition(AbstractRendition):
         unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
-class GalleryListingPage(Page):
+# class GalleryListingPageNew(Page):
+#     template = "gallery/gallery_listing_page.html"
+#     parent_page_types = ["home.HomePage"]
+#     subpage_types = ["gallery.GalleryDetailPage"]
+#     password_required_template = "gallery/password_required.html"
+
+#     def get_context(self, request, *args, **kwargs):
+#         context = super().get_context(request, *args, **kwargs)
+#         galleries = (
+#             GalleryListingPage.get_children(self)
+#             .specific()
+#             .live()
+#             .order_by("-first_published_at")
+#         )
+#         context["galleries"] = galleries
+#         return context
+
+#     class Meta:
+#         verbose_name = "Galeria - strona nadrzędna"
+
+
+# class GalleryDetailPageNew(Page):
+#     template = "gallery/gallery_detail_page.html"
+#     subpage_types = []
+#     parent_page_types = ["gallery.GalleryListingPage"]
+#     password_required_template = "gallery/password_required.html"
+
+#     content_panels = Page.content_panels + [
+#         MultipleChooserPanel(
+#             "gallery_images",
+#             label="Zdjęcia",
+#             chooser_field_name="image",
+#         )
+#     ]
+
+#     class Meta:
+#         verbose_name = "Galeria zdjęć"
+
+
+
+
+class GalleryListingPage(RoutablePageMixin, Page):
     template = "gallery/gallery_listing_page.html"
-    parent_page_types = ["home.HomePage"]
+    max_count = 2
     subpage_types = ["gallery.GalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
-
-    def get_context(self, request, *args, **kwargs):
-        context = super().get_context(request, *args, **kwargs)
-        galleries = (
-            GalleryListingPage.get_children(self)
-            .specific()
-            .live()
-            .order_by("-first_published_at")
-        )
-        context["galleries"] = galleries
-        return context
 
     class Meta:
         verbose_name = "Galeria - strona nadrzędna"
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        group = request.GET.get("group")
+        if group == "1":
+            collections = Collection.objects.filter(name="grupa młodsza")
+            context["group"] = "grupa młodsza"
+        elif group == "2":
+            collections = Collection.objects.filter(name="grupa starsza")
+            context["group"] = "grupa starsza"
+        else:
+            collections = []
+        galleries = [col.get_children() for col in collections]
+        obj_list = []
+        for item in galleries:
+            for i in item:
+                image = CustomImage.objects.filter(collection_id=i.id).last()
+                i.__dict__["image"] = image
+                obj_list.append(i)
+        obj_list = sorted(obj_list, key=lambda p: getattr(p, "id"), reverse=True)
+        context["galleries"] = obj_list
+        return context
+
 
 class GalleryDetailPage(Page):
+    """Parental gallery detail page."""
+
     template = "gallery/gallery_detail_page.html"
+    max_count = 1
+
     subpage_types = []
     parent_page_types = ["gallery.GalleryListingPage"]
     password_required_template = "gallery/password_required.html"
 
-    content_panels = Page.content_panels + [
-        MultipleChooserPanel(
-            "gallery_images",
-            label="Zdjęcia",
-            chooser_field_name="image",
-        )
-    ]
-
     class Meta:
         verbose_name = "Galeria zdjęć"
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        if request.GET.get("gallery_id", None):
+            gallery_id = request.GET.get("gallery_id")
+            gallery = CustomImage.objects.filter(collection_id=gallery_id)
+            collection = Collection.objects.get(id=gallery_id)
+            context["group"] = collection.get_parent()
+            context["gallery"] = gallery
+            context["collection"] = collection
+            print(context)
+        return context
 
-class GalleryImage(Orderable):
-    page = ParentalKey(
-        GalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
-    )
-    image = models.ForeignKey(
-        CustomImage, on_delete=models.CASCADE, related_name="+", verbose_name="zdjęcie"
-    )
 
-    panels = [
-        FieldPanel("image"),
-    ]
+# class GalleryImage(Orderable):
+#     page = ParentalKey(
+#         GalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
+#     )
+#     image = models.ForeignKey(
+#         CustomImage, on_delete=models.CASCADE, related_name="+", verbose_name="zdjęcie"
+#     )
+
+#     panels = [
+#         FieldPanel("image"),
+#     ]

@@ -67,6 +67,9 @@
   transition: all 0.4s linear;
   opacity: 0;
 }
+.news__info ul, .news__info ol {
+  list-style-position: inside;
+}
 .news__info.active {
   display: block;
   padding: 20px;
@@ -301,6 +304,8 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  height: -moz-min-content;
+  height: min-content;
   padding: 0 1rem 2rem;
   background-color: rgb(70, 70, 157);
   color: white;
