@@ -14157,12 +14157,7 @@
 
         // Swipe functionality
 
-		   $(".lb-container").on("swipeleft", function () {
-               $("#lightbox a.lb-next").trigger("click");
-           });
-           $(".lb-container").on("swiperight", function () {
-               $("#lightbox a.lb-prev").trigger("click");
-           });
+	
 
         // let touchstartX = 0;
         // let touchendX = 0;

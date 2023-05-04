@@ -31,5 +31,16 @@
     {%include 'includes/footer.html'%}
 </div>
 
+
 <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
+<script>
+    jQuery(document).ready(function () {
+        $(".lb-container").on("swipeleft", function () {
+            $('#lightbox a.lb-next').trigger('click');
+        });
+        $(".lb-container").on("swiperight", function () {
+            $('#lightbox a.lb-prev').trigger('click');
+        });
+    });
+</script>
 {% endblock%}
