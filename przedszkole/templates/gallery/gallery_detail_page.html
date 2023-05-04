@@ -7,7 +7,7 @@
 <div class="container">
     <main class="main-subpage">
         <div class="photogallery">
-                <div class="photogallery__heading" id="header">
+            <div class="photogallery__heading" id="header">
                 <a href="{% slugurl 'galeria' %}?group={% if group.name == 'grupa młodsza' %}1{% else %}2{%endif%}"
                     class="photogallery__heading--back"><svg class="icon chevrons-left" role="presentation">
                         <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
@@ -30,22 +30,26 @@
     </main>
     {%include 'includes/footer.html'%}
 </div>
+{% block extra_js %}
 
-<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+<!-- <script type="text/javascript" src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js">
+</script> -->
+
 <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
-<script>
-            $(function () {
-                $(".lb-container").swipe({
-                    //Single swipe handler for left swipes
-                    swipeLeft: function (event, direction, distance, duration, fingerCount) {
-                        $('#lightbox a.lb-next').trigger('click');
-                    },
-                    swipeRight: function (event, direction, distance, duration, fingerCount) {
-                        $('#lightbox a.lb-prev').trigger('click');
-                    },
-                    //Default is 75px, set to 0 for demo so any distance triggers swipe
-                    threshold: 0
-                });
-            });
+<script type="text/javascript" src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $(".lb-container").swipe({
+
+            swipeLeft: function (event, direction, distance, duration, fingerCount) {
+                $('#lightbox a.lb-next').trigger('click');
+            },
+            swipeRight: function (event, direction, distance, duration, fingerCount) {
+                $('#lightbox a.lb-prev').trigger('click');
+            },
+            threshold: 25
+        });
+});
 </script>
+{% endblock %}
 {% endblock%}
