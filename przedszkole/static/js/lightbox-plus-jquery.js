@@ -3089,14 +3089,12 @@
                                 i > 1 &&
                                     toSelector(
                                         // If the preceding token was a descendant combinator, insert an implicit any-element `*`
-                                        tokens
-                                            .slice(0, i - 1)
-                                            .concat({
-                                                value:
-                                                    tokens[i - 2].type === " "
-                                                        ? "*"
-                                                        : "",
-                                            })
+                                        tokens.slice(0, i - 1).concat({
+                                            value:
+                                                tokens[i - 2].type === " "
+                                                    ? "*"
+                                                    : "",
+                                        })
                                     ).replace(rtrim, "$1"),
                                 matcher,
                                 i < j && matcherFromTokens(tokens.slice(i, j)),
@@ -11955,6 +11953,7 @@
         showImageNumberLabel: true,
         wrapAround: false,
         disableScrolling: false,
+        enableSwipeOnTouchDevices: true,
         /*
     Sanitize Title
     If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
@@ -12105,6 +12104,24 @@
             return false;
         });
 
+        this.$lightbox.find(".lb-image").on("swiperight", function () {
+            if (self.currentImageIndex === 0) {
+                self.changeImage(self.album.length - 1);
+            } else {
+                self.changeImage(self.currentImageIndex - 1);
+            }
+            return false;
+        });
+
+        this.$lightbox.find(".lb-image").on("swipeleft", function () {
+            if (self.currentImageIndex === self.album.length - 1) {
+                self.changeImage(0);
+            } else {
+                self.changeImage(self.currentImageIndex + 1);
+            }
+            return false;
+        });
+
         /*
       Show context menu for image on right-click
 
@@ -12145,31 +12162,7 @@
                     return false;
                 }
             });
-	};
-	function leftTrigger() {
-        setTimeout(function () {
-            $(".lightbox").on("swipeleft", leftHandler);
-
-            function leftHandler() {
-                $(".lb-next").trigger("click");
-            }
-        }, 1000);
-    }
-
-    function rightTrigger() {
-        setTimeout(function () {
-            $(".lightbox").on("swiperight", leftHandler);
-
-            function leftHandler() {
-                $(".lb-prev").trigger("click");
-            }
-        }, 1000);
-    }
-
-    $("[data-lightbox]").on("click", function () {
-        leftTrigger();
-        rightTrigger();
-    });
+    };
 
     // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
     Lightbox.prototype.start = function ($link) {
