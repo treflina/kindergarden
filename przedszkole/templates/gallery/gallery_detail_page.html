@@ -31,16 +31,21 @@
     {%include 'includes/footer.html'%}
 </div>
 
-
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
 <script>
-    jQuery(document).ready(function () {
-        $(".lb-container").on("swipeleft", function () {
-            $('#lightbox a.lb-next').trigger('click');
-        });
-        $(".lb-container").on("swiperight", function () {
-            $('#lightbox a.lb-prev').trigger('click');
-        });
-    });
+            $(function () {
+                $(".lb-container").swipe({
+                    //Single swipe handler for left swipes
+                    swipeLeft: function (event, direction, distance, duration, fingerCount) {
+                        $('#lightbox a.lb-next').trigger('click');
+                    },
+                    swipeRight: function (event, direction, distance, duration, fingerCount) {
+                        $('#lightbox a.lb-prev').trigger('click');
+                    },
+                    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                    threshold: 0
+                });
+            });
 </script>
 {% endblock%}
