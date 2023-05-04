@@ -11132,22 +11132,22 @@ return jQuery;
 
 	// Swipe functionality
 
-	let touchstartX = 0;
-    let touchendX = 0;
+	// let touchstartX = 0;
+    // let touchendX = 0;
 
-    function handleGesture() {
-        if (touchendX < touchstartX) $(".lb-prev").trigger("click");
-        if (touchendX > touchstartX) $(".lb-next").trigger("click");
-    }
+    // function handleGesture() {
+    //     if (touchendX < touchstartX) $(".lb-prev").trigger("click");
+    //     if (touchendX > touchstartX) $(".lb-next").trigger("click");
+    // }
 
-    $(document).on("touchstart", ".lb-nav", (e) => {
-        touchstartX = e.changedTouches[0].screenX;
-    });
+    // $(document).on("touchstart", ".lb-nav", (e) => {
+    //     touchstartX = e.changedTouches[0].screenX;
+    // });
 
-    $(document).on("touchend", ".lb-nav", (e) => {
-        touchendX = e.changedTouches[0].screenX;
-        handleGesture();
-    });
+    // $(document).on("touchend", ".lb-nav", (e) => {
+    //     touchendX = e.changedTouches[0].screenX;
+    //     handleGesture();
+    // });
 
     // Attach event handlers to the newly minted DOM elements
     this.$overlay.hide().on('click', function() {
