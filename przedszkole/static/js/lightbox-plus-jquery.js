@@ -11953,7 +11953,7 @@
         showImageNumberLabel: true,
         wrapAround: false,
         disableScrolling: false,
-        enableSwipeOnTouchDevices: true,
+
         /*
     Sanitize Title
     If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
@@ -12104,23 +12104,23 @@
             return false;
         });
 
-        this.$lightbox.find(".lb-image").on("swiperight", function () {
-            if (self.currentImageIndex === 0) {
-                self.changeImage(self.album.length - 1);
-            } else {
-                self.changeImage(self.currentImageIndex - 1);
-            }
-            return false;
-        });
+        // this.$lightbox.find(".lb-image").on("swiperight", function () {
+        //     if (self.currentImageIndex === 0) {
+        //         self.changeImage(self.album.length - 1);
+        //     } else {
+        //         self.changeImage(self.currentImageIndex - 1);
+        //     }
+        //     return false;
+        // });
 
-        this.$lightbox.find(".lb-image").on("swipeleft", function () {
-            if (self.currentImageIndex === self.album.length - 1) {
-                self.changeImage(0);
-            } else {
-                self.changeImage(self.currentImageIndex + 1);
-            }
-            return false;
-        });
+        // this.$lightbox.find(".lb-image").on("swipeleft", function () {
+        //     if (self.currentImageIndex === self.album.length - 1) {
+        //         self.changeImage(0);
+        //     } else {
+        //         self.changeImage(self.currentImageIndex + 1);
+        //     }
+        //     return false;
+        // });
 
         /*
       Show context menu for image on right-click
