@@ -12004,10 +12004,12 @@
 
     // Build html for the lightbox and the overlay.
     // Attach event handlers to the new DOM elements. click click click
-    Lightbox.prototype.build = function () {
+	Lightbox.prototype.build = function () {
+		$('.lightbox').remove();
         if ($("#lightbox").length > 0) {
             return;
-        }
+		}
+		     // Added code here based on above comment.
 
         var self = this;
 

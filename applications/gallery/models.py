@@ -112,7 +112,6 @@ class GalleryDetailPage(Page):
             context["group"] = collection.get_parent()
             context["gallery"] = gallery
             context["collection"] = collection
-            print(context)
         return context
 
 
