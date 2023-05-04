@@ -12425,51 +12425,44 @@
     };
 
     // Display previous and next navigation if appropriate.
-    Lightbox.prototype.updateNav = function () {
-        // Check to see if the browser supports touch events. If so, we take the conservative approach
-        // and assume that mouse hover events are not supported and always show prev/next navigation
-        // arrows in image sets.
-     var alwaysShowNav = false;
-     var enableSwipe = false;
-     try {
-         document.createEvent("TouchEvent");
-         alwaysShowNav = this.options.alwaysShowNavOnTouchDevices
-             ? true
-             : false;
-         enableSwipe = this.options.enableSwipeOnTouchDevices ? true : false;
-     } catch (e) {}
+      Lightbox.prototype.updateNav = function () {
+          // Check to see if the browser supports touch events. If so, we take the conservative approach
+          // and assume that mouse hover events are not supported and always show prev/next navigation
+          // arrows in image sets.
+          var alwaysShowNav = false;
+          try {
+              document.createEvent("TouchEvent");
+              alwaysShowNav = this.options.alwaysShowNavOnTouchDevices
+                  ? true
+                  : false;
+          } catch (e) {}
 
-        //if swiping is enable, hide the two navigation buttons
-        if (!enableSwipe) {
-            this.$lightbox.find(".lb-nav").show();
+          this.$lightbox.find(".lb-nav").show();
 
-            if (this.album.length > 1) {
-                if (this.options.wrapAround) {
-                    if (alwaysShowNav) {
-                        this.$lightbox
-                            .find(".lb-prev, .lb-next")
-                            .css("opacity", "1");
-                    }
-                    this.$lightbox.find(".lb-prev, .lb-next").show();
-                } else {
-                    if (this.currentImageIndex > 0) {
-                        this.$lightbox.find(".lb-prev").show();
-                        if (alwaysShowNav) {
-                            this.$lightbox.find(".lb-prev").css("opacity", "1");
-                        }
-                    }
-                    if (this.currentImageIndex < this.album.length - 1) {
-                        this.$lightbox.find(".lb-next").show();
-                        if (alwaysShowNav) {
-                            this.$lightbox.find(".lb-next").css("opacity", "1");
-                        }
-                    }
-                }
-            }
-        }
-
-
-    };
+          if (this.album.length > 1) {
+              if (this.options.wrapAround) {
+                  if (alwaysShowNav) {
+                      this.$lightbox
+                          .find(".lb-prev, .lb-next")
+                          .css("opacity", "1");
+                  }
+                  this.$lightbox.find(".lb-prev, .lb-next").show();
+              } else {
+                  if (this.currentImageIndex > 0) {
+                      this.$lightbox.find(".lb-prev").show();
+                      if (alwaysShowNav) {
+                          this.$lightbox.find(".lb-prev").css("opacity", "1");
+                      }
+                  }
+                  if (this.currentImageIndex < this.album.length - 1) {
+                      this.$lightbox.find(".lb-next").show();
+                      if (alwaysShowNav) {
+                          this.$lightbox.find(".lb-next").css("opacity", "1");
+                      }
+                  }
+              }
+          }
+      };
 
     // Display caption, image number, and closing button.
     Lightbox.prototype.updateDetails = function () {
