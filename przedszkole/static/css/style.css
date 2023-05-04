@@ -1745,6 +1745,7 @@ button span {
 .page-error-info {
   grid-column: full-start/full-end;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 300px;
