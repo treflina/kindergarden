@@ -11582,3 +11582,28 @@ return jQuery;
 
   return new Lightbox();
 }));
+
+      function leftTrigger() {
+          setTimeout(function () {
+              $(".lightbox").on("swipeleft", leftHandler);
+
+              function leftHandler() {
+                  $(".lb-next").trigger("click");
+              }
+          }, 1000);
+      }
+
+      function rightTrigger() {
+          setTimeout(function () {
+              $(".lightbox").on("swiperight", leftHandler);
+
+              function leftHandler() {
+                  $(".lb-prev").trigger("click");
+              }
+          }, 1000);
+      }
+
+      $("[data-lightbox]").on("click", function () {
+          leftTrigger();
+          rightTrigger();
+      });
