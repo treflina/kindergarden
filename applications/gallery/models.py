@@ -72,9 +72,8 @@ class GalleryListingPage(RoutablePageMixin, Page):
             else:
                 collections = []
 
-            if not collections:
-                raise Http404
-
+        #     if not collections:
+        #         raise Http404
         except:
             raise Http404
 
