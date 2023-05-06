@@ -107,7 +107,7 @@ class GalleryDetailPage(Page):
             gallery_id = request.GET.get("gallery_id")
             gallery = CustomImage.objects.filter(collection_id=gallery_id)
             collection = get_object_or_404(Collection, id=gallery_id)
-            context["group"] = collection.get_parent().lower()
+            context["group"] = collection.get_parent().name.lower()
             context["gallery"] = gallery
             context["collection"] = collection
         return context
