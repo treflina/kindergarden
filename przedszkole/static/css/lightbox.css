@@ -148,14 +148,14 @@ body.lb-disable-scrolling {
 }
 
 .lb-data .lb-details {
-  width: 85%;
+  width: 70%;
   float: left;
   text-align: left;
   line-height: 1.1em;
 }
 
 .lb-data .lb-closeContainer {
-  width: 15%;
+  width: 30%;
   float: right;
   text-align: right;
   line-height: 1.1em;
@@ -200,6 +200,7 @@ body.lb-disable-scrolling {
   display: inline-block;
   height: 30px;
   width: 30px;
+  margin-right: 1rem;
   background: url("/static/img/arrow-down.png") 50% 50% no-repeat;
   text-align: right;
   outline: none;
