@@ -1314,7 +1314,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   justify-content: center;
   margin-top: 3rem;
   padding: 2rem;
-  padding-left: 5rem;
+  padding-left: 3rem;
   box-shadow: 1px 1px 2px black;
   border-radius: 5px;
   background: #f5f7f2;
@@ -1329,7 +1329,8 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   content: url("/static/img/svg/file-earmark.svg");
 }
 .todownload a[href$=doc]::before,
-.todownload a[href$=docx]::before {
+.todownload a[href$=docx]::before,
+.todownload a[href$=odt]::before {
   content: url("/static/img/svg/file-earmark-word.svg");
 }
 .todownload a[href$=xls]::before,
@@ -1354,6 +1355,11 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   color: rgb(0, 112, 60);
 }
 
+@media (min-width: 576px) {
+  .todownload {
+    padding-left: 5rem;
+  }
+}
 .photogallery__card {
   display: flex;
   flex-direction: column;

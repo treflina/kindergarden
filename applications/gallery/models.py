@@ -4,6 +4,7 @@ from io import BytesIO
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
+from django.db.models import Q
 
 from modelcluster.fields import ParentalKey, ForeignKey
 from wagtail.models import Page, Orderable, Collection
@@ -64,16 +65,14 @@ class GalleryListingPage(RoutablePageMixin, Page):
 
         try:
             if group == "1":
-                collections = Collection.objects.filter(name="grupa młodsza")
-                context["group"] = "grupa młodsza"
+                collections = Collection.objects.filter(Q(name="grupa młodsza")|Q(name="Grupa młodsza"))
+                context["group"] = "- grupa młodsza"
             elif group == "2":
-                collections = Collection.objects.filter(name="grupa starsza")
-                context["group"] = "grupa starsza"
+                collections = Collection.objects.filter(Q(name="grupa starsza")|Q(name="Grupa starsza"))
+                context["group"] = "- grupa starsza"
             else:
                 collections = []
-
-        #     if not collections:
-        #         raise Http404
+                context["group"] = ""
         except:
             raise Http404
 
@@ -108,7 +107,7 @@ class GalleryDetailPage(Page):
             gallery_id = request.GET.get("gallery_id")
             gallery = CustomImage.objects.filter(collection_id=gallery_id)
             collection = get_object_or_404(Collection, id=gallery_id)
-            context["group"] = collection.get_parent()
+            context["group"] = collection.get_parent().lower()
             context["gallery"] = gallery
             context["collection"] = collection
         return context
