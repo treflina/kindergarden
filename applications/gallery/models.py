@@ -112,9 +112,10 @@ class GalleryDetailPage(Page):
         context = super().get_context(request, *args, **kwargs)
         if request.GET.get("gallery_id", None):
             gallery_id = request.GET.get("gallery_id")
-            gallery = CustomImage.objects.filter(collection_id=gallery_id)
+            gallery = CustomImage.objects.filter(collection_id=gallery_id).order_by("id")
             collection = get_object_or_404(Collection, id=gallery_id)
             context["group"] = collection.get_parent().name.lower()
+            print(context["group"])
             context["gallery"] = gallery
             context["collection"] = collection
         return context
