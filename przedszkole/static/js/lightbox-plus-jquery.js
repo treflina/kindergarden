@@ -11951,9 +11951,10 @@
         positionFromTop: 50,
         resizeDuration: 700,
         showImageNumberLabel: true,
+        showDownloadButton: true,
         wrapAround: false,
-		disableScrolling: false,
-		enableSwipeOnTouchDevices: true,
+        disableScrolling: false,
+        enableSwipeOnTouchDevices: true,
 
         /*
     Sanitize Title
@@ -12025,7 +12026,7 @@
         //
         // Github issue: https://github.com/lokesh/lightbox2/issues/663
         $(
-            '<div id="lightboxOverlay" tabindex="-1" class="lightboxOverlay"></div><div id="lightbox" tabindex="-1" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt=""/><div class="lb-nav"><a class="lb-prev" role="button" tabindex="0" aria-label="Previous image" href="" ></a><a class="lb-next" role="button" tabindex="0" aria-label="Next image" href="" ></a></div><div class="lb-loader"><a class="lb-cancel" role="button" tabindex="0"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close" role="button" tabindex="0"></a></div></div></div></div>'
+            '<div id="lightboxOverlay" tabindex="-1" class="lightboxOverlay"></div><div id="lightbox" tabindex="-1" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt=""/><div class="lb-nav"><a class="lb-prev" role="button" tabindex="0" aria-label="Poprzednie zdjęcie" href="" ></a><a class="lb-next" role="button" tabindex="0" aria-label="Następne zdjęcie" href="" ></a></div><div class="lb-loader"><a class="lb-cancel" role="button" tabindex="0" title="Zamknij"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-download" role="button" tabindex="0" title="Pobierz zdjęcie"></a><a class="lb-close" role="button" tabindex="0"></a></div></div></div></div>'
         ).appendTo($("body"));
 
         // Cache jQuery objects
@@ -12132,6 +12133,9 @@
                     return false;
                 }
             });
+            this.$lightbox.find(".lb-download").on("click", function (e) {
+                window.open(e.target.href);
+            });
     };
 
     // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
@@ -12213,6 +12217,7 @@
         var filename = this.album[imageNumber].link;
         var filetype = filename.split(".").slice(-1)[0];
         var $image = this.$lightbox.find(".lb-image");
+         var $downloadLink = this.$lightbox.find(".lb-download");
 
         // Disable keyboard nav during transitions
         this.disableKeyboardNav();
@@ -12242,6 +12247,12 @@
                 alt: self.album[imageNumber].alt,
                 src: filename,
             });
+                $downloadLink.attr({
+                    href: self.album[imageNumber].link,
+                    download: self.album[imageNumber].link.substr(
+                        self.album[imageNumber].link.lastIndexOf("/") + 1
+                    ),
+                });
 
             $preloader = $(preloader);
 
@@ -12440,6 +12451,9 @@
           } catch (e) {}
 
           this.$lightbox.find(".lb-nav").show();
+              if (this.options.showDownloadButton === false) {
+                  this.$lightbox.find(".lb-download").hide();
+              }
 
           if (this.album.length > 1) {
               if (this.options.wrapAround) {
