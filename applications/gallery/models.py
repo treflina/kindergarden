@@ -20,9 +20,15 @@ class CustomImage(AbstractImage):
         max_length=255,
         blank=True,
         verbose_name="opis alternatywny",
-        help_text="Opis zdjęcia (najczęściej od 5 do 15 słów) mający na celu umożliwienie przekazu treści osobom z niepełnosprawnością.",
+        help_text="Opis zdjęcia (najczęściej od 5 do 15 słów) mający na celu umożliwienie przekazu treści osobom z niepełnosprawnościami.",
     )
-    admin_form_fields = Image.admin_form_fields + ("alt_descr",)
+    priority = models.BooleanField(
+        default=False,
+        null=True,
+        verbose_name="wyróżnienie zdjęcia",
+        help_text="Zdjęcie wyróżnione wyświetla się jako zdjęcie główne galerii."
+        )
+    admin_form_fields = Image.admin_form_fields + ("alt_descr","priority",)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -80,7 +86,9 @@ class GalleryListingPage(RoutablePageMixin, Page):
         obj_list = []
         for item in galleries:
             for i in item:
-                image = CustomImage.objects.filter(collection_id=i.id).last()
+                image = CustomImage.objects.filter((Q(collection_id=i.id)&Q(priority=True))).last()
+                if image is None:
+                    image = CustomImage.objects.filter(collection_id=i.id).last()
                 i.__dict__["image"] = image
                 obj_list.append(i)
         obj_list = sorted(obj_list, key=lambda p: getattr(p, "id"), reverse=True)
