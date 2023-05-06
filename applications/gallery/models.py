@@ -24,7 +24,6 @@ class CustomImage(AbstractImage):
     )
     priority = models.BooleanField(
         default=False,
-        null=True,
         verbose_name="wyróżnienie zdjęcia",
         help_text="Zdjęcie wyróżnione wyświetla się jako zdjęcie główne galerii."
         )
