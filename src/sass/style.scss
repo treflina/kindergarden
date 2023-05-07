@@ -1,0 +1,145 @@
+@use 'colors' as *;
+@use 'components' as *;
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/fonts/poppins-bold-webfont.woff2') format('woff2'),
+        url('/static/fonts/poppins-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
+    font-display: swap;
+
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/fonts/poppins-regular-webfont.woff2') format('woff2'),
+        url('/static/fonts/poppins-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url('/static/fonts/kalam-bold-webfont.woff2') format('woff2'),
+        url('/static/fonts/kalam-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url('/static/fonts/kalam-regular-webfont.woff2') format('woff2'),
+        url('/static/fonts/kalam-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans-regular-webfont.woff2') format('woff2'),
+        url('/static/fonts/opensans-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans-bold-webfont.woff2') format('woff2'),
+        url('/static/fonts/opensans-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%; // to have min-height working in body container
+    width: 100%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0 3rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    color: black;
+    background-color: white;
+    line-height: 1.5;
+}
+
+button span {
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
+    min-height: calc(100vh - 10.2rem);
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    grid-column: center-start/center-end;
+    grid-gap: 8rem;
+    margin: 6rem 0;
+}
+
+.page-error-info {
+    grid-column: full-start/full-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+@media (max-width:1200px) {
+
+    .main {
+        grid-gap: 3rem;
+    }
+
+}
+
+@media (max-width:992px) {
+    .main {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 3rem 0;
+    }
+}
+
+@media (max-width:768px) {
+    body {
+        padding: 0 1rem;
+    }
+}
+@media (max-width:500px) {
+    body {
+        padding: 0 10px;
+    }
+}

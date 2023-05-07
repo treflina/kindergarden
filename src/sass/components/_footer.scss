@@ -1,0 +1,83 @@
+@use '../colors'as *;
+
+.footer {
+    grid-column: full-start/full-end;
+    grid-row: 6/7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 1rem 2rem;
+    background-color: $color-primary-first;
+    color: white;
+
+    &__text {
+        padding: 1.5rem .5em 0;
+        text-align: center;
+    }
+
+
+    &__links {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1.5rem;
+        list-style: none;
+
+        &-item {
+            display: inline-block;
+            position: relative;
+            margin: 0 .5rem 1rem;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+
+
+            &--group {
+                &::before {
+                    height: 3px;
+                    background-color: white;
+                }
+            }
+        }
+
+        &-bip {
+            padding: 0 .3em;
+            border-radius: 8px;
+            display: inline-flex;
+            align-self: flex-start;
+            background-color: #fff;
+        }
+
+        &-bipimg {
+            width: 7rem;
+            height: 100%;
+        }
+    }
+}
+@media (min-width:66.1em) {
+
+    .footer {
+        &__text--one {
+            order: 1;
+        }
+
+        &__text--two {
+            order: 2;
+        }
+    }
+}
+
+@media (min-width:756px) {
+    .footer {
+        flex-direction: row;
+
+        &__links {
+            &-item {
+                margin: 0 .5rem;
+            }
+        }
+    }
+}

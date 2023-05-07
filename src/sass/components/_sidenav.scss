@@ -1,0 +1,47 @@
+@use '../colors' as *;
+
+.sidenav {
+    background-color: $color-primary-first;
+
+    &__months {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        padding: 1rem;
+        position: relative;
+        margin-top: 2rem;
+        list-style: none;
+    }
+
+    &__month-link {
+        display: inline-block;
+        position: relative;
+        font-size: 1.7rem;
+        padding: .5rem 1rem;
+        background-color: $color-primary-first;
+        text-align: center;
+
+        &::before {
+            color: $color-primary-first;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+
+        }
+
+
+        &.active {
+            background-color: #fff;
+            color: #000;
+            border-radius: 8px;
+
+            a {
+                color: #000;
+            }
+        }
+    }
+}
+
