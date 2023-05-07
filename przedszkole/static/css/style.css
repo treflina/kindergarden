@@ -484,6 +484,7 @@
   align-items: center;
   position: relative;
   min-height: 70vh;
+  will-change: transform;
   background-image: url("/static/img/colored-pencils-xl.jpg");
   background-position: top;
   background-size: cover;
