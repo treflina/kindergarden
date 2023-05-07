@@ -951,7 +951,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   justify-content: space-evenly;
   padding: 4rem 1rem;
   margin-top: 3em;
-  background-image: linear-gradient(to right bottom, rgb(243, 242, 240), rgb(243, 242, 240));
+  background-color: rgb(243, 242, 240);
   color: black;
   -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
@@ -960,7 +960,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .contact__details {
   margin-left: 2rem;
-  overflow-wrap: anywhere;
 }
 .contact__details-email, .contact__details-phone, .contact__details-adress {
   display: flex;
@@ -1190,11 +1189,15 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   .main-subpage .content h2 {
     margin: 3rem 0;
     font-size: 2rem;
-    text-align: center;
     overflow-wrap: anywhere;
   }
 }
 
+@media (max-width: 576px) {
+  .main-subpage .content__list {
+    padding-left: 3rem;
+  }
+}
 .sidenav {
   background-color: rgb(70, 70, 157);
 }
