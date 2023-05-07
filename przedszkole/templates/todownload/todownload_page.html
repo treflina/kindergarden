@@ -7,8 +7,8 @@
             <h1 class="heading__box-title">Dokumenty do pobrania</h1>
         </div>
         <div class="content wrapper">
-            <h2 class="todownload__heading">{{page.heading}}</h2>
-            <div class="todownload">
+            <h2 class="todownload__heading center-txt">{{page.heading}}</h2>
+            <div class="todownload content__list">
                 {% for doc in page.todownload_documents.all %}
 
                 <a href="{{ doc.document.url }}" class="todownload__link"

@@ -1316,11 +1316,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   flex-direction: column;
   justify-content: center;
   margin-top: 3rem;
-  padding: 2rem;
-  padding-left: 3rem;
-  box-shadow: 1px 1px 2px black;
-  border-radius: 5px;
-  background: #f5f7f2;
 }
 .todownload a[href]::before {
   display: inline-block;
@@ -1358,11 +1353,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   color: rgb(0, 112, 60);
 }
 
-@media (min-width: 576px) {
-  .todownload {
-    padding-left: 5rem;
-  }
-}
 .photogallery__card {
   display: flex;
   flex-direction: column;
