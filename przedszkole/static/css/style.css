@@ -987,18 +987,22 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     margin-top: 1em;
   }
   .contact {
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto max-content auto;
+    grid-template-rows: repeat(2, min-content);
     margin-top: 2em;
     -webkit-clip-path: none;
             clip-path: none;
   }
   .contact__details {
+    grid-column: 2/3;
+    grid-row: 2/3;
     margin-left: 0;
     overflow-wrap: anywhere;
   }
   .contact__name {
+    grid-column: 2/3;
+    grid-row: 1/2;
     margin-bottom: 1em;
   }
   .contact p {
