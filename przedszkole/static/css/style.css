@@ -492,6 +492,7 @@
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
   color: white;
+  overflow: hidden;
   z-index: -3;
 }
 .header__wrapper {
