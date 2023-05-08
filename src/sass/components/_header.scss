@@ -7,22 +7,14 @@
     align-items: center;
     position: relative;
     min-height: 70vh;
+    background-image: url('/static/img/colored-pencils-xl.jpg');
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
     clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
     color: white;
     overflow: hidden;
-
-
-    &::before {
-        content: "";
-        position: fixed;
-        will-change: transform;
-        width: 100%;
-        height: 100%;
-        background-image: url('/static/img/colored-pencils-xl.jpg');
-        background-position: top;
-        background-size: cover;
-        z-index: -3;
-    }
+    z-index: -3;
 
     &__wrapper {
         display: flex;
