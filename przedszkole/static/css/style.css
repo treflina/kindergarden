@@ -485,13 +485,21 @@
   align-items: center;
   position: relative;
   min-height: 70vh;
+  color: white;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+.header::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  will-change: transform;
   background-image: url("/static/img/colored-pencils-xl.jpg");
   background-position: top;
   background-size: cover;
-  background-attachment: fixed;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-  color: white;
   overflow: hidden;
   z-index: -3;
 }
