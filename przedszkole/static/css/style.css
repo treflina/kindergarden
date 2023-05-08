@@ -23,9 +23,10 @@
   align-items: center;
   white-space: normal;
   padding: 1rem;
+  width: 100%;
+  color: black;
   font-family: "Open Sans", sans-serif;
   font-size: 1.8rem;
-  width: 100%;
   text-align: left;
   background: rgb(243, 242, 240);
   border: none;
@@ -484,7 +485,6 @@
   align-items: center;
   position: relative;
   min-height: 70vh;
-  will-change: transform;
   background-image: url("/static/img/colored-pencils-xl.jpg");
   background-position: top;
   background-size: cover;
