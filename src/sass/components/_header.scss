@@ -7,14 +7,22 @@
     align-items: center;
     position: relative;
     min-height: 70vh;
-    background-image: url('/static/img/colored-pencils-xl.jpg');
-    background-position: top;
-    background-size: cover;
-    background-attachment: fixed;
     clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
     color: white;
     overflow: hidden;
-    z-index: -3;
+
+
+    &::before {
+        content: "";
+        position: fixed;
+        will-change: transform;
+        width: 100%;
+        height: 100%;
+        background-image: url('/static/img/colored-pencils-xl.jpg');
+        background-position: top;
+        background-size: cover;
+        z-index: -3;
+    }
 
     &__wrapper {
         display: flex;
@@ -61,20 +69,20 @@
             display: inline-block;
             opacity: 0;
             filter: blur(2px);
-         }
+        }
 
         span:nth-child(1) {
             animation: fade-in 1s 0.1s forwards ease-in;
 
-         }
+        }
 
         span:nth-child(2) {
             animation: fade-in 1s 0.5s forwards ease-in;
-         }
+        }
 
         span:nth-child(3) {
             animation: fade-in 1s 1s forwards ease-in;
-         }
+        }
     }
 
     &__text {
@@ -89,7 +97,7 @@
 @media(max-width: 48em) {
     .header {
         justify-content: center;
-        clip-path: none;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
         &__box {
             margin-right: 0;
