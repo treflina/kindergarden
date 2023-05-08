@@ -485,6 +485,7 @@
   align-items: center;
   position: relative;
   min-height: 70vh;
+  overflow: hidden;
   color: white;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
@@ -494,13 +495,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  height: 100%;
+  width: 100%;
   will-change: transform;
   background-image: url("/static/img/colored-pencils-xl.jpg");
   background-position: top;
   background-size: cover;
-  overflow: hidden;
   z-index: -3;
 }
 .header__wrapper {
@@ -1801,4 +1801,4 @@ button span {
   body {
     padding: 0 10px;
   }
-}
+}/*# sourceMappingURL=style.css.map */
