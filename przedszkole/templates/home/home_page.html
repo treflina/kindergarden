@@ -72,4 +72,13 @@
 
 <script type="text/javascript" src="{% static 'js/accordion.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
+<script>
+    var bg = $("#header");
+
+        function resizeBackground() {
+            bg.height($(window).height() +60);
+        }
+        $(window).resize(resizeBackground);
+        resizeBackground();
+</script>
 {% endblock%}

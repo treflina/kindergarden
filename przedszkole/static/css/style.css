@@ -493,7 +493,8 @@
 .header::before {
   content: "";
   position: fixed;
-  top: 0;
+  top: auto;
+  bottom: 0;
   left: 0;
   height: 100%;
   width: 100%;
@@ -1801,4 +1802,4 @@ button span {
   body {
     padding: 0 10px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
