@@ -737,12 +737,10 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
   transform: translateX(-100%);
   opacity: 0;
-  transition: transform 0.5s;
+  animation: moveInMob 0.6s forwards;
 }
 .nav-links--active {
   display: block;
-  transform: translateX(0);
-  opacity: 0.97;
 }
 .nav-links li {
   list-style: none;
@@ -792,7 +790,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   opacity: 0;
   overflow: hidden;
   background-color: rgb(70, 70, 157);
-  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+  animation: fadeIn 0.6s forwards;
 }
 .nav__dropdown-link {
   width: 100%;
@@ -807,9 +805,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   background-color: #6A67D0;
 }
 .nav__dropdown.show {
-  max-height: 45rem;
   display: block;
-  opacity: 1;
 }
 .nav .skipnav {
   line-height: 1.5;
@@ -863,9 +859,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     box-shadow: none;
     transform: translateX(0);
     opacity: 1;
-  }
-  .nav-links--active {
-    opacity: 1;
+    animation: movIn 0.6s forwards;
   }
   .nav-links li {
     margin: 0;
@@ -883,7 +877,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     background-color: #fff;
     line-height: 45px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    transition: max-height 0.2s linear, opacity 0.2s linear;
   }
   .nav__dropdown-link {
     padding: 1rem 15px;
@@ -893,10 +886,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   }
   .nav__dropdown-link:hover, .nav__dropdown-link:focus {
     background-color: #adbe42;
-  }
-  .nav__dropdown.show {
-    max-height: -moz-min-content;
-    max-height: min-content;
   }
   .nav .skipnav {
     text-align: left;
@@ -910,6 +899,26 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     transform: translateY(0);
     padding: 0.5rem;
     background-color: rgb(70, 70, 157);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 45rem;
+  }
+}
+@keyframes moveInMob {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0.97;
   }
 }
 .contact-page {

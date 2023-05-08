@@ -70,12 +70,10 @@
         box-shadow: 0px 15px 15px rgba(0, 0, 0, .18);
         transform: translateX(-100%);
         opacity: 0;
-        transition: transform .5s;
+        animation: moveInMob .6s forwards;
 
         &--active {
             display: block;
-            transform: translateX(0);
-            opacity: 0.97;
 
         }
 
@@ -138,7 +136,7 @@
         opacity: 0;
         overflow: hidden;
         background-color: $color-primary-first;
-        transition: max-height .3s ease-in, opacity .3s ease-in;
+        animation: fadeIn .6s forwards;
 
         &-link {
             width: 100%;
@@ -157,9 +155,9 @@
         }
 
         &.show {
-            max-height: 45rem;
+            // max-height: 45rem;
             display: block;
-            opacity: 1;
+            // opacity: 1;
         }
 
     }
@@ -228,10 +226,11 @@
             box-shadow: none;
             transform: translateX(0);
             opacity: 1;
+            animation: movIn .6s forwards;
 
-            &--active {
-                opacity: 1;
-            }
+            // &--active {
+            //     opacity: 1;
+            // }
 
             li {
                 margin: 0;
@@ -253,8 +252,8 @@
             background-color: #fff;
             line-height: 45px;
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-            transition: max-height .2s linear,
-                opacity .2s linear;
+            // transition: max-height .2s linear,
+            //     opacity .2s linear;
 
             &-link {
                 padding: 1rem 15px;
@@ -268,9 +267,9 @@
                 }
             }
 
-            &.show {
-                max-height: min-content;
-            }
+            // &.show {
+            //     max-height: min-content;
+            // }
         }
 
         .skipnav {
@@ -289,4 +288,28 @@
         }
     }
 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 45rem;
+    }
+}
+
+@keyframes moveInMob {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 0.97;
+    }
 }
