@@ -34,7 +34,7 @@
 .main-button {
     font-size: 1.6rem;
     border-radius: 6px;
-    border: none;
+    border: 3px solid transparent;
     box-shadow: 1px 1px 2px black;
     background-image: linear-gradient(to right bottom, $color-primary-first, $color-primary-first);
     background-size: 200% auto;

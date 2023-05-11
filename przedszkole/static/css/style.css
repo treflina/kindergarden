@@ -1614,7 +1614,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .main-button {
   font-size: 1.6rem;
   border-radius: 6px;
-  border: none;
+  border: 3px solid transparent;
   box-shadow: 1px 1px 2px black;
   background-image: linear-gradient(to right bottom, rgb(70, 70, 157), rgb(70, 70, 157));
   background-size: 200% auto;
