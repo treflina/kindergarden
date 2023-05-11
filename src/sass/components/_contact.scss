@@ -13,7 +13,7 @@
     flex-direction: column;
     flex: 1 0 48%;
     padding: 2rem;
-    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
 
 
     &__txt-sm {
@@ -50,6 +50,7 @@
     padding-bottom: 1rem;
     font-size: 1.8rem;
 }
+
 .contact-heading2 {
     padding-bottom: 1rem;
     font-size: 1.6rem;
@@ -102,17 +103,23 @@
 
     .contact {
         display: grid;
-        grid-template-columns: auto max-content auto;
+        grid-template-columns: auto fit-content(100%) auto;
         grid-template-rows: repeat(2, min-content);
+        justify-content: stretch;
         margin-top: 2em;
         clip-path: none;
+
 
 
         &__details {
             grid-column: 2/3;
             grid-row: 2/3;
             margin-left: 0;
-            overflow-wrap: anywhere;
+            word-wrap: break-word;
+
+            &-email {
+                overflow-wrap: anywhere;
+            }
         }
 
 
@@ -136,4 +143,6 @@
         margin-top: 2em;
         margin-left: 1rem;
         margin-right: 1rem;
-    }}
+    }
+
+}

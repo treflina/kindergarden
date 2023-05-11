@@ -1006,8 +1006,9 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   }
   .contact {
     display: grid;
-    grid-template-columns: auto max-content auto;
+    grid-template-columns: auto fit-content(100%) auto;
     grid-template-rows: repeat(2, min-content);
+    justify-content: stretch;
     margin-top: 2em;
     -webkit-clip-path: none;
             clip-path: none;
@@ -1016,6 +1017,9 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     grid-column: 2/3;
     grid-row: 2/3;
     margin-left: 0;
+    word-wrap: break-word;
+  }
+  .contact__details-email {
     overflow-wrap: anywhere;
   }
   .contact__name {
