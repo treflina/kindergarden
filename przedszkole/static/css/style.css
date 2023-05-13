@@ -576,7 +576,7 @@
 @media (max-width: 31.25em) {
   .header::before {
     position: absolute;
-    background-image: url("/static/img/pencils-sm.jpg");
+    background-image: url("/static/img/pencil-sm.jpg");
   }
   .header__box::after {
     box-shadow: none;
