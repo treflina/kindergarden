@@ -556,15 +556,17 @@
   line-height: 1.5;
 }
 
+@media (max-width: 62em) {
+  .header::before {
+    position: absolute;
+    background-image: url("/static/img/colored-pencils-m.jpg");
+  }
+}
 @media (max-width: 48em) {
   .header {
     justify-content: center;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  .header::before {
-    position: absolute;
-    background-image: url("/static/img/colored-pencils-m.jpg");
   }
   .header__box {
     margin-right: 0;

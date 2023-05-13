@@ -91,16 +91,20 @@
 
 }
 
-
-@media(max-width: 48em) {
+@media(max-width: 62em) {
     .header {
-        justify-content: center;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
         &::before {
             position: absolute;
             background-image: url('/static/img/colored-pencils-m.jpg');
         }
+    }
+}
+
+@media(max-width: 48em) {
+    .header {
+        justify-content: center;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
         &__box {
             margin-right: 0;
