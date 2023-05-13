@@ -562,6 +562,10 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
+  .header::before {
+    position: absolute;
+    background-image: url("/static/img/colored-pencils-m.jpg");
+  }
   .header__box {
     margin-right: 0;
     padding: 2rem 20px;
@@ -574,10 +578,6 @@
   }
 }
 @media (max-width: 31.25em) {
-  .header::before {
-    position: absolute;
-    background-image: url("/static/img/colored-pencils-m.jpg");
-  }
   .header__box::after {
     box-shadow: none;
     border-radius: 0;

@@ -15,7 +15,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        bottom:0;
+        bottom: 0;
         right: 0;
         width: 100%;
         will-change: transform;
@@ -97,6 +97,11 @@
         justify-content: center;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
+        &::before {
+            position: absolute;
+            background-image: url('/static/img/colored-pencils-m.jpg');
+        }
+
         &__box {
             margin-right: 0;
             padding: 2rem 20px;
@@ -115,11 +120,6 @@
 @media (max-width: 31.25em) {
 
     .header {
-
-        &::before {
-            position: absolute;
-            background-image: url('/static/img/colored-pencils-m.jpg');
-        }
 
         &__box {
 
