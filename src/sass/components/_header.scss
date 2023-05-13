@@ -97,10 +97,6 @@
         justify-content: center;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
-        &::before {
-            position: absolute;
-        }
-
         &__box {
             margin-right: 0;
             padding: 2rem 20px;
@@ -119,6 +115,11 @@
 @media (max-width: 31.25em) {
 
     .header {
+
+        &::before {
+            position: absolute;
+            background-image: url('/static/img/pencils-sm.jpg');
+        }
 
         &__box {
 
