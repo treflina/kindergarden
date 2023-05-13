@@ -3,7 +3,8 @@
 {% load static %}
 {% now "n" as current_month %}
 {% block extra_css %}
-<link rel="preload" as="image" href="{% static 'img/colored-pencils-xl.jpg' %}">{% endblock %}
+<link rel="preload" as="image" media="(min-width: 60.01em)" href="{% static 'img/colored-pencils-xl.jpg' %}">
+<link rel="preload" as="image" media="(max-width: 60em)" href="{% static 'img/colored-pencils-m.jpg' %}">{% endblock %}
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
