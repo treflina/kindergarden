@@ -584,6 +584,9 @@
     box-shadow: none;
     border-radius: 0;
   }
+  .header__text--bottom {
+    display: none;
+  }
 }
 @media (max-width: 22.5em) {
   .header__title {
