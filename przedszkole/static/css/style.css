@@ -576,6 +576,7 @@
 @media (max-width: 31.25em) {
   .header::before {
     position: absolute;
+    background-image: url("/static/img/colored-pencils-m.jpg");
   }
   .header__box::after {
     box-shadow: none;
