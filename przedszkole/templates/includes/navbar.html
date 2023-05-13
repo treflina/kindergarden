@@ -1,6 +1,5 @@
 {% load static wagtailcore_tags menus_tags %}
 {% get_menu "aboutus_menu" as navigation %}
-
 <nav class="nav">
     <div class="nav-wrapper">
         <div class="nav__logo">
@@ -60,12 +59,9 @@
             <li class="nav__item">
                 <a href="{% slugurl 'home' %}#groups" class="nav__item-link nav-link link-underlined menu-close">grupy</a>
             </li>
-
             <li class="nav__item">
                 <a class="nav__item-link nav-link link-underlined menu-close" href="{% url 'aboutus_app:contact' %}">kontakt</a>
             </li>
         </ul>
-
     </div>
-
 </nav>
