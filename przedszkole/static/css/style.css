@@ -580,6 +580,10 @@
   }
 }
 @media (max-width: 31.25em) {
+  .header__box {
+    position: absolute;
+    bottom: 8%;
+  }
   .header__box::after {
     box-shadow: none;
     border-radius: 0;

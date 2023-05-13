@@ -126,6 +126,8 @@
     .header {
 
         &__box {
+            position: absolute;
+            bottom: 8%;
 
             &::after {
                 box-shadow: none;
