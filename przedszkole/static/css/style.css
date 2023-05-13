@@ -141,14 +141,14 @@
   color: black;
 }
 .groups__box-img {
-  width: 10rem;
-  height: 10rem;
+  width: 11rem;
+  height: 11rem;
   margin: auto 0;
   -o-object-position: center;
      object-position: center;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 50%;
+  border-radius: 8%;
 }
 .groups__box-details {
   padding-left: 1em;
@@ -248,8 +248,8 @@
     padding-right: 0;
   }
   .groups__box-img {
-    width: 25vw;
-    height: 25vw;
+    width: 30vw;
+    height: 30vw;
   }
 }
 .hide {
