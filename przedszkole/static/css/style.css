@@ -270,7 +270,7 @@
   padding: 1rem;
   max-height: 50vh;
   width: 100%;
-  background-color: rgba(243, 248, 140, 0.9);
+  background-color: hsla(62.2, 54.5%, 80.2%, 0.9);
   z-index: 10000;
 }
 
