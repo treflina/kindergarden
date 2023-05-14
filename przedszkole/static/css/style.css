@@ -547,6 +547,10 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
+  .header::before {
+    position: absolute;
+    top: 0;
+  }
   .header__box {
     margin-right: 0;
     padding: 2rem 20px;
