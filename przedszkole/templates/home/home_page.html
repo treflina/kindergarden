@@ -4,21 +4,23 @@
 {% now "n" as current_month %}
 {% block extra_css %}
 <link rel="preload" as="image" media="(min-width: 60.01em)" href="{% static 'img/colored-pencils-xl.jpg' %}">
-<link rel="preload" as="image" media="(max-width: 60em)" href="{% static 'img/colored-pencils-m.jpg' %}">{% endblock %}
+<link rel="preload" as="image" media="(max-width: 60em)" href="{% static 'img/colored-pencils-m.jpg' %}">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+{% endblock %}
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
 <header class="header" id="header">
     <div class="header__wrapper">
-        <div class="header__box ">
-            <h1 class="header__title"><span>Przedszkole </span> <span>Publiczne </span> <span>w&nbsp;Turawie</span></h1>
-            <p class="header__text header__text--top">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
+        <div class="header__box  data-aos="zoom-in" data-aos-duration="300">
+            <h1 class="header__title" data-aos="zoom-in-down"  data-aos-delay="300" data-aos-duration="800"><span>Przedszkole </span><span>Publiczne </span> <span>w&nbsp;Turawie</span></h1>
+            <p class="header__text header__text--top" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="1100">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
                 Świata".
                 W&nbsp;naszym przedszkolu wkładamy wiele serca, aby ta droga była dla dzieci ciekawa
                 i&nbsp;fascynująca.
                 Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
                 rozwijającej ich zdolności i&nbsp;zainteresowania.</p>
-            <p class="header__text header__text--bottom">Dziękujemy za odwiedziny i&nbsp;Państwa
+            <p class="header__text header__text--bottom" data-aos="zoom-in-up" data-aos-duration="900" data-aos-delay="1100">Dziękujemy za odwiedziny i&nbsp;Państwa
                 zainteresowanie!
             </p>
         </div>
@@ -69,9 +71,6 @@
     </div>
 </main>
 {%include 'includes/footer.html'%}
-
-
 <script type="text/javascript" src="{% static 'js/accordion.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script.min.js' %}"></script>
-
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 {% endblock%}

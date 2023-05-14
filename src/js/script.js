@@ -23,7 +23,7 @@ window.onload = function () {
 
     const navMobile = document.querySelector(".nav-links");
     const navBtn = document.querySelector(".hamburger");
-    const navTxt = document.querySelector(".hamburger-text")
+    const navTxt = document.querySelector(".hamburger-text");
     const logoBtn = document.querySelector(".nav__logo");
     const allNavItems = document.querySelectorAll(".menu-close");
 
@@ -44,7 +44,7 @@ window.onload = function () {
         }
     };
 
-    window.addEventListener("click", showDropdown)
+    window.addEventListener("click", showDropdown);
 
     const closeNav = () => {
         navBtn.classList.remove("is-active");
@@ -60,8 +60,8 @@ window.onload = function () {
     const handleNav = () => {
         navBtn.classList.toggle("is-active");
         navMobile.classList.toggle("nav-links--active");
-        if (navBtn.classList.contains("is-active")){
-            navTxt.textContent = "Zamknij"
+        if (navBtn.classList.contains("is-active")) {
+            navTxt.textContent = "Zamknij";
         } else {
             navTxt.textContent = "Menu";
         }
@@ -80,4 +80,17 @@ window.onload = function () {
 
     galleryAddClass();
 
+    //animations
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        AOS.init({
+            startEvent: "DOMContentLoaded",
+            offset: 120,
+            easing: "ease-out",
+            once: false,
+        });
+    } else {
+        AOS.init({
+            disable: true,
+        });
+    }
 };

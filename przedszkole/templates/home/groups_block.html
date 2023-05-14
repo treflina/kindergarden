@@ -1,16 +1,15 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-
-<div class="groups__box">
+<div class="groups__box" data-aos="flip-up">
     {% image block.value.group_img width-300 as img %}
     <img src="{{ img.url }}" alt="{{ img.alt }}" class="groups__box-img">
     <div class="groups__box-details">
         <h3 class="groups__box-heading">{% include_block value.group_name %}</h3>
+        <a href="{%slugurl 'galeria'%}?group={% include_block value.group_num %}" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
+                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
+                        </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
         <a href="/tematyka{% include_block value.group_num %}/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
                                 <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
                             </svg>
                          </span><span class="groups__box-txt">Tematyka zajęć</span></a>
-        <a href="{%slugurl 'galeria'%}?group={% include_block value.group_num %}" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
-                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                        </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
     </div>
 </div>

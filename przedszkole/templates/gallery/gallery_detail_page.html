@@ -31,7 +31,8 @@
     {%include 'includes/footer.html'%}
 </div>
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
 <script>
     $(document).ready(function () {
