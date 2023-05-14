@@ -3,8 +3,8 @@
 {% load static %}
 {% now "n" as current_month %}
 {% block extra_css %}
-<link rel="preload" as="image" media="(min-width: 60.01em)" href="{% static 'img/colored-pencils-xl.jpg' %}">
-<link rel="preload" as="image" media="(max-width: 60em)" href="{% static 'img/colored-pencils-m.jpg' %}">
+<link rel="preload" as="image" media="(min-width: 993px)" href="{% static 'img/colored-pencils-xl.jpg' %}">
+<link rel="preload" as="image" media="(max-width: 992px)" href="{% static 'img/colored-pencils-m.jpg' %}">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 {% endblock %}
 {% block content %}

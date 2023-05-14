@@ -541,15 +541,18 @@
     filter: none;
   }
 }
+@media (max-width: 62em) {
+  .header::before {
+    position: absolute;
+    top: 0;
+    background-image: url("/static/img/colored-pencils-m.jpg");
+  }
+}
 @media (max-width: 48em) {
   .header {
     justify-content: center;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  .header::before {
-    position: absolute;
-    top: 0;
   }
   .header__box {
     margin-right: 0;
@@ -574,12 +577,6 @@
 @media (max-width: 22.5em) {
   .header__title {
     font-size: 2.3rem;
-  }
-}
-@keyframes fade-in {
-  100% {
-    opacity: 1;
-    filter: blur(0);
   }
 }
 div[tabindex="0"][aria-labelledby][role=region] {
