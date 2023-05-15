@@ -1,12 +1,12 @@
 {% load static wagtailcore_tags menus_tags %}
 {% get_menu "aboutus_menu" as navigation %}
+<div class="skipnav"><a href="#header">Pomiń nawigację</a></div>
 <nav class="nav">
     <div class="nav-wrapper">
         <div class="nav__logo">
             <a href="{% url 'wagtail_serve' '' %}">
             <img class="nav__logo-img" src="{% static 'img/frontcircled.jpg' %}" title="Przejdź do strony głównej" alt="Zdjęcie frontu budynku przedszkola"/></a>
         </div>
-        <div class="skipnav"><a href="#header">Pomiń nawigację</a></div>
         <button class="hamburger hamburger--spring" type="button">
             <span class="hamburger-box"><span class="hamburger-inner"></span></span>
             <span class="hamburger-text">Menu</span>

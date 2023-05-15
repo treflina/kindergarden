@@ -1,7 +1,7 @@
 {% load wagtailcore_tags static %}
 <div class="news__item">
     <button class="news__btn">
-        <span class="news__btn-arrow"><svg class="icon circle-chevron-down" role="presentation">
+        <span class="news__btn-arrow"><svg class="icon circle-chevron-down" aria-hidden="true" focusable="false">
   <use xlink:href="{% static 'img/sprite.svg#circle-chevron-down' %}"></use>
 </svg></span>
         {% include_block value.title %}
