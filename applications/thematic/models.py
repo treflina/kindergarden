@@ -114,7 +114,8 @@ class ThematicIndexPage(RoutablePageMixin, Page):
         thematic_page = (
             ThematicPage.objects.child_of(self)
             .filter(month__slug=month)
-            .specific()
+            .specific
+            .live()
             .last()
         )
         if thematic_page is None:
