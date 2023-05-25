@@ -7,9 +7,9 @@
             <h1 class="heading__box-title">Dokumenty do pobrania</h1>
         </div>
         <div class="content wrapper">
-            <div class="center-txt mtb-5">
+            <div class="center-txt mtb-5 todownload">
                 {% for subpage in subpages %}
-                <a href="{{ subpage.url }}">{{subpage.heading}} </a>
+                <a href="{{ subpage.url }}" class="todownload__link">{{subpage.heading}} </a>
                 {% endfor %}
             </div>
         </div>

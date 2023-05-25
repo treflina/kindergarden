@@ -1329,31 +1329,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   justify-content: center;
   margin-top: 3rem;
 }
-.todownload a[href]::before {
-  display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
-  padding-left: 1rem;
-  padding-right: 2rem;
-  margin-left: -3rem;
-  content: url("/static/img/svg/file-earmark.svg");
-}
-.todownload a[href$=doc]::before,
-.todownload a[href$=docx]::before,
-.todownload a[href$=odt]::before {
-  content: url("/static/img/svg/file-earmark-word.svg");
-}
-.todownload a[href$=xls]::before,
-.todownload a[href$=xlsx]::before {
-  content: url("/static/img/svg/file-earmark-spreadsheet.svg");
-}
-.todownload a[href$=pdf]::before {
-  content: url("/static/img/svg/file-pdf-fill.svg");
-}
-.todownload a[href$=jpg]::before,
-.todownload a[href$=png]::before {
-  content: url("/static/img/svg/file-earmark-image.svg");
-}
 .todownload__link {
   text-decoration: none;
   color: black;
@@ -1363,6 +1338,32 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   text-decoration: underline;
   text-underline-offset: 5px;
   color: rgb(0, 112, 60);
+}
+
+.todownload-files a[href]::before {
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  margin-left: -3rem;
+  content: url("/static/img/svg/file-earmark.svg");
+}
+.todownload-files a[href$=doc]::before,
+.todownload-files a[href$=docx]::before,
+.todownload-files a[href$=odt]::before {
+  content: url("/static/img/svg/file-earmark-word.svg");
+}
+.todownload-files a[href$=xls]::before,
+.todownload-files a[href$=xlsx]::before {
+  content: url("/static/img/svg/file-earmark-spreadsheet.svg");
+}
+.todownload-files a[href$=pdf]::before {
+  content: url("/static/img/svg/file-pdf-fill.svg");
+}
+.todownload-files a[href$=jpg]::before,
+.todownload-files a[href$=png]::before {
+  content: url("/static/img/svg/file-earmark-image.svg");
 }
 
 .photogallery__card {

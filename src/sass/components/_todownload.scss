@@ -1,11 +1,26 @@
 @use '../colors'as *;
 
-.todownload {
+.todownload{
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 3rem;
 
+    &__link {
+        text-decoration: none;
+        color: black;
+        line-height: 1.8;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            color: $color-primary-second;
+        }
+    }
+}
+
+.todownload-files {
 
     a[href]::before {
         display: inline-block;
@@ -42,18 +57,5 @@
         content: url('/static/img/svg/file-earmark-image.svg');
     }
 
-
-    &__link {
-        text-decoration: none;
-        color: black;
-        line-height: 1.8;
-
-        &:hover,
-        &:focus {
-            text-decoration: underline;
-            text-underline-offset: 5px;
-            color: $color-primary-second;
-        }
-    }
 }
 
