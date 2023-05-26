@@ -500,6 +500,7 @@
   grid-template-columns: 1fr minmax(40%, 60rem);
   width: 100%;
   max-width: 1350px;
+  margin: 0 auto;
 }
 .header__box {
   grid-column: 2/3;
