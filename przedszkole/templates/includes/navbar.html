@@ -7,7 +7,7 @@
             <a href="{% url 'wagtail_serve' '' %}" aria-label="Przejdź do strony głównej">
             <img class="nav__logo-img" src="{% static 'img/frontcircled.jpg' %}" alt="Zdjęcie frontu budynku przedszkola"/></a>
         </div>
-        <button class="hamburger hamburger--spring" type="button">
+        <button class="hamburger hamburger--spring" type="button" aria-haspopup="true" aria-expanded="false">
             <span class="hamburger-box" role="presentation"><span class="hamburger-inner" role="presentation"></span></span>
             <span class="hamburger-text">Menu</span>
         </button>
@@ -16,35 +16,21 @@
                 <a class="nav__item-link nav-link menu-close link-underlined" href="{% url 'wagtail_serve' '' %}">Strona główna</a>
             </li>
             <li class="nav__item">
-                <a class="nav__item-link nav-link link-underlined" href="#">o nas <svg class="icon chevron-down" role="presentation">
+                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" data-dropdown="dropdown1">o nas <svg class="icon chevron-down" role="presentation">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use>
-                </svg></a>
-                <ul class="nav__dropdown">
-                    <!-- {% comment %} <li> -->
-                    <!-- <a href="{% url 'aboutus_app:schedule' %}" class="nav__dropdown-link nav-link menu-close">Ramowy rozkład dnia</a>
-                    </li>
-                    <li><a href="{% url 'aboutus_app:payments' %}" class="nav__dropdown-link nav-link menu-close">Opłaty i konto</a>
-                    </li>
-                    <li><a href="{% url 'aboutus_app:regulations' %}" class="nav__dropdown-link nav-link menu-close">Regulamin</a>
-                    </li>
-                    <li><a href="{% url 'aboutus_app:procedures' %}" class="nav__dropdown-link nav-link menu-close">Procedury</a>
-                    </li>
-                    <li><a href="{% url 'aboutus_app:concept' %}" class="nav__dropdown-link nav-link menu-close">Koncepcja pracy przedszkola</a>
-                    </li>
-                    <li><a href="{% url 'aboutus_app:statut' %}" class="nav__dropdown-link nav-link menu-close">Statut</a>
-                    </li> {% endcomment %} -->
+                </svg></button>
+                <ul id="dropdown1" class="nav__dropdown">
                     {% for item in navigation.menu_items.all %}
                     <li><a href="{{ item.link }}" class="nav__dropdown-link nav-link menu-close">{{ item.title }}</a>
                     </li>
                     {% endfor %}
-
                 </ul>
             </li>
             <li class="nav__item">
-                <a class="nav__item-link nav-link link-underlined" href="#">do pobrania <svg class="icon chevron-down" role="presentation">
+                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" data-dropdown="dropdown2">do pobrania <svg class="icon chevron-down" role="presentation">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use></svg>
-                </a>
-                <ul class="nav__dropdown">
+                </button>
+                <ul id="dropdown2" class="nav__dropdown">
                     <li><a href="{% slugurl 'dyrektor' %}" class="nav__dropdown-link nav-link menu-close">Rekrutacja / Inne dokumenty</a>
                     </li>
                     <li><a href="{% slugurl 'nauczyciele' %}" class="nav__dropdown-link nav-link menu-close">Materiały od nauczycieli</a>

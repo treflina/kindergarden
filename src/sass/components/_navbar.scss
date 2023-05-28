@@ -101,10 +101,13 @@
             // main links - without links inside dropdown
             display: inline-block;
             padding: 1rem 0;
-            color: white;
             margin-left: 20px;
+            border: none;
+            background-color: inherit;
+            color: white;
             text-transform: uppercase;
             font-size: 1.8rem;
+            cursor: pointer;
 
 
             .chevron-down {
@@ -113,6 +116,7 @@
                 width: 2rem;
                 height: 2rem;
                 fill: inherit;
+                pointer-events: none;
             }
 
             &::before {
@@ -126,7 +130,6 @@
     &__dropdown {
         position: static;
         top: 65px;
-        display: none;
         padding-left: 1rem;
         width: 100%;
         min-width: 300px;
@@ -134,9 +137,10 @@
         max-height: 0;
         font-size: 1.7rem;
         opacity: 0;
+        visibility: hidden;
         overflow: hidden;
         background-color: $color-primary-first;
-        animation: fadeIn .6s forwards;
+        transition: max-height .3s, opacity .3s, visibility .3s;
 
         &-link {
             width: 100%;
@@ -155,9 +159,10 @@
         }
 
         &.show {
-            // max-height: 45rem;
-            display: block;
-            // opacity: 1;
+            max-height: 60rem;
+            // display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
     }
@@ -238,12 +243,12 @@
             }
         }
 
-        &-links li:hover &__dropdown,
-        &-links li:focus &__dropdown {
-            opacity: 1;
-            display: block;
-            max-height: min-content;
-        }
+        // &-links li:hover &__dropdown,
+        // &-links li:focus &__dropdown {
+        //     opacity: 1;
+        //     display: block;
+        //     max-height: min-content;
+        // }
 
         &__dropdown {
 
