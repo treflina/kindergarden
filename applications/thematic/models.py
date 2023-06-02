@@ -8,7 +8,7 @@ from wagtail.admin.panels import (
     MultiFieldPanel,
     InlinePanel,
 )
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+# from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page, Orderable
 from wagtail.contrib.routable_page.models import RoutablePageMixin, path
