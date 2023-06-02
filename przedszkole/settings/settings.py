@@ -212,7 +212,7 @@ WAGTAILSEARCH_BACKENDS = {
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILIMAGES_IMAGE_MODEL = "gallery.CustomImage"
-WAGTAILIMAGES_MAX_UPLOAD_SIZE = 5 * 1024 * 1024
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 10 * 1024 * 1024
 WAGTAILDOCS_SERVE_METHOD = "serve_view"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
