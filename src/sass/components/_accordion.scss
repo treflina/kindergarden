@@ -21,7 +21,7 @@
         justify-content: space-between;
     }
 
-    &__item:not(:last-child) {
+    &__item {
         margin-bottom: 1em;
     }
 
@@ -87,9 +87,27 @@
         transition: all 0.4s linear;
         opacity: 0;
 
-        ul, ol {
+        &-img {
+            margin: 0 auto;
+            max-width: 90%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        ul,
+        ol {
             list-style-position: outside;
             margin-left: 2rem;
+        }
+
+        p {
+            margin-bottom: .5em;
         }
 
         &.active {
@@ -128,6 +146,10 @@
 
         &__info {
             padding: 0 1rem;
+
+            &-img {
+                max-width: 100%;
+            }
 
             &.active {
                 padding: 1rem;

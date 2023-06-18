@@ -56,7 +56,7 @@ class HomePage(RoutablePageMixin, Page):
     month_num = date.today().month
     accordion_content = StreamField(
         [
-            ("title_text_and_table", blocks.TitleTextAndTableBlock()),
+            ("news", blocks.AccordionBlock()),
         ],
         null=True,
         blank=True,
