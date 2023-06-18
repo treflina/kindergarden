@@ -7,21 +7,20 @@
         {% include_block value.title %}
     </button>
     <div class="news__info">
-            {% for block in self.content %}
-            {% if block.block_type == 'image' %}
-            <div class="news__info-img">
-                {% include_block block %}
-            </div>
-            {% elif block.block_type == 'table' %}
-            <div class="table">
-                {% include_block block %}
-            </div>
-            {% else %}
-            <div class="news__info-text">
-                {% include_block block %}
-            </div>
-            {% endif %}
-            {% endfor %}
+        {% for block in self.content %}
+        {% if block.block_type == 'image' %}
+        <div class="news__info-img">
+            {% include_block block %}
         </div>
+        {% elif block.block_type == 'table' %}
+        <div class="table">
+            {% include_block block %}
+        </div>
+        {% else %}
+        <div class="news__info-text">
+            {% include_block block %}
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
