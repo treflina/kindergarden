@@ -1,14 +1,70 @@
 @use '../colors'as *;
 
+.d-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-red {
+    color: red !important;
+}
+
+.text-blue {
+    color: #4169e1 !important;
+}
+
+.text-violet {
+    color: rgb(70, 70, 157) !important;
+}
+
+.text-violetlight {
+    color: #993399 !important;
+}
+
+.text-green {
+    color: rgb(0, 112, 60) !important;
+}
+
+.richtext-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 10px;
+
+}
+
+.right {
+    float: right;
+    margin-left: 2.5rem;
+}
+
+.left {
+    float: left;
+    margin-right: 2.5rem;
+}
+
+.full-width {
+    display: block;
+    margin: 0 auto 1.5rem;
+}
+
+
 .main-subpage {
     grid-column: 1/-1;
     padding-bottom: 7rem;
 
 
     .custom_page {
+
         ol, ul {
             margin-left: 2rem;
 
+        }
+
+        li {
+            margin: 1rem 0;
         }
 
         p {
