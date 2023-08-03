@@ -58,7 +58,7 @@ class GalleryListingPage(RoutablePageMixin, Page):
 
     template = "gallery/gallery_listing_page.html"
     max_count = 1
-    subpage_types = ["gallery.GalleryDetailPage"]
+    subpage_types = ["gallery.GalleryDetailPage", "gallery.PhotogalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
 
     class Meta:
@@ -121,54 +121,82 @@ class GalleryDetailPage(Page):
         return context
 
 
-# class GalleryListingPageNew(Page):
-#     template = "gallery/gallery_listing_page.html"
-#     parent_page_types = ["home.HomePage"]
-#     subpage_types = ["gallery.GalleryDetailPage"]
-#     password_required_template = "gallery/password_required.html"
+class PhotogalleryListingPage(Page):
 
-#     def get_context(self, request, *args, **kwargs):
-#         context = super().get_context(request, *args, **kwargs)
-#         galleries = (
-#             GalleryListingPage.get_children(self)
-#             .specific()
-#             .live()
-#             .order_by("-first_published_at")
-#         )
-#         context["galleries"] = galleries
-#         return context
+    template = "gallery/photogallery_listing_page.html"
+    max_count = 2
+    parent_page_types = ["home.HomePage"]
+    subpage_types = ["gallery.PhotogalleryDetailPage"]
+    # password_required_template = "gallery/password_required.html"
 
-#     class Meta:
-#         verbose_name = "Galeria - strona nadrzędna"
+    class Meta:
+        verbose_name = "Lista fotogalerii"
+
+    group = models.ForeignKey(GroupsFilter, verbose_name="Grupa", blank=False, null=True, on_delete=models.SET_NULL)
+    content_panels = Page.content_panels + [
+        FieldPanel("group", heading="Grupa"),
+    ]
 
 
-# class GalleryDetailPageNew(Page):
-#     template = "gallery/gallery_detail_page.html"
-#     subpage_types = []
-#     parent_page_types = ["gallery.GalleryListingPage"]
-#     password_required_template = "gallery/password_required.html"
+class PhotogalleryDetailPage(Page):
 
-#     content_panels = Page.content_panels + [
-#         MultipleChooserPanel(
-#             "gallery_images",
-#             label="Zdjęcia",
-#             chooser_field_name="image",
-#         )
-#     ]
+    page_description = "Wybierz całą kolekcję zdjęć LUB wybierz poszczególne zdjęcia, dzięki czemu będzie możliwa zmiana ich kolejności."
+    template = "gallery/photogallery_detail_page.html"
+    subpage_types = []
+    parent_page_types = ["gallery.PhotogalleryListingPage"]
+    password_required_template = "gallery/password_required.html"
 
-#     class Meta:
-#         verbose_name = "Galeria zdjęć"
+    collection = models.ForeignKey(
+        Collection,
+        verbose_name="Kolekcja zdjęć",
+        # limit_choices_to=~models.Q(name__in=["Root"]),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    @property
+    def image(self):
+        if self.collection:
+            image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
+            if image is None:
+                image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+        else:
+            image_obj = self.gallery_images.filter(image__priority=True).last() | self.gallery_images.all().last()
+            image = image_obj.image
+        return image
 
 
 
-# class GalleryImage(Orderable):
-#     page = ParentalKey(
-#         GalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
-#     )
-#     image = models.ForeignKey(
-#         CustomImage, on_delete=models.CASCADE, related_name="+", verbose_name="zdjęcie"
-#     )
+    content_panels = Page.content_panels + [
+        FieldPanel("collection"),
+        MultipleChooserPanel("gallery_images", chooser_field_name="image", heading="Zdjęcia",
+        help_text="""Wybierz powyżej całą kolekcję zdjęć LUB
+        wybierz poniżej poszczególne zdjęcia - dzięki temu będzie możliwa
+        zmiana ich kolejności wyświetlania na stronie.
+        (Uwaga! Jeśli wybierzesz kolekcję zdjęć, dodatkowy wybór zdjęć nie będzie uwzględniony.)""",)
+    ]
 
-#     panels = [
-#         FieldPanel("image"),
-#     ]
+    class Meta:
+        verbose_name = "Fotogaleria"
+
+
+
+class GalleryImage(Orderable):
+    page = ParentalKey(
+        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
+    )
+    image = models.ForeignKey(
+        "CustomImage",
+        on_delete=models.CASCADE,
+        related_name="+",
+        verbose_name="",
+        null=True,
+    )
+
+    panels = [
+        FieldPanel("image"),
+    ]
+
+    def __str__(self):
+        return self.image.title
