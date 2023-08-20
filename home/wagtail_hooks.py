@@ -100,7 +100,7 @@ def register_alignright_feature(features):
 
 
 @hooks.register("register_rich_text_features")
-def register_smallcaption_feature(features):
+def register_textred_feature(features):
     """
     Change slected text color to red
     """
@@ -128,7 +128,7 @@ def register_smallcaption_feature(features):
 
 
 @hooks.register("register_rich_text_features")
-def register_smallcaption_feature(features):
+def register_textgreen_feature(features):
     """
     Change selected text color to green
     """
@@ -156,7 +156,7 @@ def register_smallcaption_feature(features):
 
 
 @hooks.register("register_rich_text_features")
-def register_smallcaption_feature(features):
+def register_textblue_feature(features):
     """
     Change selected text color to blue
     """
@@ -184,7 +184,7 @@ def register_smallcaption_feature(features):
 
 
 @hooks.register("register_rich_text_features")
-def register_smallcaption_feature(features):
+def register_textviolet_feature(features):
     """
     Change selected text color to violet
     """
@@ -212,7 +212,7 @@ def register_smallcaption_feature(features):
 
 
 @hooks.register("register_rich_text_features")
-def register_smallcaption_feature(features):
+def register_textvioletlight_feature(features):
     """
     Change selected text color to violetlight
     """

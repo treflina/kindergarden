@@ -28,28 +28,6 @@
     color: rgb(0, 112, 60) !important;
 }
 
-.richtext-image {
-    max-width: 100%;
-    height: auto;
-    margin: 0 0 10px;
-
-}
-
-.right {
-    float: right;
-    margin-left: 2.5rem;
-}
-
-.left {
-    float: left;
-    margin-right: 2.5rem;
-}
-
-.full-width {
-    display: block;
-    margin: 0 auto 1.5rem;
-}
-
 
 .main-subpage {
     grid-column: 1/-1;
@@ -58,7 +36,8 @@
 
     .custom_page {
 
-        ol, ul {
+        ol,
+        ul {
             margin-left: 2rem;
 
         }
@@ -67,8 +46,11 @@
             margin: 1rem 0;
         }
 
-        p {
-            margin-bottom: 1.5rem;
+        p,
+        ol,
+        ul,
+        img {
+            margin-bottom: 1rem;
         }
 
         img {
@@ -290,13 +272,14 @@
         }
     }
 }
- @media (max-width: 576px) {
 
-.main-subpage {
-     .content {
-         &__list {
-             padding-left: 3rem;
-         }
-     }
- }
+@media (max-width: 576px) {
+
+    .main-subpage {
+        .content {
+            &__list {
+                padding-left: 3rem;
+            }
+        }
+    }
 }
