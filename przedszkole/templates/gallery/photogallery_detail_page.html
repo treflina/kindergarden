@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags%}
+{% load static wagtailcore_tags wagtailimages_tags gallery_tags %}
 {% block extra_css %}
-<link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" /> {% endblock %}
-{% block content %} {% include 'includes/cookies.html' %}
+<link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+{% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
 
 <div class="container">
@@ -13,20 +15,13 @@
                     class="photogallery__heading--back"><svg class="icon chevrons-left" role="presentation">
                         <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
                 <p class="photogallery__heading--title">
-                    {{ collection.name }}
+                    {{ page.title }}
                 </p>
             </div>
             <div class="wrapper photogallery__content">
-                {% for image in gallery %} {% image image width-600 as img %}
-                <a class="photogallery-image-link gallery-image"
-                    href="{{image.file.url}}"
-                    data-lightbox="gallery-set"
-                    data-alt="{{image.alt_descr}}">
-                    <span class="sr-only">Otwórz zdjęcie w powiększeniu</span>
-                    <span><img
-                            class="photogallery-image"
-                            src="{{img.url}}" /></span></a>
-                {% endfor %}
+        
+                {% gallery page.collection %}
+
             </div>
         </div>
     </main>
@@ -52,4 +47,4 @@
 });
 </script>
 {% endblock %}
-{% endblock%}
+{% endblock %}

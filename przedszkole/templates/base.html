@@ -13,6 +13,7 @@
         {% if page.search_description %}
         <meta name="description" content="{{ page.search_description }}"/>{% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name=”deklaracja-dostępności” content="{% slugurl 'deklaracja' %}”>
         {% if request.in_preview_panel %}
         <base target="_blank"/>
         {% endif %} {# Global stylesheets #}
