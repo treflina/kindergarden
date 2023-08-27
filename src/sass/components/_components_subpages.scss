@@ -1,18 +1,56 @@
 @use '../colors'as *;
 
+.d-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-red {
+    color: red !important;
+}
+
+.text-blue {
+    color: #4169e1 !important;
+}
+
+.text-violet {
+    color: rgb(70, 70, 157) !important;
+}
+
+.text-violetlight {
+    color: #993399 !important;
+}
+
+.text-green {
+    color: rgb(0, 112, 60) !important;
+}
+
+
 .main-subpage {
     grid-column: 1/-1;
     padding-bottom: 7rem;
 
 
     .custom_page {
-        ol, ul {
+
+        ol,
+        ul {
             margin-left: 2rem;
 
         }
 
-        p {
-            margin-bottom: 1.5rem;
+        li {
+            margin: 1rem 0;
+        }
+
+        p,
+        ol,
+        ul,
+        img {
+            margin-bottom: 1rem;
         }
 
         img {
@@ -234,13 +272,14 @@
         }
     }
 }
- @media (max-width: 576px) {
 
-.main-subpage {
-     .content {
-         &__list {
-             padding-left: 3rem;
-         }
-     }
- }
+@media (max-width: 576px) {
+
+    .main-subpage {
+        .content {
+            &__list {
+                padding-left: 3rem;
+            }
+        }
+    }
 }

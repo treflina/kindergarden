@@ -661,7 +661,23 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .richtext-image {
   max-width: 100%;
   height: auto;
-  margin: 0.5rem 0;
+  margin: 0 0 10px;
+}
+
+.right {
+  float: right;
+  margin-left: 2.5rem;
+}
+
+.left {
+  float: left;
+  margin-right: 2.5rem;
+}
+
+.full-width {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .responsive-object {
@@ -1043,15 +1059,50 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     margin-right: 1rem;
   }
 }
+.d-block {
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-red {
+  color: red !important;
+}
+
+.text-blue {
+  color: #4169e1 !important;
+}
+
+.text-violet {
+  color: rgb(70, 70, 157) !important;
+}
+
+.text-violetlight {
+  color: #993399 !important;
+}
+
+.text-green {
+  color: rgb(0, 112, 60) !important;
+}
+
 .main-subpage {
   grid-column: 1/-1;
   padding-bottom: 7rem;
 }
-.main-subpage .custom_page ol, .main-subpage .custom_page ul {
+.main-subpage .custom_page ol,
+.main-subpage .custom_page ul {
   margin-left: 2rem;
 }
-.main-subpage .custom_page p {
-  margin-bottom: 1.5rem;
+.main-subpage .custom_page li {
+  margin: 1rem 0;
+}
+.main-subpage .custom_page p,
+.main-subpage .custom_page ol,
+.main-subpage .custom_page ul,
+.main-subpage .custom_page img {
+  margin-bottom: 1rem;
 }
 .main-subpage .custom_page img {
   max-width: 100%;
@@ -1777,6 +1828,17 @@ button span {
   grid-column: center-start/center-end;
   grid-gap: 8rem;
   margin: 6rem 0;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .page-error-info {
