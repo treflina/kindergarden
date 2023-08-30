@@ -38,12 +38,9 @@ class HomePageGallery(Orderable):
         related_name="+",
         verbose_name="zdjęcie",
     )
-    # alt_attr = models.CharField(
-    #     max_length=250, blank=True, null=True, verbose_name="opis alternatywny"
-    # )
+
     panels = [
         FieldPanel("home_gallery_image"),
-        # FieldPanel("alt_attr")
     ]
 
 

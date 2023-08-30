@@ -5,32 +5,32 @@
 {% include 'includes/navbar.html' %}
 <div class="container">
     <main class="main-subpage">
-        <div class="heading__box heading__box--crayons" id="header">
-            <h1 class="heading__box-title">Deklaracja dostępności</h1>
-        </div>
         <div class="content wrapper custom_page">
-            <p id="a11y-wstep"><span id="a11y-podmiot">Przedszkole Publiczne w Turawie</span>zobowiązuje się zapewnić
+            <h1 class="heading-primary mtb-5">Deklaracja dostępności</h1>
+            <p id="a11y-wstep"><span id="a11y-podmiot">Przedszkole Publiczne w Turawie</span> zobowiązuje się zapewnić
                 dostępność swojej strony internetowej zgodnie z ustawą z dnia 4 kwietnia 2019 r. o dostępności cyfrowej stron
                 internetowych i aplikacji mobilnych podmiotów publicznych.
             </p>
             <p>Deklaracja dostępności dotyczy strony internetowej <a href="" id="a11y-url">przedszkoleturawa.pl</a>.</p>
-            <p>Data publikacji strony internetowej: <span id="a11y-data-publikacja">{{publication_date}}</span></p>
-            <p>Data ostatniej istotnej aktualizacji: <span id="a11y-data-aktualizacja">{{update_date}}</span></p>
-            <p id="a11y-status">Strona internetowa jest {% if not accordance %}częściowo{% endif %} zgodna z ustawą z dnia 4 kwietnia 2019 r. o
-                dostępności cyfrowej stron internetowych i aplikacji mobilnych podmiotów publicznych{% if not accordance %} z powodu niezgodności
+            <p>Data publikacji strony internetowej: <span id="a11y-data-publikacja">{{ page.publication_date|date:"Y-m-d" }}</span></p>
+            <p>Data ostatniej istotnej aktualizacji: <span id="a11y-data-aktualizacja">{% if page.update_date %}{{ page.update_date|date:"Y-m-d"}}{% else %} nie było {% endif %}</span></p>
+            <br>
+            <p id="a11y-status">Strona internetowa jest {% if not page.accordance %}częściowo{% else %}w pełni{% endif %} zgodna z ustawą z dnia 4 kwietnia 2019 r. o
+                dostępności cyfrowej stron internetowych i aplikacji mobilnych podmiotów publicznych{% if not page.accordance %} z powodu niezgodności
                 lub wyłączeń wymienionych poniżej{% endif %}.</p>
-                {% if not accordance %}
-                {{exceptions|richtext}}
+                {% if not page.accordance %}
+                {{page.exceptions|richtext}}
                 {% endif %}
+            <br>
             <p>Na stronie internetowej można korzystać ze standardowych skrótów klawiaturowych.</p>
-            <p>Data sporządzenia deklaracji: <span id="a11y-data-sporzadzenie">{{publish_date}}</span>.</p>
+            <p>Data sporządzenia deklaracji: <span id="a11y-data-sporzadzenie"> {{ page.publish_date|date:"Y-m-d" }}</span></p>
             <p>Deklarację sporządzono na podstawie samooceny przeprowadzonej przez podmiot publiczny.</p>
-            <p>Data ostatniego przeglądu deklaracji: <span id="a11y-data-przeglad">{{review_date}}</span>.</p>
+            <p>Data ostatniego przeglądu deklaracji: <span id="a11y-data-przeglad">{{ page.review_date|date:"Y-m-d" }}</span></p>
             <h2 id="a11y-kontakt">Informacje zwrotne i dane kontaktowe</h2>
             <p>W przypadku problemów z dostępnością strony internetowej prosimy o kontakt. Osobą kontaktową jest
-                <span id="a11y-osoba">{{contact_person}}</span>, mail: <a href="mailto:pp.turawa@oswiata-turawa.pl" id="a11y-email">{{email}}</a>
+                <span id="a11y-osoba">{{page.contact_person}}</span>, mail: <a href="mailto:{{page.email}}" id="a11y-email">{{page.email}}</a>
                 Kontaktować można się także telefonicznie:
-                <span id="a11y-telefon">{{phone}}</span>. Tą samą drogą można składać wnioski o udostępnienie informacji
+                <span id="a11y-telefon">{{page.phone}}</span>. Tą samą drogą można składać wnioski o udostępnienie informacji
                 niedostępnej oraz składać skargi na brak zapewnienia dostępności.
             </p>
             <p id="a11y-procedura">
@@ -50,9 +50,9 @@
                 cyfrowej strony internetowej lub jej elementu. Po wyczerpaniu wskazanej wyżej procedury, można także
                 złożyć wniosek do Rzecznika Praw Obywatelskich.</p>
             <h2 id="a11y-architektura">Dostępność architektoniczna</h2>
-            {{architecture_desc|richtext}}
-            <h3>Komunikacja osób niesłyszących lub słabo słyszących</h3>
-            {{contact_methods|richtext}}
+            {{page.architecture_desc|richtext}}
+            <h3 style="color:black;">Komunikacja osób niesłyszących lub słabo słyszących</h3>
+            {{page.contact_methods|richtext}}
         </div>
     </main>
     {%include 'includes/footer.html'%}

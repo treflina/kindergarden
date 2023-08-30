@@ -74,6 +74,8 @@ class SchedulePage(Page):
     parent_page_types = ["aboutus.AboutUsIndexPage"]
     max_count = 1
 
+    
+
     class Meta:
         verbose_name = "Rozkład dnia (nie do edycji)"
 
@@ -86,12 +88,12 @@ class AccessibilityInfoPage(Page):
     publication_date = models.DateField(
         verbose_name="Data publikacji strony internetowej", blank=False
     )
-    update_date = models.DateField(verbose_name="Data ostatniej istotnej aktualizacji", blank=False)
+    update_date = models.DateField(verbose_name="Data ostatniej istotnej aktualizacji", blank=True)
     accordance = models.BooleanField("Zgodność z ustawą", blank=False)
     exceptions = RichTextField(
         "Niezgodności z ustawą, wyłączenia",
         help_text="Wypełnij w przypadku częściowej zgodności z ustawą",
-        features=["bold", "italic", "ol", "ul", "hr"], null=True
+        features=["bold", "italic", "ol", "ul", "hr"], blank=True, null=True
     )
     publish_date = models.DateField(verbose_name="Data sporządzenia deklaracji", blank=False)
     review_date = models.DateField(verbose_name="Data ostatniego przeglądu deklaracji", blank=False)
@@ -103,7 +105,7 @@ class AccessibilityInfoPage(Page):
         features=["bold", "italic", "ol", "ul", "hr"], blank=False
     )
     contact_methods = RichTextField(
-        "Komunikacja osób niesłyszących lub słabo słyszących", blank=False,
+        "Komunikacja osób niesłyszących lub słabo słyszących", blank=True, null=True,
         features=["bold", "italic", "ol", "ul", "hr"],
     )
 
@@ -121,5 +123,5 @@ class AccessibilityInfoPage(Page):
         FieldPanel("contact_methods"),
     ]
 
-    class Meta:
+    class Meta: # noqa
         verbose_name = "Deklaracja dostępności"
