@@ -2,8 +2,9 @@ from django.db import models
 from django import forms
 
 from wagtail.models import Page
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
+from .blocks import ScheduleBlock
 
 
 class AboutUsIndexPage(Page):
@@ -74,10 +75,16 @@ class SchedulePage(Page):
     parent_page_types = ["aboutus.AboutUsIndexPage"]
     max_count = 1
 
-    
+    group_1 = StreamField([("activity", ScheduleBlock())], use_json_field=True, verbose_name="Grupa młodsza", null=True)
+    group_2 = StreamField([("acticity", ScheduleBlock())], use_json_field=True, verbose_name="Grupa starsza", null=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("group_1"),
+        FieldPanel("group_2"),
+    ]
 
     class Meta:
-        verbose_name = "Rozkład dnia (nie do edycji)"
+        verbose_name = "Rozkład dnia"
 
 
 class AccessibilityInfoPage(Page):
