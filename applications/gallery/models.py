@@ -8,9 +8,10 @@ from django.db.models import Q
 
 from modelcluster.fields import ParentalKey, ForeignKey
 from wagtail.models import Page, Orderable, Collection
-from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from wagtail_multi_upload.edit_handlers import MultipleImagesPanel
 
 from applications.thematic.models import GroupsFilter
 
@@ -25,9 +26,12 @@ class CustomImage(AbstractImage):
     priority = models.BooleanField(
         default=False,
         verbose_name="wyróżnienie zdjęcia",
-        help_text="Zdjęcie wyróżnione wyświetla się jako zdjęcie główne galerii."
-        )
-    admin_form_fields = Image.admin_form_fields + ("alt_descr","priority",)
+        help_text="Zdjęcie wyróżnione wyświetla się jako zdjęcie główne galerii.",
+    )
+    admin_form_fields = Image.admin_form_fields + (
+        "alt_descr",
+        "priority",
+    )
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -53,9 +57,7 @@ class CustomRendition(AbstractRendition):
         unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
-
 class GalleryListingPage(RoutablePageMixin, Page):
-
     template = "gallery/gallery_listing_page.html"
     max_count = 1
     subpage_types = ["gallery.GalleryDetailPage", "gallery.PhotogalleryDetailPage"]
@@ -70,10 +72,14 @@ class GalleryListingPage(RoutablePageMixin, Page):
 
         try:
             if group == "1":
-                collections = Collection.objects.filter(Q(name="grupa młodsza")|Q(name="Grupa młodsza"))
+                collections = Collection.objects.filter(
+                    Q(name="grupa młodsza") | Q(name="Grupa młodsza")
+                )
                 context["group"] = "- grupa młodsza"
             elif group == "2":
-                collections = Collection.objects.filter(Q(name="grupa starsza")|Q(name="Grupa starsza"))
+                collections = Collection.objects.filter(
+                    Q(name="grupa starsza") | Q(name="Grupa starsza")
+                )
                 context["group"] = "- grupa starsza"
             else:
                 collections = []
@@ -85,7 +91,9 @@ class GalleryListingPage(RoutablePageMixin, Page):
         obj_list = []
         for item in galleries:
             for i in item:
-                image = CustomImage.objects.filter((Q(collection_id=i.id)&Q(priority=True))).last()
+                image = CustomImage.objects.filter(
+                    (Q(collection_id=i.id) & Q(priority=True))
+                ).last()
                 if image is None:
                     image = CustomImage.objects.filter(collection_id=i.id).last()
                 i.__dict__["image"] = image
@@ -112,7 +120,9 @@ class GalleryDetailPage(Page):
         context = super().get_context(request, *args, **kwargs)
         if request.GET.get("gallery_id", None):
             gallery_id = request.GET.get("gallery_id")
-            gallery = CustomImage.objects.filter(collection_id=gallery_id).order_by("id")
+            gallery = CustomImage.objects.filter(collection_id=gallery_id).order_by(
+                "id"
+            )
             collection = get_object_or_404(Collection, id=gallery_id)
             context["group"] = collection.get_parent().name.lower()
             print(context["group"])
@@ -122,7 +132,6 @@ class GalleryDetailPage(Page):
 
 
 class PhotogalleryListingPage(Page):
-
     template = "gallery/photogallery_listing_page.html"
     max_count = 2
     parent_page_types = ["home.HomePage"]
@@ -132,14 +141,19 @@ class PhotogalleryListingPage(Page):
     class Meta:
         verbose_name = "Lista fotogalerii"
 
-    group = models.ForeignKey(GroupsFilter, verbose_name="Grupa", blank=False, null=True, on_delete=models.SET_NULL)
+    group = models.ForeignKey(
+        GroupsFilter,
+        verbose_name="Grupa",
+        blank=False,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
     content_panels = Page.content_panels + [
         FieldPanel("group", heading="Grupa"),
     ]
 
 
 class PhotogalleryDetailPage(Page):
-
     page_description = "Wybierz całą kolekcję zdjęć LUB wybierz poszczególne zdjęcia, dzięki czemu będzie możliwa zmiana ich kolejności."
     template = "gallery/photogallery_detail_page.html"
     subpage_types = []
@@ -157,29 +171,38 @@ class PhotogalleryDetailPage(Page):
 
     @property
     def image(self):
-        if self.collection:
-            image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
-            if image is None:
-                image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+        # if self.collection:
+        #     image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
+        #     if image is None:
+        #         image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+        # else:
+        # image_obj = self.gallery_images.filter(image__priority=True).last() | self.gallery_images.all().last()
+        # image = image_obj.image
+        # return image
+
+        image_obj = self.gallery_images.filter(highlight=True).last()
+        if image_obj:
+            return image_obj.image
         else:
-            image_obj = self.gallery_images.filter(image__priority=True).last() | self.gallery_images.all().last()
-            image = image_obj.image
-        return image
-
-
+            return self.gallery_images.all().last().image
 
     content_panels = Page.content_panels + [
-        FieldPanel("collection"),
-        MultipleChooserPanel("gallery_images", chooser_field_name="image", heading="Zdjęcia",
-        help_text="""Wybierz powyżej całą kolekcję zdjęć LUB
-        wybierz poniżej poszczególne zdjęcia - dzięki temu będzie możliwa
-        zmiana ich kolejności wyświetlania na stronie.
-        (Uwaga! Jeśli wybierzesz kolekcję zdjęć, dodatkowy wybór zdjęć nie będzie uwzględniony.)""",)
+        MultiFieldPanel(
+            [
+                MultipleImagesPanel(
+                    "gallery_images",
+                    image_field_name="image",
+                    label="",
+                    help_text="""Pamiętaj o wybraniu kolekcji przed wgrywaniem zdjęć""",
+                )
+            ],
+            heading="Zdjęcia",
+        ),
+        # FieldPanel("collection"),
     ]
 
     class Meta:
         verbose_name = "Fotogaleria"
-
 
 
 class GalleryImage(Orderable):
@@ -193,9 +216,15 @@ class GalleryImage(Orderable):
         verbose_name="",
         null=True,
     )
+    highlight = models.BooleanField(
+        default=False,
+        verbose_name="Zdjęcie główne",
+        help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
+    )
+
 
     panels = [
-        FieldPanel("image"),
+        FieldRowPanel([FieldPanel("image"), FieldPanel("highlight")]),
     ]
 
     def __str__(self):

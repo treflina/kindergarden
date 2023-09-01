@@ -1,12 +1,12 @@
 from django.conf import settings
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-
+from wagtail_multi_upload.views import add as add_multiple_fix
 
 from search import views as search_views
 
@@ -20,6 +20,7 @@ urlpatterns = [
         "sitemap.xml",
         TemplateView.as_view(template_name="sitemap.xml", content_type="text/xml"),
     ),
+    re_path(r"^multi-add-fix/", add_multiple_fix, name="add_multiple_fix"),
 ]
 
 

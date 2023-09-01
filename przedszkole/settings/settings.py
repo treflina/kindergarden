@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "wagtail.documents",
     # "wagtail.images",
     "applications.gallery.apps.GalleryImagesAppConfig",
+    "wagtail_multi_upload",
     "wagtail.search",
     "wagtail.admin",
     "wagtail.contrib.routable_page",
