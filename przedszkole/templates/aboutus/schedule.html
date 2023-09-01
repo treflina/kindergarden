@@ -15,14 +15,14 @@
                     <h2 class="schedule__heading">Grupa młodsza</h2>
                     {% for block in page.group_1 %}
                     <p class="schedule__activity-time">{{block.value.start_hour}} - {{block.value.end_hour}}</p>
-                    <p class="schedule__activity-description">{{block.value.description}}.</p>
+                    <p class="schedule__activity-description">{{block.value.description}}</p>
                     {% endfor %}
                 </div>
                 <div class="schedule__group2">
                     <h2 class="schedule__heading">Grupa starsza</h2>
-                    {% for block in page.group_1 %}
+                    {% for block in page.group_2 %}
                     <p class="schedule__activity-time">{{block.value.start_hour}} - {{block.value.end_hour}}</p>
-                    <p class="schedule__activity-description">{{block.value.description}}.</p>
+                    <p class="schedule__activity-description">{{block.value.description}}</p>
                     {% endfor %}
                 </div>
             </div>
