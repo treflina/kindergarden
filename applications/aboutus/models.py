@@ -96,7 +96,7 @@ class AccessibilityInfoPage(Page):
         verbose_name="Data publikacji strony internetowej", blank=False
     )
     update_date = models.DateField(verbose_name="Data ostatniej istotnej aktualizacji", blank=True)
-    accordance = models.BooleanField("Zgodność z ustawą", blank=False)
+    accordance = models.BooleanField("Zgodność z ustawą", blank=False, default=False )
     exceptions = RichTextField(
         "Niezgodności z ustawą, wyłączenia",
         help_text="Wypełnij w przypadku częściowej zgodności z ustawą",
