@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "wagtail_multi_upload",
     "wagtail.search",
     "wagtail.admin",
+    "wagtail.contrib.modeladmin",
     "wagtail.contrib.routable_page",
     "wagtail",
     "wagtail.contrib.table_block",
@@ -67,7 +68,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "corsheaders",
+    "robots",
 ]
 
 MIDDLEWARE = [

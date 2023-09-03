@@ -6,6 +6,7 @@ from django.views.generic.base import TemplateView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.contrib.sitemaps.views import sitemap
 from wagtail_multi_upload.views import add as add_multiple_fix
 
 from search import views as search_views
@@ -16,10 +17,8 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("", include("applications.aboutus.urls")),
-    path(
-        "sitemap.xml",
-        TemplateView.as_view(template_name="sitemap.xml", content_type="text/xml"),
-    ),
+    path('sitemap.xml', sitemap),
+    re_path(r'^robots\.txt', include('robots.urls')),
     re_path(r"^multi-add-fix/", add_multiple_fix, name="add_multiple_fix"),
 ]
 
