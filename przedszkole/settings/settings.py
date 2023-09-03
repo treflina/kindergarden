@@ -214,6 +214,32 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 CSRF_TRUSTED_ORIGINS = get_secret("CSRF_TRUSTED_ORIGINS")
 # CORS_ALLOWED_ORIGINS = get_secret("CORS_ALLOWED_ORIGINS")
 
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "root": {"level": "WARN", "handlers": ["file"]},
+    "handlers": {
+        "file": {
+            "level": "WARN",
+            "class": "logging.FileHandler",
+            "filename": "django.log",
+            "formatter": "app",
+        },
+    },
+    "loggers": {
+        "django": {"handlers": ["file"], "level": "WARN", "propagate": True},
+    },
+    "formatters": {
+        "app": {
+            "format": (
+                "%(asctime)s [%(levelname)-8s] " "(%(module)s.%(funcName)s) %(message)s"
+            ),
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
+}
+
 sentry_sdk.init(
     dsn=get_secret("SENTRY_DSN"),
     integrations=[
