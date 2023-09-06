@@ -8,7 +8,7 @@ from django.db.models import Q
 
 from modelcluster.fields import ParentalKey, ForeignKey
 from wagtail.models import Page, Orderable, Collection
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel, MultipleChooserPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail_multi_upload.edit_handlers import MultipleImagesPanel
@@ -48,6 +48,7 @@ class CustomImage(AbstractImage):
                 self.save(update_fields=["width", "height", "file_size"])
 
 
+
 class CustomRendition(AbstractRendition):
     image = models.ForeignKey(
         CustomImage, on_delete=models.CASCADE, related_name="renditions"
@@ -57,10 +58,11 @@ class CustomRendition(AbstractRendition):
         unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
+
 class GalleryListingPage(RoutablePageMixin, Page):
     template = "gallery/gallery_listing_page.html"
     max_count = 1
-    subpage_types = ["gallery.GalleryDetailPage", "gallery.PhotogalleryDetailPage"]
+    subpage_types = ["gallery.GalleryDetailPage"]
     password_required_template = "gallery/password_required.html"
 
     class Meta:
@@ -135,8 +137,8 @@ class PhotogalleryListingPage(Page):
     template = "gallery/photogallery_listing_page.html"
     max_count = 2
     parent_page_types = ["home.HomePage"]
-    subpage_types = ["gallery.PhotogalleryDetailPage"]
-    # password_required_template = "gallery/password_required.html"
+    # subpage_types = ["gallery.PhotogalleryDetailPage", "gallery.PhotogalleryDetailPage2"]
+    password_required_template = "gallery/password_required.html"
 
     class Meta:
         verbose_name = "Lista fotogalerii"
@@ -153,79 +155,142 @@ class PhotogalleryListingPage(Page):
     ]
 
 
-class PhotogalleryDetailPage(Page):
-    page_description = "Wybierz całą kolekcję zdjęć LUB wybierz poszczególne zdjęcia, dzięki czemu będzie możliwa zmiana ich kolejności."
-    template = "gallery/photogallery_detail_page.html"
-    subpage_types = []
-    parent_page_types = ["gallery.PhotogalleryListingPage"]
-    password_required_template = "gallery/password_required.html"
+# class PhotogalleryDetailPage(Page):
+#     page_description = "Zdjęcia zostaną zamieszczone."
+#     template = "gallery/photogallery_detail_page.html"
+#     subpage_types = []
+#     parent_page_types = ["gallery.PhotogalleryListingPage"]
+#     password_required_template = "gallery/password_required.html"
 
-    collection = models.ForeignKey(
-        Collection,
-        verbose_name="Kolekcja zdjęć",
-        # limit_choices_to=~models.Q(name__in=["Root"]),
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
+#     collection = models.ForeignKey(
+#         Collection,
+#         verbose_name="Kolekcja zdjęć",
+#         # limit_choices_to=~models.Q(name__in=["Root"]),
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#     )
 
-    @property
-    def image(self):
-        # if self.collection:
-        #     image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
-        #     if image is None:
-        #         image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
-        # else:
-        # image_obj = self.gallery_images.filter(image__priority=True).last() | self.gallery_images.all().last()
-        # image = image_obj.image
-        # return image
+#     @property
+#     def image(self):
+#         # if self.collection:
+#         #     image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
+#         #     if image is None:
+#         #         image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+#         # else:
+#         # image_obj = self.gallery_images.filter(image__priority=True).last() | self.gallery_images.all().last()
+#         # image = image_obj.image
+#         # return image
 
-        image_obj = self.gallery_images.filter(highlight=True).last()
-        if image_obj:
-            return image_obj.image
-        else:
-            return self.gallery_images.all().last().image
+#         image_obj = self.gallery_images1.filter(highlight=True).last()
+#         if image_obj:
+#             return image_obj.image
+#         else:
+#             return self.gallery_images1.all().last().image
 
-    content_panels = Page.content_panels + [
-        MultiFieldPanel(
-            [
-                MultipleImagesPanel(
-                    "gallery_images",
-                    image_field_name="image",
-                    label="",
-                    help_text="""Pamiętaj o wybraniu kolekcji przed wgrywaniem zdjęć""",
-                )
-            ],
-            heading="Zdjęcia",
-        ),
-        # FieldPanel("collection"),
-    ]
+#     content_panels = Page.content_panels + [
+#         MultiFieldPanel(
+#             [
+#                 MultipleImagesPanel(
+#                     "gallery_images1",
+#                     image_field_name="image",
+#                     label="",
+#                     help_text="""Pamiętaj o wybraniu kolekcji przed wgrywaniem zdjęć""",
+#                 )
+#             ],
+#             heading="Zdjęcia",
+#         ),
+#         # FieldPanel("collection"),
+#     ]
 
-    class Meta:
-        verbose_name = "Fotogaleria"
-
-
-class GalleryImage(Orderable):
-    page = ParentalKey(
-        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images"
-    )
-    image = models.ForeignKey(
-        "CustomImage",
-        on_delete=models.CASCADE,
-        related_name="+",
-        verbose_name="",
-        null=True,
-    )
-    highlight = models.BooleanField(
-        default=False,
-        verbose_name="Zdjęcie główne",
-        help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
-    )
+#     class Meta:
+#         verbose_name = "Fotogaleria"
 
 
-    panels = [
-        FieldRowPanel([FieldPanel("image"), FieldPanel("highlight")]),
-    ]
+# class PhotogalleryDetailPage2(Page):
+#     page_description = "Zdjęcia są już wgrane."
+#     template = "gallery/photogallery_detail_page.html"
+#     subpage_types = []
+#     parent_page_types = ["gallery.PhotogalleryListingPage"]
+#     password_required_template = "gallery/password_required.html"
 
-    def __str__(self):
-        return self.image.title
+#     collection = models.ForeignKey(
+#         Collection,
+#         verbose_name="Kolekcja zdjęć",
+#         limit_choices_to=~models.Q(name__in=["Root"]),
+#         null=True,
+#         blank=True,
+#         on_delete=models.SET_NULL,
+#     )
+
+#     @property
+#     def image(self):
+#         if self.collection:
+#             image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(highlight=True)).last()
+#             if image is None:
+#                 image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+#         else:
+#             image_obj = self.gallery_images2.filter(image__priority=True).last() | self.gallery_images2.all().last()
+#             image = image_obj.image
+#             return image
+
+
+#     content_panels = Page.content_panels + [
+#         MultiFieldPanel(
+#             [
+#                 MultipleChooserPanel(
+#                     "gallery_images2",
+#                     chooser_field_name="image",
+#                     label="",
+#                     help_text="""Wybrane zdjęcia będą widoczne na stronie tylko jeżeli nie została wybrana już jakaś kolekcja powyżej.""",
+#                 )
+#             ],
+#             heading="Zdjęcia",
+#         ),
+#         FieldPanel("collection"),
+#     ]
+
+#     class Meta:
+#         verbose_name = "Fotogaleria2"
+
+
+# class GalleryImageAbstractModel(Orderable):
+
+#     image = models.ForeignKey(
+#         "CustomImage",
+#         on_delete=models.CASCADE,
+#         related_name="+",
+#         verbose_name="",
+#         null=True,
+#     )
+#     highlight = models.BooleanField(
+#         default=False,
+#         verbose_name="Zdjęcie główne",
+#         help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
+#     )
+
+
+#     panels = [
+#         FieldRowPanel([FieldPanel("image"), FieldPanel("highlight")]),
+#     ]
+
+#     class Meta:
+#         abstract = True
+
+#     def __str__(self):
+#         return self.image.title
+
+
+# class GalleryImage(GalleryImageAbstractModel):
+
+#       page = ParentalKey(
+#         PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1"
+#     )
+
+
+# class GalleryImage(GalleryImageAbstractModel):
+
+#       page = ParentalKey(
+#         PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2"
+#     )
+

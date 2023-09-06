@@ -18,14 +18,7 @@
             {% comment %} <p>{% trans "Drag and drop images into this area to upload immediately." %}</p> {% endcomment %}
 
             <p>{{ help_text }}</p>
-            <div class="replace-file-input">
-                {% comment %} <button class="button bicolor icon icon-plus">{% trans "Choose from your computer" %}</button> {% endcomment %}
-                <button class="button bicolor icon icon-plus">{% trans "Choose from your computer" %}</button>
-                <input id="{{self.formset.prefix}}-fileupload" type="file" name="files[]"
-                       data-url="{% url 'add_multiple_fix' %}"
-                       multiple>
-            </div>
-            {% if collections %}
+                {% if collections %}
                 <div class="field">
                     <label for="id_{{self.formset.prefix}}_addimage_collection">{% trans "Add to collection:" %}</label>
                     <div class="field-content">
@@ -37,6 +30,15 @@
                     </div>
                 </div>
             {% endif %}
+            <br>
+            <div class="replace-file-input">
+                {% comment %} <button class="button bicolor icon icon-plus">{% trans "Choose from your computer" %}</button> {% endcomment %}
+                <button class="button bicolor icon icon-plus">Wybierz z komputera</button>
+                <input id="{{self.formset.prefix}}-fileupload" type="file" name="files[]"
+                       data-url="{% url 'add_multiple_fix' %}"
+                       multiple>
+            </div>
+
 
             <div id="{{self.formset.prefix}}-overall-progress" class="progress progress-secondary">
                 <div class="bar" style="width: 0%;">0%</div>
