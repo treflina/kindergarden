@@ -162,7 +162,7 @@ class PhotogalleryListingPage(Page):
 
 
 class PhotogalleryDetailPage(Page):
-    page_description = "Zdjęcia zostaną zamieszczone."
+    page_description = "Zdjęcia zostaną wgrane."
     template = "gallery/photogallery_detail_page.html"
     subpage_types = []
     parent_page_types = ["gallery.PhotogalleryListingPage"]
@@ -214,7 +214,7 @@ class PhotogalleryDetailPage(Page):
 
 
 class PhotogalleryDetailPage2(Page):
-    page_description = "Zdjęcia są już wgrane."
+    page_description = "Zdjęcia są już wgrane na serwerze."
     template = "gallery/photogallery_detail_page.html"
     subpage_types = []
     parent_page_types = ["gallery.PhotogalleryListingPage"]
@@ -232,31 +232,33 @@ class PhotogalleryDetailPage2(Page):
     @property
     def image(self):
         if self.collection:
-            image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(highlight=True)).last()
+            image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
             if image is None:
                 image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+            return image
         else:
             image_obj = self.gallery_images2.filter(highlight=True).last()
             if image_obj:
                 return image_obj.image
             else:
                 return self.gallery_images2.all().last().image
-        return image
+
 
 
     content_panels = Page.content_panels + [
-        FieldPanel("collection"),
+
         MultiFieldPanel(
             [
                 MultipleChooserPanel(
                     "gallery_images2",
                     chooser_field_name="image",
                     label="",
-                    help_text="""Wybrane zdjęcia będą widoczne na stronie tylko jeżeli nie została wybrana już jakaś kolekcja powyżej.""",
+                    help_text="""Wybrane zdjęcia będą widoczne na stronie tylko jeżeli nie zostanie wybrana cała kolekcja poniżej.""",
                 )
             ],
             heading="Zdjęcia",
         ),
+        FieldPanel("collection"),
     ]
 
     class Meta:
