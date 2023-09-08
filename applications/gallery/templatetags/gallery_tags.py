@@ -9,7 +9,14 @@ def gallery(context, gallery):
     images = CustomImage.objects.filter(collection=gallery)
     if not images:
         self = context.get("self")
-        images = [img.image for img in self.gallery_images.all()]
+        try:
+            images = [img.image for img in self.gallery_images1.all()]
+        except AttributeError:
+            pass
+        try:
+            images = [img.image for img in self.gallery_images2.all()]
+        except AttributeError:
+            pass
 
     return {
         "images": images,
