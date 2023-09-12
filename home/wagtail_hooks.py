@@ -102,7 +102,7 @@ def register_alignright_feature(features):
 @hooks.register("register_rich_text_features")
 def register_textred_feature(features):
     """
-    Change slected text color to red
+    Change selected text color to red
     """
     feature_name = "text-red"
     type_ = "TEXTRED"
@@ -146,7 +146,7 @@ def register_textgreen_feature(features):
 
     db_conversion = {
         "from_database_format": {
-            'span[class="text-red"]': InlineStyleElementHandler(type_)
+            'span[class="text-green"]': InlineStyleElementHandler(type_)
         },
         "to_database_format": {"style_map": {type_: 'span class="text-green"'}},
     }
@@ -174,7 +174,7 @@ def register_textblue_feature(features):
 
     db_conversion = {
         "from_database_format": {
-            'span[class="text-red"]': InlineStyleElementHandler(type_)
+            'span[class="text-blue"]': InlineStyleElementHandler(type_)
         },
         "to_database_format": {"style_map": {type_: 'span class="text-blue"'}},
     }
@@ -202,7 +202,7 @@ def register_textviolet_feature(features):
 
     db_conversion = {
         "from_database_format": {
-            'span[class="text-red"]': InlineStyleElementHandler(type_)
+            'span[class="text-violet"]': InlineStyleElementHandler(type_)
         },
         "to_database_format": {"style_map": {type_: 'span class="text-violet"'}},
     }
@@ -230,7 +230,7 @@ def register_textvioletlight_feature(features):
 
     db_conversion = {
         "from_database_format": {
-            'span[class="text-red"]': InlineStyleElementHandler(type_)
+            'span[class="text-violetlight"]': InlineStyleElementHandler(type_)
         },
         "to_database_format": {"style_map": {type_: 'span class="text-violetlight"'}},
     }

@@ -253,7 +253,7 @@ class PhotogalleryDetailPage2(Page):
                     "gallery_images2",
                     chooser_field_name="image",
                     label="",
-                    help_text="""Wybrane zdjęcia będą widoczne na stronie tylko jeżeli nie zostanie wybrana cała kolekcja poniżej.""",
+                    help_text="""UWAGA! Wybrane zdjęcia będą widoczne na stronie tylko, jeżeli nie zostanie wybrana cała kolekcja poniżej.""",
                 )
             ],
             heading="Zdjęcia",
