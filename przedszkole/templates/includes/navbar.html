@@ -5,7 +5,7 @@
     <div class="nav-wrapper">
         <div class="nav__logo">
             <a href="{% url 'wagtail_serve' '' %}" aria-label="Przejdź do strony głównej">
-            <img class="nav__logo-img" src="{% static 'img/frontcircled.jpg' %}" alt="Zdjęcie frontu budynku przedszkola"/></a>
+            <img class="nav__logo-img" src="{% static 'img/frontcircled.jpg' %}" alt="Zdjęcie frontu budynku przedszkola" width="90px" height="90px"/></a>
         </div>
         <button class="hamburger hamburger--spring" type="button" aria-haspopup="true" aria-expanded="false">
             <span class="hamburger-box" role="presentation"><span class="hamburger-inner" role="presentation"></span></span>
@@ -16,7 +16,7 @@
                 <a class="nav__item-link nav-link menu-close link-underlined" href="{% url 'wagtail_serve' '' %}">Strona główna</a>
             </li>
             <li class="nav__item">
-                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" data-dropdown="dropdown1">o nas <svg class="icon chevron-down" role="presentation">
+                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" aria-expanded="false" data-dropdown="dropdown1">o nas <svg class="icon chevron-down" role="presentation">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use>
                 </svg></button>
                 <ul id="dropdown1" class="nav__dropdown">
@@ -27,7 +27,7 @@
                 </ul>
             </li>
             <li class="nav__item">
-                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" data-dropdown="dropdown2">do pobrania <svg class="icon chevron-down" role="presentation">
+                <button class="nav__item-link nav-link nav-btn link-underlined" aria-haspopup="true" aria-expanded="false" data-dropdown="dropdown2">do pobrania <svg class="icon chevron-down" role="presentation">
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use></svg>
                 </button>
                 <ul id="dropdown2" class="nav__dropdown">

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import AboutUsIndexPage
 
 
 def concept(request):
@@ -30,8 +31,12 @@ def schedule(request):
 
 
 def sitemap(request):
+    aboutus_children = AboutUsIndexPage.objects.last().get_children().specific()
     return render(
-        request, "aboutus/sitemap.html", context={"page_title": "Mapa strony"}
+        request, "aboutus/sitemap.html", context={
+            "page_title": "Mapa strony",
+            "aboutus_children": aboutus_children
+            }
     )
 
 

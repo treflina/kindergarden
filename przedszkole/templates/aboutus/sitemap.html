@@ -11,27 +11,11 @@
             <ul class="sitemap ml-3">
                 <li class="sitemap-item sitemap-item--outside">O nas
                     <ul class="sitemap__inner">
+                        {% for child in aboutus_children %}
                         <li class="sitemap-item">
-                            <a href="{% slugurl 'oferta-przedszkola' %}" class="sitemap-link link-underlined">Oferta przedszkola</a>
+                            <a href="{{ child.get_url }}" class="sitemap-link link-underlined">{{child.title}}</a>
                         </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'rozklad' %}" class="sitemap-link link-underlined">Ramowy rozkład dnia</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'regulamin' %}" class="sitemap-link link-underlined">Regulamin</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'procedury' %}" class="sitemap-link link-underlined">Procedury</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'koncepcja' %}" class="sitemap-link link-underlined">Koncepcja pracy przedszkola</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'statut' %}" class="sitemap-link link-underlined">Statut</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'oplaty' %}" class="sitemap-link link-underlined">Opłaty i konta</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">Do pobrania
@@ -63,10 +47,10 @@
                 <li class="sitemap-item sitemap-item--outside">Galeria zdjęć
                     <ul class="sitemap__inner">
                         <li class="sitemap-item">
-                            <a href="{% slugurl 'galeria'%}?group=1" class="sitemap-link link-underlined">Grupa młodsza</a>
+                            <a href="{% slugurl 'galeria1'%}" class="sitemap-link link-underlined">Grupa młodsza</a>
                         </li>
                         <li class="sitemap-item">
-                            <a href="{% slugurl 'galeria'%}?group=2" class="sitemap-link link-underlined">Grupa starsza</a>
+                            <a href="{% slugurl 'galeria2'%}" class="sitemap-link link-underlined">Grupa starsza</a>
                         </li>
                     </ul>
                 </li>
