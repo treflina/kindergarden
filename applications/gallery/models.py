@@ -158,6 +158,7 @@ class PhotogalleryListingPage(Page):
         context = super().get_context(request, *args, **kwargs)
         galleries = self.get_children().live().specific().order_by("-first_published_at")
         context["galleries"] = galleries
+        print(context)
         return context
 
 
@@ -190,9 +191,9 @@ class PhotogalleryDetailPage(Page):
 
         image_obj = self.gallery_images1.filter(highlight=True).last()
         if image_obj:
-            return image_obj.image
+            return image_obj.image1
         else:
-            return self.gallery_images1.all().last().image
+            return self.gallery_images1.all().last().image1
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -239,9 +240,9 @@ class PhotogalleryDetailPage2(Page):
         else:
             image_obj = self.gallery_images2.filter(highlight=True).last()
             if image_obj:
-                return image_obj.image
+                return image_obj.image2
             else:
-                return self.gallery_images2.all().last().image
+                return self.gallery_images2.all().last().image2
 
 
 

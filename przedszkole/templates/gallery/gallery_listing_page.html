@@ -14,8 +14,7 @@
         <div class="content wrapper">
             <div class="photogallery__list mt-3">
                  {% for item in galleries %}
-                 {% if item.image1 %}
-                        {% image item.image1 fill-400x300 as img %}
+                        {% image item.image fill-400x300 as img %}
                         <div class="photogallery__card">
                               <a href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}" tabindex="-1" style="outline: none;">
                                 <span class="sr-only">Link do galerii zdjęć {{item.name}}</span><img src="{{img.url}}" alt="{{item.image1.alt_descr}}"></a>
@@ -24,17 +23,6 @@
                                     <a class="photogallery__card-link main-button" href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}">Zobacz galerię</a>
                               </div>
                         </div>
-                          {% elif item.image2 %}
-                {% image item.image2 fill-400x300 as img %}
-                    <div class="photogallery__card">
-                              <a href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}" tabindex="-1" style="outline: none;">
-                                <span class="sr-only">Link do galerii zdjęć {{item.name}}</span><img src="{{img.url}}" alt="{{item.image2.alt_descr}}"></a>
-                              <div class="photogallery__card-descr">
-                                    <p class="photogallery__card-title">{{ item.name }}</p>
-                                    <a class="photogallery__card-link main-button" href="{% slugurl 'zdjecia' %}?gallery_id={{item.id}}">Zobacz galerię</a>
-                              </div>
-                        </div>
-                {% endif %}
                         {% endfor %}
             </div>
         </div>
