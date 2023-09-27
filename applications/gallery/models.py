@@ -199,7 +199,7 @@ class PhotogalleryDetailPage(Page):
             [
                 MultipleImagesPanel(
                     "gallery_images1",
-                    image_field_name="image",
+                    image_field_name="image1",
                     label="",
                     help_text="""Pamiętaj o wybraniu kolekcji przed wgrywaniem zdjęć""",
                 )
@@ -251,7 +251,7 @@ class PhotogalleryDetailPage2(Page):
             [
                 MultipleChooserPanel(
                     "gallery_images2",
-                    chooser_field_name="image",
+                    chooser_field_name="image2",
                     label="",
                     help_text="""UWAGA! Wybrane zdjęcia będą widoczne na stronie tylko, jeżeli nie zostanie wybrana cała kolekcja poniżej.""",
                 )
@@ -263,6 +263,59 @@ class PhotogalleryDetailPage2(Page):
 
     class Meta:
         verbose_name = "Fotogaleria2"
+
+
+class GalleryImageModel1(Orderable):
+    page = ParentalKey(
+        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1")
+
+    image1 = models.ForeignKey(
+        "CustomImage",
+        on_delete=models.CASCADE,
+        related_name="+",
+        verbose_name="",
+        null=True,
+    )
+    highlight = models.BooleanField(
+        default=False,
+        verbose_name="Zdjęcie główne",
+        help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
+    )
+
+
+    panels = [
+        FieldRowPanel([FieldPanel("image1"), FieldPanel("highlight")]),
+    ]
+
+    def __str__(self):
+        return self.image.title
+
+
+class GalleryImageModel2(Orderable):
+    page = ParentalKey(
+        PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2")
+
+    image2 = models.ForeignKey(
+        "CustomImage",
+        on_delete=models.CASCADE,
+        related_name="+",
+        verbose_name="",
+        null=True,
+    )
+    highlight = models.BooleanField(
+        default=False,
+        verbose_name="Zdjęcie główne",
+        help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
+    )
+
+
+    panels = [
+        FieldRowPanel([FieldPanel("image2"), FieldPanel("highlight")]),
+    ]
+
+
+    def __str__(self):
+        return self.image.title
 
 
 class GalleryImageAbstractModel(Orderable):
@@ -292,16 +345,16 @@ class GalleryImageAbstractModel(Orderable):
         return self.image.title
 
 
-class GalleryImage1(GalleryImageAbstractModel):
+# class GalleryImage1(GalleryImageAbstractModel):
 
-      page = ParentalKey(
-        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1"
-    )
+#     page = ParentalKey(
+#         PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1")
 
 
-class GalleryImage2(GalleryImageAbstractModel):
 
-      page = ParentalKey(
-        PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2"
-    )
+# class GalleryImage2(GalleryImageAbstractModel):
+
+#       page = ParentalKey(
+#         PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2"
+#     )
 

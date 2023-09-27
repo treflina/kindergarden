@@ -10,11 +10,11 @@ def gallery(context, gallery):
     if not images:
         self = context.get("self")
         try:
-            images = [img.image for img in self.gallery_images1.all()]
+            images = [img.image1 for img in self.gallery_images1.all()]
         except AttributeError:
             pass
         try:
-            images = [img.image for img in self.gallery_images2.all()]
+            images = [img.image2 for img in self.gallery_images2.all()]
         except AttributeError:
             pass
 
