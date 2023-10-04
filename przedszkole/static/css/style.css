@@ -85,13 +85,14 @@
 .news__info ol {
   list-style-position: outside;
   margin-left: 2rem;
+  margin-bottom: 0.5em;
 }
 .news__info p {
   margin-bottom: 0.5em;
 }
 .news__info.active {
   display: block;
-  padding: 20px;
+  padding: 15px 20px 0;
   max-width: 95vw;
   opacity: 1;
 }
@@ -122,7 +123,7 @@
     max-width: 100%;
   }
   .news__info.active {
-    padding: 1rem;
+    padding: 1rem 1rem 0;
   }
   .news__btn {
     padding: 1rem 0.5rem;
