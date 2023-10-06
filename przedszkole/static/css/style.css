@@ -1531,7 +1531,6 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .photogallery .gallery-image span {
   display: flex;
-  width: 100%;
   overflow: hidden;
 }
 .photogallery .gallery-image img {

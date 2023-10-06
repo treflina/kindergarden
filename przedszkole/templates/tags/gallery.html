@@ -1,11 +1,9 @@
-{% load wagtailimages_tags %}
-{% for image in images %} {% image image width-600 as img %}
-<a class="photogallery-image-link gallery-image"
-                    href="{{image.file.url}}"
-                    data-lightbox="gallery-set"
-                    data-alt="{{image.alt_descr}}">
-                    <span class="sr-only">Otwórz zdjęcie w powiększeniu</span>
-                    <span><img
-                            class="photogallery-image"
-                            src="{{img.url}}" /></span></a>
+{% load wagtailimages_tags static %}
+{% for image in images %}
+{% image image width-600 as img %}
+
+<a class="photogallery-image-link gallery-image" href="{{image.file.url}}" data-lightbox="gallery-set" data-alt="{{image.alt_descr}}">
+        <span class="sr-only">Otwórz zdjęcie w powiększeniu</span>
+        <span><img class="photogallery-image" src="{{img.url}}"/></span>
+</a>
 {% endfor %}
