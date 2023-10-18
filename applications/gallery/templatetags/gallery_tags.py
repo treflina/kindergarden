@@ -6,7 +6,7 @@ register = template.Library()
 @register.inclusion_tag("tags/gallery.html", takes_context=True)
 def gallery(context, gallery):
 
-    images = CustomImage.objects.filter(collection=gallery)
+    images = CustomImage.objects.filter(collection=gallery).order_by("id")
     if not images:
         self = context.get("self")
         try:
