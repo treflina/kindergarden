@@ -90,13 +90,13 @@
         &-img {
             margin: 0 auto;
             max-width: 90%;
-            width: fit-content;
+            // width: fit-content;
             overflow: hidden;
 
             img {
                 width: 100%;
                 height: auto;
-                max-height: 900px;
+                // max-height: 900px;
                 object-fit: cover;
                 object-position: center;
             }
