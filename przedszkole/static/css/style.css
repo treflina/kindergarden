@@ -71,11 +71,14 @@
 .news__info-img {
   margin: 0 auto;
   max-width: 90%;
+  width: -moz-fit-content;
+  width: fit-content;
   overflow: hidden;
 }
 .news__info-img img {
   width: 100%;
   height: auto;
+  max-height: 900px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
