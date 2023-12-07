@@ -319,9 +319,97 @@
   font-size: 2rem;
 }
 
+.img-wrapper {
+  width: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  height: 250px;
+  margin-bottom: 2rem;
+}
+
+.chronicle {
+  position: relative;
+  grid-row: 2/3;
+  grid-column: full-start/full-end;
+  grid-gap: 3rem;
+  margin: 0 0 6rem;
+  padding: 7rem 0;
+  background-image: url("/static/img/przedszkole5.jpg");
+  background-position: center;
+  background-size: cover;
+  -webkit-clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+          clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+  z-index: -2;
+}
+.chronicle__heading {
+  color: white;
+}
+.chronicle__box {
+  display: grid;
+  grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
+}
+.chronicle__bgc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, rgba(70, 70, 157, 0.84), rgba(0, 112, 60, 0.84));
+  z-index: -1;
+}
+.chronicle__cards {
+  grid-column: center-start/center-end;
+  display: grid;
+  padding: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+  gap: 20px;
+  justify-items: center;
+}
+.chronicle__card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px #000;
+  background-color: #f3f2f0;
+  z-index: 5;
+}
+.chronicle__card-text {
+  display: flex;
+  flex-direction: column;
+}
+.chronicle__card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.chronicle__card-heading {
+  margin-bottom: 1.5rem;
+}
+.chronicle__card-date {
+  font-style: italic;
+}
+.chronicle__card-link {
+  display: inline-block;
+  margin: 1.5rem 0;
+  font-weight: bold;
+  color: rgb(70, 70, 157);
+  transition: -webkit-text-decoration-color 0.3s;
+  transition: text-decoration-color 0.3s;
+  transition: text-decoration-color 0.3s, -webkit-text-decoration-color 0.3s;
+  z-index: 11;
+}
+.chronicle__card-link:hover {
+  -webkit-text-decoration-color: transparent;
+          text-decoration-color: transparent;
+}
+
 .footer {
   grid-column: full-start/full-end;
-  grid-row: 6/7;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -385,7 +473,7 @@
 }
 .gallery {
   grid-column: center-start/center-end;
-  grid-row: 4/5;
+  grid-row: 3/4;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(7, 5.5vw);
@@ -992,7 +1080,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 
 .contact {
   grid-column: full-start/full-end;
-  grid-row: 5/6;
+  grid-row: 4/5;
   display: flex;
   justify-content: space-evenly;
   padding: 4rem 1rem;
@@ -1443,6 +1531,40 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   content: url("/static/img/svg/file-earmark-image.svg");
 }
 
+.pagination {
+  margin: 2rem 0 1rem;
+}
+
+.pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.pagination__item-link {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 0.15rem;
+  text-decoration: none;
+  border: 2px solid #dad3d3;
+  border-radius: 8px;
+  color: black;
+  color: white;
+  font-size: 1.7rem;
+}
+.pagination__item span {
+  display: inline-block;
+  color: inherit;
+}
+.pagination__item .active {
+  background-color: rgb(70, 70, 157);
+  border: 1px solid rgb(70, 70, 157);
+  color: white;
+}
+
 .photogallery__card {
   display: flex;
   flex-direction: column;
@@ -1809,7 +1931,7 @@ button span {
 .container {
   position: relative;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr auto 1fr;
   grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
   min-height: calc(100vh - 10.2rem);
 }

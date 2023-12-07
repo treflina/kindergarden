@@ -12,15 +12,19 @@
 {%include 'includes/navbar.html'%}
 <header class="header" id="header">
     <div class="header__wrapper">
-        <div class="header__box"  data-aos="zoom-in" data-aos-duration="700">
-            <h1 class="header__title" data-aos="zoom-out"  data-aos-delay="800" data-aos-duration="800"><span>Przedszkole </span><span>Publiczne </span> <span>w&nbsp;Turawie</span></h1>
-            <p class="header__text header__text--top" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
+        <div class="header__box" data-aos="zoom-in" data-aos-duration="700">
+            <h1 class="header__title" data-aos="zoom-out" data-aos-delay="800" data-aos-duration="800">
+                <span>Przedszkole </span><span>Publiczne </span> <span>w&nbsp;Turawie</span>
+            </h1>
+            <p class="header__text header__text--top" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">
+                Przedszkole jest początkiem drogi do przyszłego "Wielkiego
                 Świata".
                 W&nbsp;naszym przedszkolu wkładamy wiele serca, aby ta droga była dla dzieci ciekawa
                 i&nbsp;fascynująca.
                 Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
                 rozwijającej ich zdolności i&nbsp;zainteresowania.</p>
-            <p class="header__text header__text--bottom" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">Dziękujemy za odwiedziny i&nbsp;Państwa
+            <p class="header__text header__text--bottom" data-aos="zoom-out" data-aos-duration="800"
+                data-aos-delay="800">Dziękujemy za odwiedziny i&nbsp;Państwa
                 zainteresowanie!
             </p>
         </div>
@@ -46,6 +50,62 @@
                 </div>
             </div>
         </section>
+        <section class="chronicle" id="chronicle">
+
+            <h2 class="heading-secondary chronicle__heading">Kronika wydarzeń</h2>
+            <div class="chronicle__box">
+            <div class="chronicle__cards">
+                <div class="chronicle__card">
+                    <div class="img-wrapper">
+                        <img src="{% static 'img/dynia.jpg' %}" class="chronicle__card-img" decoding="async"
+                            loading="lazy">
+                    </div>
+                    <div class="chronicle__card-text">
+                        <p class="chronicle__card-date">23-01-2024</p>
+                        <h3 class="chronicle__card-heading">Pierwsza relacja</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                            facilis
+                            exercitationem adipisci architecto, ratione...</p>
+                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                    </div>
+                </div>
+                <div class="chronicle__card">
+                    <div class="img-wrapper">
+                        <img src="{% static 'img/niepo.jpg' %}" class="chronicle__card-img" decoding="async"
+                            loading="lazy">
+                    </div>
+                    <div class="chronicle__card-text">
+                        <p class="chronicle__card-date">23-01-2024</p>
+                        <h3 class="chronicle__card-heading">Druga relacja</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                            facilis
+                            exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
+                            Repudiandae
+                            exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
+                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                    </div>
+                </div>
+                <div class="chronicle__card">
+                    <div class="img-wrapper">
+                        <img src="{% static 'img/paso.jpg' %}" class="chronicle__card-img" decoding="async"
+                            loading="lazy">
+                    </div>
+                    <div class="chronicle__card-text">
+                        <p class="chronicle__card-date">23-01-2024</p>
+                        <h3 class="chronicle__card-heading">Trzecia relacja</h3>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                            facilis
+                            exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
+                            Repudiandae
+                            exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
+                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="chronicle__bgc"></div>
+            {%include 'includes/pagination.html'%}
+        </section>
         <section class="gallery grid-container">
             {% for loop_cycle in self.home_gallery_images.all %}
             {% image loop_cycle.home_gallery_image max-500x300 as img %}
@@ -54,18 +114,19 @@
             </div>
             {% endfor %}
         </section>
-
         <section class="contact" id="contact">
-            <div class="contact__name bold-txt"><p>Dane kontaktowe:</p></div>
+            <div class="contact__name bold-txt">
+                <p>Dane kontaktowe:</p>
+            </div>
             <div class="contact__details">
                 <p class="contact__details-heading bold-txt"><span>Przedszkole Publiczne w&nbsp;Turawie</span></p>
-                <p class="contact__details-adress"><img src="{% static 'img/svg/map-pin.svg' %}" alt="adres" width="24" height="24">46-045
-                    Turawa,
-                    ul.&nbsp;Opolska&nbsp;49</p>
-                <p class="contact__details-phone"><img src="{% static 'img/svg/phone.svg' %}"
-                        alt="telefon" width="24" height="24"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
-                <p class="contact__details-email"><img src="{% static 'img/svg/mail.svg' %}"
-                        alt="e-mail" width="24" height="24"><span>pp.turawa@oswiata-turawa.pl</span></p>
+                <p class="contact__details-adress"><img src="{% static 'img/svg/map-pin.svg' %}" alt="adres" width="24"
+                        height="24">46-045
+                    Turawa, ul.&nbsp;Opolska&nbsp;49</p>
+                <p class="contact__details-phone"><img src="{% static 'img/svg/phone.svg' %}" alt="telefon" width="24"
+                        height="24"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
+                <p class="contact__details-email"><img src="{% static 'img/svg/mail.svg' %}" alt="e-mail" width="24"
+                        height="24"><span>pp.turawa@oswiata-turawa.pl</span></p>
             </div>
         </section>
     </div>

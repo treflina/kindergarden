@@ -2,7 +2,7 @@
 
 .gallery {
     grid-column: center-start/center-end;
-    grid-row: 4/5;
+    grid-row: 3/4;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(7, 5.5vw);

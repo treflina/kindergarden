@@ -1,0 +1,47 @@
+@use '../colors'as *;
+
+.pagination {
+    margin: 2rem 0 1rem;
+}
+
+.pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.pagination__item {
+
+
+    &-link {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 0 .15rem;
+        text-decoration: none;
+        border: 2px solid #dad3d3;
+        border-radius: 8px;
+        color: black;
+        color: white;
+        // background-color: #dad3d3;
+        font-size: 1.7rem;
+
+
+
+    }
+
+    span {
+        display: inline-block;
+        color: inherit;
+    }
+
+    .active {
+        background-color: $color-primary-first;
+        // color: #efefef;
+        border: 1px solid $color-primary-first;
+        color: white;
+
+    }
+}
