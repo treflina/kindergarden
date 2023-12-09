@@ -13,4 +13,5 @@ urlpatterns = [
     path("mapastrony/", views.sitemap, name="sitemap"),
     path("statut/", views.statut, name="statut"),
     path("rodo/", views.rodo, name="rodo"),
+    path("events/", views.events, name="events"),
 ]

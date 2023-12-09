@@ -19,6 +19,7 @@ from wagtail.admin.panels import (
 from wagtail.models import Collection
 from wagtail.fields import StreamField
 from wagtail.models import Page, Orderable
+from wagtail.snippets.models import register_snippet
 from applications.thematic.models import MonthFilter, GroupsFilter, ThematicPage
 from applications.gallery.models import GalleryListingPage, CustomImage
 
@@ -82,5 +83,30 @@ class HomePage(RoutablePageMixin, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+        context["events"] = EventSnippet.objects.all().order_by("date")
         context["month"] = self.month_num
         return context
+
+
+class EventSnippet(models.Model):
+    date = models.DateField(verbose_name="Data")
+    description = models.TextField(verbose_name="Opis wydarzenia")
+
+    panels = [
+        FieldPanel("date"),
+        FieldPanel("description"),
+    ]
+
+    class Meta:
+        verbose_name = "Wydarzenie"
+        verbose_name_plural = "Wydarzenia"
+
+    def __str__(self):
+        return f"{self.date}: {self.description}"
+
+    @property
+    def is_past(self):
+        return date.today() > self.date
+
+
+register_snippet(EventSnippet)

@@ -19,8 +19,7 @@
     background-image: url('/static/img/przedszkole5.jpg');
     background-position: center;
     background-size: cover;
-    clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
-    z-index: -2;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
     &__heading {
         color: white;
@@ -28,7 +27,7 @@
 
     &__box {
         display: grid;
-        grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
+        grid-template-columns: [full-start] 1fr [center-start] minmax(calc( 100vw - 2em ), 1300px) [center-end] 1fr [full-end];
     }
 
     &__bgc {
@@ -37,27 +36,24 @@
         left: 0;
         width: 100%;
         height: 100%;
-        // background-color: rgba(70,70,157,.7);
         background-image: linear-gradient(to right bottom, rgba($color-primary-first, .84), rgba($color-primary-second, .84));
         z-index: -1;
-
-
     }
 
     &__cards {
         grid-column: center-start/center-end;
-
         display: grid;
         padding: 1em;
-        grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+        grid-template-columns: repeat(auto-fill, minmax( calc( 100vw - 4em), 600px));
         gap: 20px;
         justify-items: center;
     }
 
     &__card {
+        position: relative;
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+
         border-radius: 8px;
         box-shadow: 1px 1px 4px #000;
         background-color: #f3f2f0;
@@ -67,6 +63,7 @@
         &-text {
             display: flex;
             flex-direction: column;
+            padding: 1rem;
         }
 
         &-img {
@@ -75,11 +72,11 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            padding: 1rem 1rem 0;
         }
 
         &-heading {
             margin-bottom: 1.5rem;
-
         }
 
         &-date {
@@ -92,11 +89,35 @@
             font-weight: bold;
             color: $color-primary-first;
             transition: text-decoration-color .3s;
-            z-index: 11;
 
             &:hover {
                 text-decoration-color: transparent;
+
             }
         }
+    }
+}
+
+@media(min-width: 36em) {
+    .chronicle {
+        &__box {
+            grid-template-columns: [full-start] 1fr [center-start] minmax(300px, 1300px) [center-end] 1fr [full-end];
+        }
+
+        &__cards {
+            grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+        }
+    }
+}
+
+@media(min-width: 48em) {
+    .chronicle {
+       clip-path: polygon(0 2%, 100% 0, 100% 99%, 0 100%);
+    }
+}
+
+@media(min-width: 63em) {
+    .chronicle {
+        clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
     }
 }

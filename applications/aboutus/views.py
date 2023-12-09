@@ -50,3 +50,6 @@ def statut(request):
 
 def rodo(request):
     return render(request, "aboutus/rodo.html", {"page_title": "Rodo"})
+
+def events(request):
+    return render(request, "aboutus/events.html", {"page_title": "Kalendarz"})

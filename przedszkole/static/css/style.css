@@ -337,16 +337,15 @@
   background-image: url("/static/img/przedszkole5.jpg");
   background-position: center;
   background-size: cover;
-  -webkit-clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
-          clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
-  z-index: -2;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 .chronicle__heading {
   color: white;
 }
 .chronicle__box {
   display: grid;
-  grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
+  grid-template-columns: [full-start] 1fr [center-start] minmax(calc(100vw - 2em), 1300px) [center-end] 1fr [full-end];
 }
 .chronicle__bgc {
   position: absolute;
@@ -361,14 +360,14 @@
   grid-column: center-start/center-end;
   display: grid;
   padding: 1em;
-  grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(calc(100vw - 4em), 600px));
   gap: 20px;
   justify-items: center;
 }
 .chronicle__card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   border-radius: 8px;
   box-shadow: 1px 1px 4px #000;
   background-color: #f3f2f0;
@@ -377,6 +376,7 @@
 .chronicle__card-text {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 .chronicle__card-img {
   display: block;
@@ -386,6 +386,7 @@
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  padding: 1rem 1rem 0;
 }
 .chronicle__card-heading {
   margin-bottom: 1.5rem;
@@ -401,13 +402,109 @@
   transition: -webkit-text-decoration-color 0.3s;
   transition: text-decoration-color 0.3s;
   transition: text-decoration-color 0.3s, -webkit-text-decoration-color 0.3s;
-  z-index: 11;
 }
 .chronicle__card-link:hover {
   -webkit-text-decoration-color: transparent;
           text-decoration-color: transparent;
 }
 
+@media (min-width: 36em) {
+  .chronicle__box {
+    grid-template-columns: [full-start] 1fr [center-start] minmax(300px, 1300px) [center-end] 1fr [full-end];
+  }
+  .chronicle__cards {
+    grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+  }
+}
+@media (min-width: 48em) {
+  .chronicle {
+    -webkit-clip-path: polygon(0 2%, 100% 0, 100% 99%, 0 100%);
+            clip-path: polygon(0 2%, 100% 0, 100% 99%, 0 100%);
+  }
+}
+@media (min-width: 63em) {
+  .chronicle {
+    -webkit-clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+            clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+  }
+}
+.events__wrapper {
+  grid-column: center-start/center-end;
+  height: -moz-min-content;
+  height: min-content;
+  max-width: 90%;
+  margin: 3rem auto 0;
+}
+
+.event {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  max-width: 42rem;
+  padding: 0.5rem;
+}
+.event__date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  min-width: 8rem;
+  height: 8rem;
+  margin-right: -4rem;
+  border-radius: 80px;
+  border: none;
+  box-shadow: 1px 1px 3px black;
+  background-color: rgb(0, 112, 60);
+  color: white;
+  font-size: 2.4rem;
+  font-weight: bold;
+  font-family: "Kalam", cursive;
+  z-index: 1;
+}
+.event__descr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 70%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0.5rem 1.5rem 0.5rem 5rem;
+  border: none;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 6px;
+  background-color: rgba(173, 190, 65, 0.6);
+  font-size: 1.7rem;
+}
+
+.slick-prev,
+.slick-next {
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 3.5rem;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 62em) {
+  .slick-prev,
+  .slick-next {
+    height: 2rem;
+    width: 2rem;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 2rem;
+  }
+  .slick-prev {
+    left: -2rem;
+  }
+  .slick-next {
+    right: -2rem;
+  }
+}
 .footer {
   grid-column: full-start/full-end;
   display: flex;
@@ -1931,7 +2028,7 @@ button span {
 .container {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto 1fr;
+  grid-template-rows: repeat(4, auto);
   grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] 1fr [full-end];
   min-height: calc(100vh - 10.2rem);
 }

@@ -6,7 +6,10 @@
 <link rel="preload" as="image" media="(min-width: 993px)" href="{% static 'img/colored-pencils-xl.jpg' %}">
 <link rel="preload" as="image" media="(max-width: 992px)" href="{% static 'img/colored-pencils-m.jpg' %}">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.min.css' %}" />
 {% endblock %}
+
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
@@ -31,6 +34,21 @@
     </div>
 </header>
 <main>
+    {% if events %}
+    <section class="events__wrapper" id="events">
+        <div class="events events-slider">
+            {% for event in events %}
+            <div>
+                <div class="event {% if not event.is_past %} active {% endif %}">
+                    <div class="event__date">{{ event.date|date:"d.m."}}</div>
+                    <p class="event__descr">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+    {% endif %}
     <div class="container">
         <section class="main" id="main">
             <div class="groups" id="groups">
@@ -50,58 +68,60 @@
                 </div>
             </div>
         </section>
+
         <section class="chronicle" id="chronicle">
 
             <h2 class="heading-secondary chronicle__heading">Kronika wydarzeń</h2>
             <div class="chronicle__box">
-            <div class="chronicle__cards">
-                <div class="chronicle__card">
-                    <div class="img-wrapper">
-                        <img src="{% static 'img/dynia.jpg' %}" class="chronicle__card-img" decoding="async"
-                            loading="lazy">
+                <div class="chronicle__cards">
+                    <div class="chronicle__card">
+                        <div class="img-wrapper">
+                            <img src="{% static 'img/dynia.jpg' %}" class="chronicle__card-img" decoding="async"
+                                loading="lazy">
+                        </div>
+                        <div class="chronicle__card-text">
+                            <p class="chronicle__card-date">23-01-2024</p>
+                            <h3 class="chronicle__card-heading">Pierwsza relacja</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                                facilis
+                                exercitationem adipisci architecto, ratione...</p>
+                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                        </div>
                     </div>
-                    <div class="chronicle__card-text">
-                        <p class="chronicle__card-date">23-01-2024</p>
-                        <h3 class="chronicle__card-heading">Pierwsza relacja</h3>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                            facilis
-                            exercitationem adipisci architecto, ratione...</p>
-                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+
+                    <div class="chronicle__card">
+                        <div class="img-wrapper">
+                            <img src="{% static 'img/niepo.jpg' %}" class="chronicle__card-img" decoding="async"
+                                loading="lazy">
+                        </div>
+                        <div class="chronicle__card-text">
+                            <p class="chronicle__card-date">23-01-2024</p>
+                            <h3 class="chronicle__card-heading">Druga relacja</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                                facilis
+                                exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
+                                Repudiandae
+                                exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
+                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                        </div>
+                    </div>
+                    <div class="chronicle__card">
+                        <div class="img-wrapper">
+                            <img src="{% static 'img/paso.jpg' %}" class="chronicle__card-img" decoding="async"
+                                loading="lazy">
+                        </div>
+                        <div class="chronicle__card-text">
+                            <p class="chronicle__card-date">23-01-2024</p>
+                            <h3 class="chronicle__card-heading">Trzecia relacja</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
+                                facilis
+                                exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
+                                Repudiandae
+                                exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
+                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+                        </div>
                     </div>
                 </div>
-                <div class="chronicle__card">
-                    <div class="img-wrapper">
-                        <img src="{% static 'img/niepo.jpg' %}" class="chronicle__card-img" decoding="async"
-                            loading="lazy">
-                    </div>
-                    <div class="chronicle__card-text">
-                        <p class="chronicle__card-date">23-01-2024</p>
-                        <h3 class="chronicle__card-heading">Druga relacja</h3>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                            facilis
-                            exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
-                            Repudiandae
-                            exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
-                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
-                    </div>
-                </div>
-                <div class="chronicle__card">
-                    <div class="img-wrapper">
-                        <img src="{% static 'img/paso.jpg' %}" class="chronicle__card-img" decoding="async"
-                            loading="lazy">
-                    </div>
-                    <div class="chronicle__card-text">
-                        <p class="chronicle__card-date">23-01-2024</p>
-                        <h3 class="chronicle__card-heading">Trzecia relacja</h3>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                            facilis
-                            exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
-                            Repudiandae
-                            exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
-                        <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
-                    </div>
-                </div>
-            </div>
             </div>
             <div class="chronicle__bgc"></div>
             {%include 'includes/pagination.html'%}
@@ -135,4 +155,8 @@
 <script type="text/javascript" src="{% static 'js/accordion.min.js' %}"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="{% static 'js/aos.min.js' %}"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/events-slick.min.js'%}"></script>
 {% endblock%}

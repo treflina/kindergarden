@@ -4,6 +4,7 @@ from wagtail.images.views.chooser import ImageChooserViewSet
 
 class MyChooserViewSet(ChooserViewSet):
     per_page = 25
+    ordering = ("id",)
 
 class CustomImageChooserViewSet(ImageChooserViewSet, MyChooserViewSet):
     pass
