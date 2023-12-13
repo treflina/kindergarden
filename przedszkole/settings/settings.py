@@ -8,7 +8,6 @@ from django.core.exceptions import ImproperlyConfigured
 from django.contrib.messages import constants as messages
 
 
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -43,6 +42,8 @@ INSTALLED_APPS = [
     "applications.todownload",
     "applications.gallery",
     "applications.menus",
+    "applications.chronicle",
+    #
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -183,10 +184,14 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/4.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATIC_URL = "/static/"
+if get_secret("DEVIL"):
+    STATIC_ROOT = os.path.join(BASE_DIR, "public", "static")
+    MEDIA_ROOT = os.path.join(BASE_DIR, "public", "media")
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
 
@@ -246,5 +251,5 @@ sentry_sdk.init(
         DjangoIntegration(),
     ],
     traces_sample_rate=1.0,
-    send_default_pii=True
+    send_default_pii=True,
 )

@@ -1,8 +1,9 @@
 from datetime import date
 
 from django.db import models
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, JsonResponse
 
 from wagtail.models import Page
 from wagtail.fields import RichTextField
@@ -22,7 +23,7 @@ from wagtail.models import Page, Orderable
 from wagtail.snippets.models import register_snippet
 from applications.thematic.models import MonthFilter, GroupsFilter, ThematicPage
 from applications.gallery.models import GalleryListingPage, CustomImage
-
+from applications.chronicle.models import ChroniclePage
 from . import blocks
 
 
@@ -45,10 +46,11 @@ class HomePageGallery(Orderable):
     ]
 
 
-class HomePage(RoutablePageMixin, Page):
+class HomePage(Page):
     """Home page model."""
 
     template = "home/home_page.html"
+    ajax_template = "home/chronicle_posts.html"
     max_count = 1
 
     month_num = date.today().month
@@ -85,6 +87,22 @@ class HomePage(RoutablePageMixin, Page):
         context = super().get_context(request, *args, **kwargs)
         context["events"] = EventSnippet.objects.all().order_by("date")
         context["month"] = self.month_num
+
+        chronicle_posts = (
+            ChroniclePage.objects.live()
+            .specific()
+            .order_by("-publish_date", "-first_published_at")
+        )
+
+        paginator = Paginator(chronicle_posts, 3)
+        page = request.GET.get("page")
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+        context["posts"] = posts
         return context
 
 

@@ -69,62 +69,23 @@
             </div>
         </section>
 
-        <section class="chronicle" id="chronicle">
-
+        <section class="chronicle" id="chronicle-section">
             <h2 class="heading-secondary chronicle__heading">Kronika wydarzeń</h2>
             <div class="chronicle__box">
-                <div class="chronicle__cards">
-                    <div class="chronicle__card">
-                        <div class="img-wrapper">
-                            <img src="{% static 'img/dynia.jpg' %}" class="chronicle__card-img" decoding="async"
-                                loading="lazy">
-                        </div>
-                        <div class="chronicle__card-text">
-                            <p class="chronicle__card-date">23-01-2024</p>
-                            <h3 class="chronicle__card-heading">Pierwsza relacja</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                                facilis
-                                exercitationem adipisci architecto, ratione...</p>
-                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
-                        </div>
-                    </div>
-
-                    <div class="chronicle__card">
-                        <div class="img-wrapper">
-                            <img src="{% static 'img/niepo.jpg' %}" class="chronicle__card-img" decoding="async"
-                                loading="lazy">
-                        </div>
-                        <div class="chronicle__card-text">
-                            <p class="chronicle__card-date">23-01-2024</p>
-                            <h3 class="chronicle__card-heading">Druga relacja</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                                facilis
-                                exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
-                                Repudiandae
-                                exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
-                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
-                        </div>
-                    </div>
-                    <div class="chronicle__card">
-                        <div class="img-wrapper">
-                            <img src="{% static 'img/paso.jpg' %}" class="chronicle__card-img" decoding="async"
-                                loading="lazy">
-                        </div>
-                        <div class="chronicle__card-text">
-                            <p class="chronicle__card-date">23-01-2024</p>
-                            <h3 class="chronicle__card-heading">Trzecia relacja</h3>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores minima rerum dolorem
-                                facilis
-                                exercitationem adipisci architecto, ratione, libero voluptates dolores delectus.
-                                Repudiandae
-                                exercitationem voluptatibus animi voluptatem unde sunt, rerum quod...</p>
-                            <a href="#" class="chronicle__card-link">Czytaj dalej &raquo;</a>
-                        </div>
-                    </div>
+                <div class="chronicle__cards" id="chronicle">
+                    <!-- ajax_template -->
                 </div>
             </div>
             <div class="chronicle__bgc"></div>
-            {%include 'includes/pagination.html'%}
+            <nav class="pagination">
+                <ul class="pagination__list" id="pagination">
+                    {% for page_num in posts.paginator.page_range %}
+                    <li class="pagination__item">
+                        <a href="?page={{ page_num }}" class="pagination__item-link pagination-link-{{ page_num }} {% if page_num == posts.number %} active{% endif %}"><span>{{ page_num }}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </section>
         <section class="gallery grid-container">
             {% for loop_cycle in self.home_gallery_images.all %}
@@ -159,4 +120,5 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/events-slick.min.js'%}"></script>
+<script src="{% static 'js/chronicle.min.js' %}"></script>
 {% endblock%}

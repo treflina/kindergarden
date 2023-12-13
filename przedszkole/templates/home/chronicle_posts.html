@@ -1,0 +1,18 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+        {% for post in posts %}
+
+        <div class="chronicle__card">
+            <div class="img-wrapper">
+                {% image post.banner_image fill-600x300 as img %}
+                <img src="{{ img.url }}" class="chronicle__card-img" alt="{{ img.alt_attr }}" decoding="async" loading="lazy">
+            </div>
+            <div class="chronicle__card-text">
+                <p class="chronicle__card-date">{{post.publish_date}}</p>
+                <h3 class="chronicle__card-heading">{{ post.title }}</h3>
+                <p>{{post.text|richtext|truncatewords:50}}</p>
+                <a href="{{post.url}}" class="chronicle__card-link">Czytaj dalej &raquo;</a>
+            </div>
+        </div>
+        {% endfor %}
+
+
