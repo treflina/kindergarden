@@ -993,17 +993,21 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .richtext-image {
   max-width: 100%;
   height: auto;
-  margin: 0 0 10px;
+  padding: 0 1.5rem 1rem;
 }
 
 .right {
   float: right;
-  margin-left: 2.5rem;
 }
 
 .left {
   float: left;
-  margin-right: 2.5rem;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .full-width {
@@ -1033,6 +1037,16 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   .th-block,
   .td-block {
     padding: 0.5rem;
+  }
+}
+@media (max-width: 62em) {
+  .richtext-image {
+    max-width: 600px;
+    width: 100%;
+    padding: 0;
+    float: none;
+    clear: both;
+    margin-bottom: 20px;
   }
 }
 .hamburger {

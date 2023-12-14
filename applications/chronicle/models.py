@@ -1,7 +1,12 @@
 from django.db import models
 from django.utils.timezone import now
 
-from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    InlinePanel,
+    MultiFieldPanel,
+    MultipleChooserPanel,
+)
 from wagtail.fields import StreamField, RichTextField
 from wagtail.models import Page, Orderable
 from modelcluster.fields import ParentalKey, ForeignKey
@@ -83,7 +88,17 @@ class ChroniclePage(Page):
             heading="Zdjęcie",
         ),
         FieldPanel("text"),
-        MultiFieldPanel([InlinePanel("images")], heading="Dodatkowe zdjęcia"),
+        MultiFieldPanel(
+            [
+                MultipleChooserPanel(
+                    "images",
+                    chooser_field_name="image",
+                    label="",
+                    help_text="""Pamiętaj o dodaniu tagu 'relacja' w 'Edycji obrazu'""",
+                )
+            ],
+            heading="Dodatkowe zdjęcia",
+        ),
         FieldPanel("gallery_link"),
     ]
 
