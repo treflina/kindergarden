@@ -69,4 +69,4 @@ const openFirstNews = () => {
     //     "firstNews=seen; expires=session; path=/;";
 //     openFirstNews();
 // }
-openFirstNews();
+// openFirstNews();

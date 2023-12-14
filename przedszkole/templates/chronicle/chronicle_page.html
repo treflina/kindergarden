@@ -20,7 +20,7 @@
                 </div>
                 {{ page.text|richtext }}
             </div>
-            <div class="images">
+            <div class="images group">
                 <ul class="images__list">
                     {% for i in page.images.all %}
                     {% image i.image fill-500x400 as thumbimg %}
@@ -48,6 +48,7 @@
                 </div>
             </div>
             {% endif %}
+            {% if prev_post or next_post %}
             <div class="posts__nav">
                 <p class="posts__nav-heading">
                     Zobacz inne relacje z wydarzeń:
@@ -73,6 +74,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endif %}
     </main>
     {%include 'includes/footer.html'%}
 </div>
