@@ -65,8 +65,8 @@ class ChroniclePage(Page):
         blank=True,
         null=True,
         default=now,
-        verbose_name="Data publikacji",
-        help_text="""Data publikacji wyświetlana na stronie.""",
+        verbose_name="Data",
+        help_text="""Data wyświetlana na stronie.""",
     )
     gallery_link = StreamField(
         [
