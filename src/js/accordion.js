@@ -62,7 +62,7 @@ const openFirstNews = () => {
     firstNews.style.maxHeight = `calc(${firstNews.scrollHeight}px + ${firstNews.parentElement.scrollHeight}px)`;
 };
 
-if (!(window.innerWidth <= 800 && window.innerHeight <= 1000)
+if ((window.innerWidth <= 800 && window.innerHeight <= 1000)
     && !(getCookie('firstNews'))
 ) {
     document.cookie =
