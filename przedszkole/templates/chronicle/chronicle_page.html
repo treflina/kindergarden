@@ -83,15 +83,17 @@
     const mainText = document.querySelector(".main-txt");
     const mainImg = document.querySelector(".main-img");
     const mainContent = document.querySelector(".main-content");
+    const imgs = document.querySelector(".images__list");
     let mainTextHeight, mainImgHeight, mainContentWidth;
 
     mainImgHeight = mainImg.offsetHeight;
     mainTextHeight = mainText.offsetHeight;
     mainContentWidth = mainContent.offsetWidth;
 
-    if ((mainTextHeight / mainImgHeight > 0.65) && (mainContentWidth > 1130)) {
+    if ((mainTextHeight / mainImgHeight > 0.695) && (mainContentWidth > 1130)) {
         mainContent.classList.remove("group");
         mainText.style.lineHeight = 1.7;
+        imgs.style.marginTop = "6em";
     }
 </script>
 {% endblock%}
