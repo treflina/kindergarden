@@ -56,20 +56,20 @@
                 <div class="posts__nav-box">
                     {% if prev_post %}
                     <div class="posts__nav-prev">
-                        <a href="{% pageurl prev_post %}" class="posts__nav-txt">{{ prev_post.title }}</a>
                         <div class="posts__nav-circle posts__nav-circle--left">
                             {% image prev_post.banner_image fill-100x100 as img %}
                             <img src="{{img.url}}" alt="" class="posts__nav-img">
                         </div>
+                        <a href="{% pageurl prev_post %}" class="posts__nav-link">{{ prev_post.title }}</a>
                     </div>
                     {% endif %}
                     {% if next_post %}
                     <div class="posts__nav-next">
+                        <a href="{% pageurl next_post %}" class="posts__nav-link">{{ next_post.title }}</a>
                         <div class="posts__nav-circle posts__nav-circle--right">
                             {% image next_post.banner_image fill-100x100 as img %}
                             <img src="{{img.url}}" alt="" class="posts__nav-img">
                         </div>
-                        <a href="{% pageurl next_post %}" class="posts__nav-txt">{{ next_post.title }}</a>
                     </div>
                     {% endif %}
                 </div>
