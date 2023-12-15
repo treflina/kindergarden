@@ -11,14 +11,14 @@ class PhotogalleryLinkBlock(StructBlock):
     label = ChoiceBlock(
         label="Tekst przycisku prowadzącego do fotogalerii.",
         choices=[
-            ("Przejdź do galerii zdjęć", "Przejdź do galerii zdjęć"),
+            ("Zobacz więcej zdjęć", "Zobacz więcej zdjęć"),
             (
-                "Przejdź do galerii zdjęć gr. młodszej",
-                "Przejdź do galerii zdjęć gr. młodszej",
+                "Zobacz więcej zdjęć gr. młodszej",
+                "Zobacz więcej zdjęć gr. młodszej",
             ),
             (
-                "Przejdź do galerii zdjęć gr. starszej",
-                "Przejdź do galerii zdjęć gr. starszej",
+                "Zobacz więcej zdjęć gr. starszej",
+                "Zobacz więcej zdjęć gr. starszej",
             ),
         ],
         icon="view",
