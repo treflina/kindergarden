@@ -13,12 +13,12 @@ class PhotogalleryLinkBlock(StructBlock):
         choices=[
             ("Zobacz więcej zdjęć", "Zobacz więcej zdjęć"),
             (
-                "Zobacz więcej zdjęć gr. młodszej",
-                "Zobacz więcej zdjęć gr. młodszej",
+                "Zobacz więcej zdjęć w gr. młodszej",
+                "Zobacz więcej zdjęć w gr. młodszej",
             ),
             (
-                "Zobacz więcej zdjęć gr. starszej",
-                "Zobacz więcej zdjęć gr. starszej",
+                "Zobacz więcej zdjęć w gr. starszej",
+                "Zobacz więcej zdjęć w gr. starszej",
             ),
         ],
         icon="view",

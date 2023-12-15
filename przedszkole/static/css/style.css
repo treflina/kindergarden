@@ -439,6 +439,7 @@
 }
 .posts__text-date {
   font-style: italic;
+  font-weight: 600;
   color: rgb(70, 70, 157);
 }
 .posts__heading {
