@@ -5,9 +5,19 @@
     max-width: 1220px;
     margin: 0 auto;
 
-    p {
-        margin-bottom: 1rem;
+
+
+    &__text {
+        p {
+            margin-bottom: 1rem;
+        }
+
+        &-date {
+            font-style: italic;
+            color: $color-primary-first;
+        }
     }
+
 
     &__heading {
         margin: 5rem 0 4rem;
@@ -18,15 +28,19 @@
         align-items: flex-start;
         flex-wrap: wrap;
         margin-top: 5rem;
+        width: 100%;
+
         &-txt {
             font-weight: bold;
         }
+
         &-box {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
         }
+
         &-link {
             display: inline-block;
             text-align: center;
@@ -50,6 +64,7 @@
             font-weight: 600;
             font-size: 1.7rem;
         }
+
         &-box {
             display: flex;
             justify-content: space-around;

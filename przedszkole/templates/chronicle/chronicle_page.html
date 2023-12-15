@@ -13,10 +13,12 @@
     <main class="main-subpage">
         <div class="posts">
             <h1 class="posts__heading">{{page.title}}</h1>
-            <div class="posts__text group" style="width:100%;">
+            <div class="posts__text group main-content" style="width:100%;">
                 {% image page.banner_image width-500 as img %}
-                <img src="{{ img.url }}" alt="{{ img.alt }}" class="richtext-image right" loading="lazy">
-                {{ page.text|richtext }}
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="richtext-image right main-img" loading="lazy">
+                <div class="main-txt">
+                    <p class="posts__text-date">{{page.publish_date}}</p>
+                    {{ page.text|richtext }}</div>
             </div>
             <div class="images">
                 <ul class="images__list">
@@ -77,4 +79,19 @@
     {%include 'includes/footer.html'%}
 </div>
 <script src="{% static 'js/fslightbox.js'%}"></script>
+<script>
+    const mainText = document.querySelector(".main-txt");
+    const mainImg = document.querySelector(".main-img");
+    const mainContent = document.querySelector(".main-content");
+    let mainTextHeight, mainImgHeight, mainContentWidth;
+
+    mainImgHeight = mainImg.offsetHeight;
+    mainTextHeight = mainText.offsetHeight;
+    mainContentWidth = mainContent.offsetWidth;
+
+    if ((mainTextHeight / mainImgHeight > 0.65) && (mainContentWidth > 1130)) {
+        mainContent.classList.remove("group");
+        mainText.style.lineHeight = 1.7;
+    }
+</script>
 {% endblock%}

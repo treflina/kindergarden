@@ -434,8 +434,12 @@
   max-width: 1220px;
   margin: 0 auto;
 }
-.posts p {
+.posts__text p {
   margin-bottom: 1rem;
+}
+.posts__text-date {
+  font-style: italic;
+  color: rgb(70, 70, 157);
 }
 .posts__heading {
   margin: 5rem 0 4rem;
@@ -445,6 +449,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 5rem;
+  width: 100%;
 }
 .posts__gallerylinks-txt {
   font-weight: bold;
@@ -1947,7 +1952,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 .password {
   grid-column: center-start/center-end;
-  grid-row: 2/6;
+  grid-row: 2/3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2001,7 +2006,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 @media (min-width: 31.35em) {
   .password {
     grid-column: center-start/center-end;
-    grid-row: 2/6;
+    grid-row: 2/3;
     display: flex;
     justify-content: center;
     align-items: center;
