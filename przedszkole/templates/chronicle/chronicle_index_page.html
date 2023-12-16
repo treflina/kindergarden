@@ -11,8 +11,9 @@
 
 <div class="container">
     <main class="main-subpage">
+        {% image page.header_image original as img %}
         <div class="heading__box heading__box--event"
-            style="background-image: {% if page.header_image %} url(' {{ page.header_image }}') {% else %} url({% static 'img/niepo.jpg' %})"
+            style="background-image: {% if page.header_image %} url(' {{ img.url }}') {% else %} url({% static 'img/niepo.jpg' %})"
             {% endif %};" id="header">
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </div>
