@@ -94,7 +94,7 @@ class HomePage(Page):
             .order_by("-publish_date", "-first_published_at")
         )
 
-        paginator = Paginator(chronicle_posts, 1)
+        paginator = Paginator(chronicle_posts, 3)
         page = request.GET.get("page")
         try:
             posts = paginator.page(page)
