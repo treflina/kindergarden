@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     const chronicleSection = document.getElementById("chronicle");
-    const btnLinks = document.getElementsByClassName("pagination__item-link");
+    const btnLinks = document.getElementsByClassName("pagination-link");
     let page = 1;
 
     const removeAndSetActiveClass = (p) => {

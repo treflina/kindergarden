@@ -80,10 +80,16 @@
             <nav class="pagination">
                 <ul class="pagination__list" id="pagination">
                     {% for page_num in posts.paginator.page_range %}
+                    {% if page_num < 6%}
                     <li class="pagination__item">
-                        <a href="?page={{ page_num }}" class="pagination__item-link pagination-link-{{ page_num }} {% if page_num == posts.number %} active{% endif %}"><span>{{ page_num }}</span></a>
+                        <a href="?page={{ page_num }}" class="pagination__item-link pagination-link pagination-link-{{ page_num }} {% if page_num == posts.number %} active{% endif %}"><span>{{ page_num }}</span></a>
                     </li>
+                    {% endif %}
                     {% endfor %}
+                    <li class="pagination__item">
+                        <a href="{% slugurl 'relacje' %}" class="pagination__item-link pagination__item-link--img">
+                            <img src="{% static 'img/svg/list.svg' %}" alt="Ikona listy" title="Przejdź do listy wszystkich wydarzeń" class="pagination__item-img"></a>
+                    </li>
                 </ul>
             </nav>
         </section>

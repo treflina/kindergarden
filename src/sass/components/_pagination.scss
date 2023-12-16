@@ -21,15 +21,26 @@
         padding: 6px 12px;
         margin: 0 .15rem;
         text-decoration: none;
-        border: 2px solid #dad3d3;
+        border: 2px solid $color-bcg-light;
         border-radius: 8px;
-        color: black;
         color: white;
-        // background-color: #dad3d3;
         font-size: 1.7rem;
+        transition: background-color .3s,
+        color .3s, transform .3s;
 
+        &--img {
+            background-color: $color-bcg-light;
 
+        }
 
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $color-violet-accessible;
+        }
+    }
+    &-img {
+        vertical-align: middle;
     }
 
     span {
@@ -38,10 +49,10 @@
     }
 
     .active {
-        background-color: $color-primary-first;
-        // color: #efefef;
-        border: 1px solid $color-primary-first;
+        background-color: $color-violet-accessible;
+        border: 2px solid $color-violet-accessible;
         color: white;
+        transform: translateY(-3px);
 
     }
 }

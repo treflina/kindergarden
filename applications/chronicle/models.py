@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from django.db import models
 from django.utils.timezone import now
 
@@ -22,9 +24,30 @@ class ChronicleIndexPage(Page):
     parent_page_types = ["home.HomePage"]
     max_count = 1
 
-    @property
-    def get_child_pages(self):
-        return self.get_children().public().live()
+    header_image = models.ForeignKey(
+        "gallery.CustomImage",
+        blank=True,
+        null=True,
+        related_name="+",
+        on_delete=models.SET_NULL,
+        verbose_name="Zdjęcie nagłówkowe w tle",
+    )
+
+    content_panels = Page.content_panels + [FieldPanel("header_image")]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        subpages = ChroniclePage.objects.live().public().order_by("-publish_date")
+
+        school_years = defaultdict(list)
+        for s in subpages:
+            if s.publish_date.month <= 9:
+                school_years[f"{s.publish_date.year-1}/{s.publish_date.year}"].append(s)
+            else:
+                school_years[f"{s.publish_date.year}/{s.publish_date.year + 1}"].append(s)
+        context["school_years"] = school_years.items()
+
+        return context
 
     class Meta:  # noqa
         verbose_name = "Kronika wydarzeń"

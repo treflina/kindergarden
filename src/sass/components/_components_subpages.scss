@@ -106,28 +106,34 @@
         width: 100%;
         margin: 0 auto;
         background-size: cover;
-        background-attachment: fixed;
         color: white;
         z-index: -2;
 
         &--crayons {
             background-image: url('/static/img/crayons-m.jpg');
             background-position: top;
+            background-attachment: fixed;
         }
 
         &--school2 {
             background-image: url('/static/img/school2-xl.jpg');
             background-position: bottom;
+            background-attachment: fixed;
         }
 
         &--paint {
             background-image: url('/static/img/paint-xl.jpg');
             background-position: top;
+            background-attachment: fixed;
         }
 
         &--school {
             background-image: url('/static/img/crayons2-xl.jpg');
             background-position: bottom;
+            background-attachment: fixed;
+        }
+        &--event {
+            background-position: center;
         }
 
         &-title {

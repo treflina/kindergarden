@@ -1,18 +1,39 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags env_extras %}
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+{% endblock %}
+{% load static wagtailcore_tags wagtailimages_tags env_extras %}
 {% block content %}
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
 
 <div class="container">
     <main class="main-subpage">
+        <div class="heading__box heading__box--event"
+            style="background-image: {% if page.header_image %} url(' {{ page.header_image.url }}') {% else %} url({% static 'img/niepo.jpg' %})"
+            {% endif %};" id="header">
+            <h1 class="heading__box-title">{{ page.title }}</h1>
+        </div>
+        <div class="content wrapper">
+            {% for year, content in school_years %}
+            <h2 class="posts__list-heading center-txt">Rok szkolny {{year}}</h2>
+            <ul class="posts__list content__list">
+                {% for subpage in content %}
+                <li class="posts__list-item">
+                    <p class="posts__list-date">{{ subpage.publish_date }}</p>
+                    <a href="{% pageurl subpage %}" class="posts__list-link todownload__link">{{ subpage.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
 
-
-
-        
     </main>
 
     {%include 'includes/footer.html'%}
+
 </div>
 
 
