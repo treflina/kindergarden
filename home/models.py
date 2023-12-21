@@ -88,19 +88,19 @@ class HomePage(Page):
     class Meta:
         verbose_name = "Strona główna"
 
-
-
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["events"] = EventSnippet.objects.all().order_by("date")
         context["month"] = self.month_num
 
-        context["thematic1"] = (
-            ThematicIndexPage.objects.filter(slug="tematyka1").live().public().exists()
-        )
-        context["thematic2"] = (
-            ThematicIndexPage.objects.filter(slug="tematyka2").live().public().exists()
-        )
+        thematic_page1 = ThematicIndexPage.objects.filter(slug="tematyka1").first()
+        thematic_page2 = ThematicIndexPage.objects.filter(slug="tematyka2").first()
+
+        if thematic_page1:
+            context["thematic1"] = thematic_page1.get_children().live().exists()
+
+        if thematic_page2:
+            context["thematic2"] = thematic_page2.get_children().live().exists()
 
         chronicle_posts = (
             ChroniclePage.objects.live()

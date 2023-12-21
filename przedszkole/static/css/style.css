@@ -624,6 +624,7 @@
   flex: 0 1 280px;
   list-style: none;
   overflow: hidden;
+  border: 5px solid rgb(243, 242, 240);
 }
 .images__list-item img {
   width: 100%;
