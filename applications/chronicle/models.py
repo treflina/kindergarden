@@ -14,6 +14,7 @@ from wagtail.models import Page, Orderable
 from modelcluster.fields import ParentalKey, ForeignKey
 
 from .blocks import PhotogalleryLinkBlock
+from applications.gallery.models import PhotogalleryDetailPage, PhotogalleryDetailPage2
 
 
 class ChronicleIndexPage(Page):
@@ -44,7 +45,9 @@ class ChronicleIndexPage(Page):
             if s.publish_date.month <= 9:
                 school_years[f"{s.publish_date.year-1}/{s.publish_date.year}"].append(s)
             else:
-                school_years[f"{s.publish_date.year}/{s.publish_date.year + 1}"].append(s)
+                school_years[f"{s.publish_date.year}/{s.publish_date.year + 1}"].append(
+                    s
+                )
         context["school_years"] = school_years.items()
 
         return context
@@ -131,7 +134,15 @@ class ChroniclePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        if any(block.value["photogallery"] for block in self.gallery_link):
+        if any(
+            PhotogalleryDetailPage.objects.live().filter(
+                title=block.value["photogallery"]
+            ).exists()
+            or PhotogalleryDetailPage2.objects.live().filter(
+                title=block.value["photogallery"]
+            ).exists()
+            for block in self.gallery_link
+        ):
             context["link_url_exists"] = True
 
         chronicle_posts = list(

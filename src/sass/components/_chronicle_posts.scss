@@ -67,6 +67,16 @@
     &__text {
         p {
             margin-bottom: 1rem;
+            font-size: 1.7rem;
+        }
+
+        .richtext-image {
+            border: 7px solid rgba(#46469d, .75);
+            border: 8px solid $color-bcg-light;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, .4);
+            padding: .75rem;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
         &-date {
@@ -204,17 +214,19 @@
 }
 
 .images {
+    margin-top: 2rem;
     &__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 1220px;
         gap: 20px;
-        margin: 3em auto 2em;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        background-color: $color-primary-second;
 
         &-item {
             position: relative;
-            flex: 0 1 290px;
+            flex: 0 1 280px;
             list-style: none;
             overflow: hidden;
 
@@ -237,12 +249,20 @@
 }
 
 @media(max-width: 62em) {
+    .posts {
+        &__text {
+            .richtext-image {
+                margin-left: 0;
+                border: none;
+                padding: 0;
+            }
+    }
     .images {
         &__list {
             justify-content: center;
         }
     }
-}
+}}
 
 @media(max-width: 37.5em) {
     .images {

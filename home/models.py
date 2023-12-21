@@ -21,7 +21,12 @@ from wagtail.models import Collection
 from wagtail.fields import StreamField
 from wagtail.models import Page, Orderable
 from wagtail.snippets.models import register_snippet
-from applications.thematic.models import MonthFilter, GroupsFilter, ThematicPage
+from applications.thematic.models import (
+    MonthFilter,
+    GroupsFilter,
+    ThematicPage,
+    ThematicIndexPage,
+)
 from applications.gallery.models import GalleryListingPage, CustomImage
 from applications.chronicle.models import ChroniclePage
 from . import blocks
@@ -83,10 +88,19 @@ class HomePage(Page):
     class Meta:
         verbose_name = "Strona główna"
 
+
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["events"] = EventSnippet.objects.all().order_by("date")
         context["month"] = self.month_num
+
+        context["thematic1"] = (
+            ThematicIndexPage.objects.filter(slug="tematyka1").live().public().exists()
+        )
+        context["thematic2"] = (
+            ThematicIndexPage.objects.filter(slug="tematyka2").live().public().exists()
+        )
 
         chronicle_posts = (
             ChroniclePage.objects.live()
@@ -94,7 +108,7 @@ class HomePage(Page):
             .order_by("-publish_date", "-first_published_at")
         )
 
-        paginator = Paginator(chronicle_posts, 3)
+        paginator = Paginator(chronicle_posts, 2)
         page = request.GET.get("page")
         try:
             posts = paginator.page(page)
