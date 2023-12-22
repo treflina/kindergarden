@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from applications.thematic.models import ThematicIndexPage
 from .models import AboutUsIndexPage
 
 
@@ -32,11 +34,29 @@ def schedule(request):
 
 def sitemap(request):
     aboutus_children = AboutUsIndexPage.objects.last().get_children().specific()
+
+    thematic_page1 = ThematicIndexPage.objects.filter(slug="tematyka1").first()
+    thematic_page2 = ThematicIndexPage.objects.filter(slug="tematyka2").first()
+
+    if thematic_page1:
+        thematic1 = thematic_page1.get_children().live().exists()
+    else:
+        thematic1 = None
+
+    if thematic_page2:
+        thematic2 = thematic_page2.get_children().live().exists()
+    else:
+        thematic2 = None
+
     return render(
-        request, "aboutus/sitemap.html", context={
+        request,
+        "aboutus/sitemap.html",
+        context={
             "page_title": "Mapa strony",
-            "aboutus_children": aboutus_children
-            }
+            "aboutus_children": aboutus_children,
+            "thematic1": thematic1,
+            "thematic2": thematic2
+        },
     )
 
 
@@ -50,6 +70,7 @@ def statut(request):
 
 def rodo(request):
     return render(request, "aboutus/rodo.html", {"page_title": "Rodo"})
+
 
 def events(request):
     return render(request, "aboutus/events.html", {"page_title": "Kalendarz"})

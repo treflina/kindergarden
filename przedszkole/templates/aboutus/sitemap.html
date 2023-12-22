@@ -34,16 +34,25 @@
                 <li class="sitemap-item sitemap-item--outside">
                     <a href="{% slugurl 'home' %}#news" class="sitemap-link link-underlined">Aktualności</a>
                 </li>
+                   <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
+                    <a href="{% slugurl 'kronika' %}" class="sitemap-link link-underlined">Kronika wydarzeń</a>
+                </li>
+                {% if thematic1 or thematic2 %}
                 <li class="sitemap-item sitemap-item--outside">Tematyka zajęć
                     <ul class="sitemap__inner">
+                        {% if thematic1 %}
                         <li class="sitemap-item">
                             <a href="/tematyka1/current/" class="sitemap-link link-underlined">Grupa młodsza</a>
                         </li>
+                        {% endif %}
+                        {% if thematic2 %}
                         <li class="sitemap-item">
                             <a href="/tematyka2/current/" class="sitemap-link link-underlined">Grupa starsza</a>
                         </li>
+                        {% endif %}
                     </ul>
                 </li>
+                {% endif %}
                 <li class="sitemap-item sitemap-item--outside">Galeria zdjęć
                     <ul class="sitemap__inner">
                         <li class="sitemap-item">

@@ -20,6 +20,7 @@
                     <p class="posts__text-date">{{page.publish_date}}</p>
                     {{ page.text|richtext }}</div>
             </div>
+            {% if page.images.count > 0 %}
             <div class="images">
                 <ul class="images__list" {% if page.images.count < 3 %} style="background-color: rgb(243, 242, 240);" {% endif %}>
                     {% for i in page.images.all %}
@@ -34,6 +35,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            {% endif %}
             {% if link_url_exists %}
             <div class="posts__gallerylinks">
                 <p class="posts__nav-heading">Dla rodziców:</p>
