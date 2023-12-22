@@ -39,6 +39,7 @@ class ChronicleIndexPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         subpages = ChroniclePage.objects.live().order_by("-publish_date")
+        context["subpages"] = subpages
 
         school_years = defaultdict(list)
         for s in subpages:
@@ -155,6 +156,8 @@ class ChroniclePage(Page):
 
         if p_index != 0:
             context["next_post"] = chronicle_posts[p_index - 1]
+
+
 
         return context
 

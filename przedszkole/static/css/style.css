@@ -435,10 +435,8 @@
   margin: 0 auto;
 }
 .posts__list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 3rem;
+  width: 100%;
+  flex: 1 0 55%;
 }
 .posts__list-item {
   margin-bottom: 1rem;
@@ -446,8 +444,13 @@
 .posts__list-link {
   display: inline-block;
   font-size: 1.7rem;
-  color: #000;
+  color: rgb(0, 112, 60);
+  text-decoration: none;
   font-weight: 600;
+}
+.posts__list-link::before {
+  height: 2px;
+  background-color: rgb(0, 112, 60);
 }
 .posts__list-date {
   font-style: italic;
@@ -460,9 +463,7 @@
   width: 100%;
   margin: 1.5rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-  display: flex;
   border-radius: 8px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
 .posts__post-imgbox {
@@ -606,9 +607,38 @@
   -webkit-text-decoration-color: rgb(0, 112, 60);
           text-decoration-color: rgb(0, 112, 60);
 }
+.posts__aside {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex: 1 0 35rem;
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+  margin-top: 120px;
+  margin-left: 2rem;
+}
+.posts__aside-img {
+  width: 160px;
+  height: 110px;
+  margin: 0.75rem;
+  border: 6px solid rgb(243, 242, 240);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.posts__aside-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 .images {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 .images__list {
   display: flex;
@@ -642,6 +672,9 @@
 }
 
 @media (max-width: 62em) {
+  .posts__aside {
+    display: none;
+  }
   .posts__text .richtext-image {
     margin-left: 0;
     border: none;
@@ -1554,7 +1587,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 .main-subpage .content__list {
   padding: 2rem;
   padding-left: 5rem;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   background: #f5f7f2;
   list-style-position: outside;
@@ -2300,6 +2333,12 @@ button span {
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .main {

@@ -21,7 +21,7 @@
                     {{ page.text|richtext }}</div>
             </div>
             <div class="images">
-                <ul class="images__list">
+                <ul class="images__list" {% if page.images.count < 3 %} style="background-color: rgb(243, 242, 240);" {% endif %}>
                     {% for i in page.images.all %}
                     {% image i.image fill-500x400 as thumbimg %}
                     {% image i.image original as img %}
