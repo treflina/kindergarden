@@ -640,6 +640,9 @@
 .images {
   margin-top: 4rem;
 }
+.images .bcg-light {
+  background-color: rgb(243, 242, 240);
+}
 .images__list {
   display: flex;
   flex-wrap: wrap;
@@ -679,6 +682,9 @@
     margin-left: 0;
     border: none;
     padding: 0;
+  }
+  .posts .images .bcg-light {
+    background-color: rgb(0, 112, 60);
   }
   .posts .images__list {
     justify-content: center;

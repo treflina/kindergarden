@@ -245,6 +245,10 @@
 .images {
     margin-top: 4rem;
 
+    .bcg-light {
+        background-color: $color-bcg-light;
+    }
+
     &__list {
         display: flex;
         flex-wrap: wrap;
@@ -295,6 +299,11 @@
         }
 
         .images {
+
+            .bcg-light {
+                background-color: $color-primary-second;
+            }
+            
             &__list {
                 justify-content: center;
             }
