@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from applications.thematic.models import ThematicIndexPage
+from applications.chronicle.models import ChronicleIndexPage
 from .models import AboutUsIndexPage
 
 
@@ -35,6 +36,8 @@ def schedule(request):
 def sitemap(request):
     aboutus_children = AboutUsIndexPage.objects.last().get_children().specific()
 
+    chronicle_index_page = ChronicleIndexPage.objects.last()
+
     thematic_page1 = ThematicIndexPage.objects.filter(slug="tematyka1").first()
     thematic_page2 = ThematicIndexPage.objects.filter(slug="tematyka2").first()
 
@@ -54,8 +57,9 @@ def sitemap(request):
         context={
             "page_title": "Mapa strony",
             "aboutus_children": aboutus_children,
+            "chronicle_index_page": chronicle_index_page,
             "thematic1": thematic1,
-            "thematic2": thematic2
+            "thematic2": thematic2,
         },
     )
 

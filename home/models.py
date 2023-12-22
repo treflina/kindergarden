@@ -28,7 +28,7 @@ from applications.thematic.models import (
     ThematicIndexPage,
 )
 from applications.gallery.models import GalleryListingPage, CustomImage
-from applications.chronicle.models import ChroniclePage
+from applications.chronicle.models import ChroniclePage, ChronicleIndexPage
 from . import blocks
 
 
@@ -102,6 +102,8 @@ class HomePage(Page):
         if thematic_page2:
             context["thematic2"] = thematic_page2.get_children().live().exists()
 
+        context["chronicle_index_page"] = ChronicleIndexPage.objects.last()
+        
         chronicle_posts = (
             ChroniclePage.objects.live()
             .specific()

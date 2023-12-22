@@ -32,10 +32,10 @@
                     </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">
-                    <a href="{% slugurl 'home' %}#news" class="sitemap-link link-underlined">Aktualności</a>
+                    <a href="{% url 'wagtail_serve' '' %}#news" class="sitemap-link link-underlined">Aktualności</a>
                 </li>
                    <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
-                    <a href="{% slugurl 'kronika' %}" class="sitemap-link link-underlined">Kronika wydarzeń</a>
+                    <a href="{% pageurl chronicle_index_page %}" class="sitemap-link link-underlined">Kronika wydarzeń</a>
                 </li>
                 {% if thematic1 or thematic2 %}
                 <li class="sitemap-item sitemap-item--outside">Tematyka zajęć
