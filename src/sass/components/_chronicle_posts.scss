@@ -215,11 +215,11 @@
         justify-content: center;
         align-items: flex-start;
         flex-wrap: wrap;
-        flex: 1 0 35rem;
+        flex: 1 0 40rem;
         height: 100%;
         max-width: 100%;
         width: 100%;
-        margin-top: 120px;
+        // margin-top: 120px;
         margin-left: 2rem;
 
         &-img {
@@ -231,6 +231,10 @@
             box-shadow: 1px 1px 4px rgba(0, 0, 0, .6);
             border-radius: 6px;
             overflow: hidden;
+
+            &:nth-child(3n) {
+                margin-left: 60px;
+            }
 
             img {
                 width: 100%;
@@ -287,7 +291,17 @@
     .posts {
 
         &__aside {
-            display: none;
+                margin-left: 0;
+            &-img {
+                display: none;
+
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4) {
+                    display: block;
+                }
+            }
         }
 
         &__text {
@@ -303,7 +317,7 @@
             .bcg-light {
                 background-color: $color-primary-second;
             }
-            
+
             &__list {
                 justify-content: center;
             }
@@ -312,6 +326,21 @@
 }
 
 @media(max-width: 37.5em) {
+    .posts {
+        &__aside {
+            flex: 1 1 35rem;
+
+
+            &-img {
+
+                &:nth-child(3),
+                &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+    }
+
     .images {
         &__list {
 

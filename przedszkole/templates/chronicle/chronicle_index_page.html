@@ -19,11 +19,12 @@
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </header>
 
-        <div class="content wrapper flex-wrapper">
+        <div class="content wrapper">
             <main class="posts__list">
             {% for year, content in school_years %}
             <h2 class="posts__list-heading center-txt">{{year}}</h2>
-            <ul class="posts__list content__list">
+            <div class="content__list flex-wrapper">
+            <ul class="posts__list">
                 {% for subpage in content %}
                 <li class="posts__list-item">
                     <p class="posts__list-date">{{ subpage.publish_date }}</p>
@@ -31,16 +32,18 @@
                 </li>
                 {% endfor %}
             </ul>
+                <aside class="posts__aside">
+                    {% for subpage in subpages %}
+                    <div class="posts__aside-img">
+                        {% image subpage.banner_image fill-150x100 as img %}
+                        <img src="{{img.url}}" alt="">
+                    </div>
+                    {% endfor %}
+                </aside>
+            </div>
             {% endfor %}
             </main>
-            <aside class="posts__aside" >
-                {% for subpage in subpages %}
-                <div class="posts__aside-img">
-                    {% image subpage.banner_image fill-150x100 as img %}
-                    <img src="{{img.url}}" alt="">
-                </div>
-                {% endfor %}
-            </aside>
+
         </div>
     </div>
 

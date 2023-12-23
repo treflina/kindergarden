@@ -99,7 +99,7 @@ class ChroniclePage(Page):
         [
             ("link", PhotogalleryLinkBlock()),
         ],
-        verbose_name="Link do galerii zdjęć",
+        verbose_name="Opcjonalnie: Link do galerii zdjęć",
         null=True,
         blank=True,
         use_json_field=True,
@@ -124,7 +124,7 @@ class ChroniclePage(Page):
                     help_text="""Pamiętaj o dodaniu tagu 'relacja' w 'Edycji obrazu'""",
                 )
             ],
-            heading="Dodatkowe zdjęcia",
+            heading="Opjonalnie: Dodatkowe zdjęcia",
         ),
         FieldPanel("gallery_link"),
     ]
@@ -149,15 +149,16 @@ class ChroniclePage(Page):
         chronicle_posts = list(
             ChroniclePage.objects.live().specific().order_by("publish_date")
         )
-        # prev_event = chronicle_events.index(self)
-        p_index = chronicle_posts.index(self)
-        if p_index != len(chronicle_posts) - 1:
-            context["prev_post"] = chronicle_posts[p_index + 1]
 
-        if p_index != 0:
-            context["next_post"] = chronicle_posts[p_index - 1]
+        try:
+            p_index = chronicle_posts.index(self)
+            if p_index != len(chronicle_posts) - 1:
+                context["prev_post"] = chronicle_posts[p_index + 1]
 
-
+            if p_index != 0:
+                context["next_post"] = chronicle_posts[p_index - 1]
+        except ValueError:
+            pass
 
         return context
 

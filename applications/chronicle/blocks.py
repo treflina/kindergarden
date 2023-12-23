@@ -1,4 +1,14 @@
+from django.db import models
 from wagtail.blocks import StructValue, StructBlock, ChoiceBlock, PageChooserBlock
+
+
+GALLERY_LINKS_NAMES_CHOICES = (
+    ("0", "Zobacz więcej zdjęć"),
+    ("1", "Zobacz więcej zdjęć w gr. młodszej"),
+    ("2", "Zobacz więcej zdjęć w gr. starszej"),
+)
+
+GALLERY_LINKS_NAMES_CHOICES_LOOKUP = dict(GALLERY_LINKS_NAMES_CHOICES)
 
 
 class LinkStructValue(StructValue):
@@ -10,17 +20,7 @@ class LinkStructValue(StructValue):
 class PhotogalleryLinkBlock(StructBlock):
     label = ChoiceBlock(
         label="Tekst przycisku prowadzącego do fotogalerii.",
-        choices=[
-            ("Zobacz więcej zdjęć", "Zobacz więcej zdjęć"),
-            (
-                "Zobacz więcej zdjęć w gr. młodszej",
-                "Zobacz więcej zdjęć w gr. młodszej",
-            ),
-            (
-                "Zobacz więcej zdjęć w gr. starszej",
-                "Zobacz więcej zdjęć w gr. starszej",
-            ),
-        ],
+        choices=GALLERY_LINKS_NAMES_CHOICES,
         icon="view",
         required=True,
     )
@@ -32,6 +32,10 @@ class PhotogalleryLinkBlock(StructBlock):
         ],
         required=True,
     )
+
+    # @property
+    # def label_display(self):
+    #     return "hmm"
 
     class Meta:
         value_class = LinkStructValue

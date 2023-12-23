@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
 {% endblock %}
-{% load static wagtailcore_tags env_extras wagtailimages_tags%}
+{% load static wagtailcore_tags env_extras wagtailimages_tags chronicle_tags%}
 {% block content %}
 {% include 'includes/cookies.html' %}
 {% include 'includes/navbar.html' %}
@@ -27,7 +27,7 @@
                     {% image i.image fill-500x400 as thumbimg %}
                     {% image i.image original as img %}
                     <li class="images__list-item">
-                        <a data-fslightbox="gallery" href="{{img.file.url}}" data-alt="{{i.alt}}">
+                        <a data-fslightbox="gallery" href="{{img.file.url}}" data-alt="{{i.image.alt_descr}}">
                             <img class="gallery-image" src="{{thumbimg.url}}" alt="Podgląd zdjęcia {{i.image.title}}"/>
                             <span class="sr-only">Link do powiększonego zdjęcia</span>
                         </a>
@@ -43,7 +43,7 @@
                     {% for block in page.gallery_link %}
                     {% if block.value.photogallery.url %}
                     <a href="{{block.value.photogallery.url}}" class="main-button posts__gallerylinks-link">
-                    {{block.value.label}}
+                    {% get_display_name block.value.label %}
                  </a>
                     {% endif %}
                     {% endfor %}
