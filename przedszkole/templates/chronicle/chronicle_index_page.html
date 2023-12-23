@@ -14,7 +14,7 @@
     <div class="main-subpage">
         {% image page.header_image original as img %}
         <header class="heading__box heading__box--event"
-            style="background-image: {% if page.header_image %} url(' {{ img.url }}') {% else %} url({% static 'img/niepo.jpg' %})"
+            style="background-image: {% if page.header_image %} url(' {{ img.url }}') {% else %} url({% static 'img/niepo.jpg' %})
             {% endif %};" id="header">
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </header>
@@ -36,14 +36,13 @@
                     {% for subpage in subpages %}
                     <div class="posts__aside-img">
                         {% image subpage.banner_image fill-150x100 as img %}
-                        <img src="{{img.url}}" alt="">
+                        <img src="{{img.url}}" alt="{{subpage.alt_attr}}">
                     </div>
                     {% endfor %}
                 </aside>
             </div>
             {% endfor %}
             </main>
-
         </div>
     </div>
 
