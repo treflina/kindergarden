@@ -834,7 +834,7 @@
 .footer__links-bip {
   padding: 0 0.3em;
   border-radius: 8px;
-  display: inline-flex;
+  display: flex;
   align-self: flex-start;
   background-color: #fff;
 }
