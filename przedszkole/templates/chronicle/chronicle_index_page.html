@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+{% endblock %}
+{% load static wagtailcore_tags wagtailimages_tags env_extras %}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+
+    <div class="main-subpage">
+        {% image page.header_image original as img %}
+        <header class="heading__box heading__box--event"
+            style="background-image: {% if page.header_image %} url(' {{ img.url }}') {% else %} url({% static 'img/niepo.jpg' %})
+            {% endif %};" id="header">
+            <h1 class="heading__box-title">{{ page.title }}</h1>
+        </header>
+
+        <div class="content wrapper">
+            <main class="posts__list">
+            {% for year, content in school_years %}
+            <h2 class="posts__list-heading center-txt">{{year}}</h2>
+            <div class="content__list flex-wrapper">
+            <ul class="posts__list">
+                {% for subpage in content %}
+                <li class="posts__list-item">
+                    <p class="posts__list-date">{{ subpage.publish_date }}</p>
+                    <a href="{% pageurl subpage %}" class="posts__list-link link-underlined">{{ subpage.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+                <aside class="posts__aside">
+                    {% for subpage in subpages %}
+                    <div class="posts__aside-img">
+                        {% image subpage.banner_image fill-150x100 as img %}
+                        <img src="{{img.url}}" alt="{{subpage.alt_attr}}">
+                    </div>
+                    {% endfor %}
+                </aside>
+            </div>
+            {% endfor %}
+            </main>
+        </div>
+    </div>
+
+</div>
+
+{%include 'includes/footer.html'%}
+
+</div>
+
+
+
+{% endblock%}

@@ -18,7 +18,7 @@
 
     &__box {
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-start;
         flex-wrap: wrap;
         padding: 1em;
         margin-bottom: 2em;
@@ -37,7 +37,7 @@
         }
 
         &-details {
-            padding-left: 1em;
+            padding: 0 1.5em 0 2em;
 
             a {
                 display: block;

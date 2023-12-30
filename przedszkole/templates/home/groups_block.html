@@ -6,12 +6,19 @@
         <h3 class="groups__box-heading">{% include_block value.group_name %}</h3>
         {% with block.value.group_num as num %}
         <a href="galeria{{num}}" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
-                            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                        </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
-                        {% endwith %}
-        <a href="/tematyka{% include_block value.group_num %}/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
-                                <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
-                            </svg>
-                         </span><span class="groups__box-txt">Tematyka zajęć</span></a>
+            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
+        </svg></span><span class="groups__box-txt">Galeria zdjęć</span></a>
+        {% if thematic1 and num == "1" %}
+        <a href="/tematyka1/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
+        <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
+        </svg>
+        </span><span class="groups__box-txt">Tematyka zajęć</span></a>
+        {% elif thematic2 and num == "2" %}
+            <a href="/tematyka2/current/" class="groups__box-link"><span class="groups__box-link--animate"><svg class="icon square-rounded-arrow-right" role="presentation">
+            <use xlink:href="{% static 'img/sprite.svg#square-rounded-arrow-right' %}"></use>
+            </svg>
+            </span><span class="groups__box-txt">Tematyka zajęć</span></a>
+        {% endif %}
+        {% endwith %}
     </div>
 </div>

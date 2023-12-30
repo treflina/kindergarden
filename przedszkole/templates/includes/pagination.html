@@ -1,0 +1,22 @@
+{% load wagtailcore_tags static %}
+{% if posts.paginator.num_pages > 1 %}
+<nav class="pagination">
+    <ul class="pagination__list" id="pagination">
+        {% if posts.paginator.num_pages > 3 and posts.has_previous %}
+        <li class="pagination__item"><a href="?page=1" class="pagination__item-link"><span class="pagination__item-link--xl">&laquo;</span></a></li>
+        {% endif%}
+        {% if posts.has_previous %}
+        <li class="pagination__item"><a href="?page={{ posts.previous_page_number }}" class="pagination__item-link"><span class="pagination__item-link--xl">&lsaquo;</span></a></li>
+        {% endif %}
+        {% for page_num in page_range %}
+         <li class="pagination__item"><a href="?page={{ page_num }}" class="pagination__item-link pagination-link-{{ page_num }} {% if page_num == posts.number %} active{% endif %}"><span>{{ page_num }}</span></a></li>
+        {% endfor %}
+        {% if posts.has_next %}
+        <li class="pagination__item"><a href="?page={{ posts.next_page_number }}" class="pagination__item-link"><span class="pagination__item-link--xl">&rsaquo;</span></a></li>
+        {% endif %}
+        {% if posts.paginator.num_pages > 3 and posts.has_next %}
+        <li class="pagination__item"><a href="?page={{ posts.paginator.num_pages }}" class="pagination__item-link"><span class="pagination__item-link--xl">&raquo;</span></a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

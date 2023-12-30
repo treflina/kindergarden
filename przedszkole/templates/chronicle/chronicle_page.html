@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+{% endblock %}
+{% load static wagtailcore_tags env_extras wagtailimages_tags chronicle_tags%}
+{% block content %}
+{% include 'includes/cookies.html' %}
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <main class="main-subpage">
+        <div class="posts">
+            <h1 class="posts__heading">{{page.title}}</h1>
+            <div class="posts__text group main-content" style="width:100%;">
+                {% image page.banner_image width-500 as img %}
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="richtext-image right main-img" loading="lazy">
+                <div class="main-txt">
+                    <p class="posts__text-date">{{page.publish_date}}</p>
+                    {{ page.text|richtext }}</div>
+            </div>
+            {% if page.images.count > 0 %}
+            <div class="images">
+                <ul class="images__list {% if page.images.count < 3 %} bcg-light {% endif %}">
+                    {% for i in page.images.all %}
+                    {% image i.image fill-500x400 as thumbimg %}
+                    {% image i.image original as img %}
+                    <li class="images__list-item">
+                        <a data-fslightbox="gallery" href="{{img.file.url}}" data-alt="{{i.image.alt_descr}}">
+                            <img class="gallery-image" src="{{thumbimg.url}}" alt="Podgląd zdjęcia {{i.image.title}}"/>
+                            <span class="sr-only">Link do powiększonego zdjęcia</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if link_url_exists %}
+            <div class="posts__gallerylinks">
+                <p class="posts__nav-heading">Dla rodziców:</p>
+                <div class="posts__gallerylinks-box">
+                    {% for block in page.gallery_link %}
+                    {% if block.value.photogallery.url %}
+                    <a href="{{block.value.photogallery.url}}" class="main-button posts__gallerylinks-link">
+                    {% get_display_name block.value.label %}
+                 </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if prev_post or next_post %}
+            <div class="posts__nav">
+                <p class="posts__nav-heading">
+                    Zobacz inne relacje z wydarzeń:
+                </p>
+                <div class="posts__nav-box">
+                    {% if prev_post %}
+                    <div class="posts__nav-prev">
+                        <div class="posts__nav-circle posts__nav-circle--left">
+                            {% image prev_post.banner_image fill-100x100 as img %}
+                            <img src="{{img.url}}" alt="" class="posts__nav-img">
+                        </div>
+                        <a href="{% pageurl prev_post %}" class="posts__nav-link">{{ prev_post.title }}</a>
+                    </div>
+                    {% endif %}
+                    {% if next_post %}
+                    <div class="posts__nav-next">
+                        <a href="{% pageurl next_post %}" class="posts__nav-link">{{ next_post.title }}</a>
+                        <div class="posts__nav-circle posts__nav-circle--right">
+                            {% image next_post.banner_image fill-100x100 as img %}
+                            <img src="{{img.url}}" alt="" class="posts__nav-img">
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+    </main>
+    {%include 'includes/footer.html'%}
+</div>
+<script src="{% static 'js/fslightbox.js'%}"></script>
+<!-- <script>
+    const mainText = document.querySelector(".main-txt");
+    const mainImg = document.querySelector(".main-img");
+    const mainContent = document.querySelector(".main-content");
+    const imgs = document.querySelector(".images__list");
+    let mainTextHeight, mainImgHeight, mainContentWidth;
+
+    mainImgHeight = mainImg.offsetHeight;
+    mainTextHeight = mainText.offsetHeight;
+    mainContentWidth = mainContent.offsetWidth;
+
+    if ((mainTextHeight / mainImgHeight > 0.695) && (mainContentWidth > 1130)) {
+        mainContent.classList.remove("group");
+        mainText.style.lineHeight = 1.7;
+        imgs.style.marginTop = "6em";
+    }
+</script> -->
+{% endblock%}

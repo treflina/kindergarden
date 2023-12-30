@@ -6,27 +6,49 @@
 <link rel="preload" as="image" media="(min-width: 993px)" href="{% static 'img/colored-pencils-xl.jpg' %}">
 <link rel="preload" as="image" media="(max-width: 992px)" href="{% static 'img/colored-pencils-m.jpg' %}">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.min.css' %}" />
 {% endblock %}
+
 {% block content %}
 {%include 'includes/cookies.html'%}
 {%include 'includes/navbar.html'%}
 <header class="header" id="header">
     <div class="header__wrapper">
-        <div class="header__box"  data-aos="zoom-in" data-aos-duration="700">
-            <h1 class="header__title" data-aos="zoom-out"  data-aos-delay="800" data-aos-duration="800"><span>Przedszkole </span><span>Publiczne </span> <span>w&nbsp;Turawie</span></h1>
-            <p class="header__text header__text--top" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">Przedszkole jest początkiem drogi do przyszłego "Wielkiego
+        <div class="header__box" data-aos="zoom-in" data-aos-duration="700">
+            <h1 class="header__title" data-aos="zoom-out" data-aos-delay="800" data-aos-duration="800">
+                <span>Przedszkole </span><span>Publiczne </span> <span>w&nbsp;Turawie</span>
+            </h1>
+            <p class="header__text header__text--top" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">
+                Przedszkole jest początkiem drogi do przyszłego "Wielkiego
                 Świata".
                 W&nbsp;naszym przedszkolu wkładamy wiele serca, aby ta droga była dla dzieci ciekawa
                 i&nbsp;fascynująca.
                 Chcemy tworzyć miejsce, w&nbsp;którym dzieci będą mogły spędzić czas na zabawie i&nbsp;nauce
                 rozwijającej ich zdolności i&nbsp;zainteresowania.</p>
-            <p class="header__text header__text--bottom" data-aos="zoom-out" data-aos-duration="800" data-aos-delay="800">Dziękujemy za odwiedziny i&nbsp;Państwa
+            <p class="header__text header__text--bottom" data-aos="zoom-out" data-aos-duration="800"
+                data-aos-delay="800">Dziękujemy za odwiedziny i&nbsp;Państwa
                 zainteresowanie!
             </p>
         </div>
     </div>
 </header>
 <main>
+    {% if events %}
+    <section class="events__wrapper" id="events">
+        <div class="events events-slider">
+            {% for event in events %}
+            <div>
+                <div class="event {% if not event.is_past %} active {% endif %}">
+                    <div class="event__date">{{ event.date|date:"d.m."}}</div>
+                    <p class="event__descr">{{ event.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+    {% endif %}
     <div class="container">
         <section class="main" id="main">
             <div class="groups" id="groups">
@@ -46,6 +68,31 @@
                 </div>
             </div>
         </section>
+
+        <section class="chronicle" id="chronicle-section">
+            <h2 class="heading-secondary chronicle__heading">Kronika wydarzeń</h2>
+            <div class="chronicle__box">
+                <div class="chronicle__cards" id="chronicle">
+                    <!-- ajax_template -->
+                </div>
+            </div>
+            <div class="chronicle__bgc"></div>
+            <nav class="pagination">
+                <ul class="pagination__list" id="pagination">
+                    {% for page_num in posts.paginator.page_range %}
+                    {% if page_num < 6 %}
+                    <li class="pagination__item">
+                        <a href="?page={{ page_num }}" class="pagination__item-link pagination-link pagination-link-{{ page_num }} {% if page_num == posts.number %} active{% endif %}"><span>{{ page_num }}</span></a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    <li class="pagination__item">
+                        <a href="{% pageurl chronicle_index_page %}" class="pagination__item-link pagination__item-link--img">
+                            <img src="{% static 'img/svg/list.svg' %}" alt="Ikona listy" title="Przejdź do listy wszystkich wydarzeń" class="pagination__item-img"></a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
         <section class="gallery grid-container">
             {% for loop_cycle in self.home_gallery_images.all %}
             {% image loop_cycle.home_gallery_image max-500x300 as img %}
@@ -54,18 +101,19 @@
             </div>
             {% endfor %}
         </section>
-
         <section class="contact" id="contact">
-            <div class="contact__name bold-txt"><p>Dane kontaktowe:</p></div>
+            <div class="contact__name bold-txt">
+                <p>Dane kontaktowe:</p>
+            </div>
             <div class="contact__details">
                 <p class="contact__details-heading bold-txt"><span>Przedszkole Publiczne w&nbsp;Turawie</span></p>
-                <p class="contact__details-adress"><img src="{% static 'img/svg/map-pin.svg' %}" alt="adres" width="24" height="24">46-045
-                    Turawa,
-                    ul.&nbsp;Opolska&nbsp;49</p>
-                <p class="contact__details-phone"><img src="{% static 'img/svg/phone.svg' %}"
-                        alt="telefon" width="24" height="24"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
-                <p class="contact__details-email"><img src="{% static 'img/svg/mail.svg' %}"
-                        alt="e-mail" width="24" height="24"><span>pp.turawa@oswiata-turawa.pl</span></p>
+                <p class="contact__details-adress"><img src="{% static 'img/svg/map-pin.svg' %}" alt="adres" width="24"
+                        height="24">46-045
+                    Turawa, ul.&nbsp;Opolska&nbsp;49</p>
+                <p class="contact__details-phone"><img src="{% static 'img/svg/phone.svg' %}" alt="telefon" width="24"
+                        height="24"><span>77&nbsp;421&nbsp;25&nbsp;66</span></p>
+                <p class="contact__details-email"><img src="{% static 'img/svg/mail.svg' %}" alt="e-mail" width="24"
+                        height="24"><span>pp.turawa@oswiata-turawa.pl</span></p>
             </div>
         </section>
     </div>
@@ -74,4 +122,9 @@
 <script type="text/javascript" src="{% static 'js/accordion.min.js' %}"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="{% static 'js/aos.min.js' %}"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/events-slick.min.js'%}"></script>
+<script src="{% static 'js/chronicle.min.js' %}"></script>
 {% endblock%}

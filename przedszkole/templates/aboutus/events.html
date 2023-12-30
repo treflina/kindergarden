@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar.html' %}
+<div class="container">
+    <section class="events__wrapper">
+
+        <div class="events events-slider"">
+            <div>
+                <div class="event">
+                    <div class="event__date">07.12.</div>
+                    <p class="event__descr">Kiermasz świąteczny</p>
+                </div>
+            </div>
+            <div>
+                <div class="event">
+                    <div class="event__date">07-12</div>
+                    <p class="event__descr">Spotkanie jasełkowe z rodzicami grupy starszej</p>
+                </div>
+            </div>
+            <div>
+                <div class="event">
+                    <div class="event__date">07-12</div>
+                    <p class="event__descr">Pierwsze w historii spotkanie grupy młodszje z Mikołajem g.12:00. Będziemy
+                        się bawić do późnego popołudnia.</p>
+                </div>
+            </div>
+            <div>
+                <div class="event">
+                    <div class="event__date">07-12</div>
+                    <p class="event__descr">Kiermasz świąteczny</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+{% endblock%}
+
+{% block extra_js %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('.events-slider').slick({
+
+            arrows: true,
+            slidesToShow: 3,
+            slidesToScroll: 1
+        });
+    });
+</script>
+{% endblock %}

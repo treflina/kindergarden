@@ -11,7 +11,7 @@
             <div class="photogallery__heading" id="header">
                 <a href="{% slugurl 'galeria' %}?group={% if group == 'grupa młodsza' %}1{% else %}2{%endif%}"
                     class="photogallery__heading--back"><svg class="icon chevrons-left" role="presentation">
-                        <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Powrót</span></a>
+                        <use xlink:href="{% static 'img/sprite.svg#chevrons-left' %}">></use></svg><span>Lista galerii</span></a>
                 <p class="photogallery__heading--title">
                     {{ collection.name }}
                 </p>

@@ -8,7 +8,12 @@ from django.db.models import Q
 
 from modelcluster.fields import ParentalKey, ForeignKey
 from wagtail.models import Page, Orderable, Collection
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel, MultipleChooserPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    MultiFieldPanel,
+    FieldRowPanel,
+    MultipleChooserPanel,
+)
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail_multi_upload.edit_handlers import MultipleImagesPanel
@@ -35,7 +40,9 @@ class CustomImage(AbstractImage):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if self.width > 1200 or self.height > 1200:
+        if (
+            self.width > 1200 or self.height > 1200
+            ) and self.collection.name != "Zdjęcia - rozmiar oryginalny":
             img = PILImage.open(self.file.path)
             img.thumbnail((1200, 1200))
             width, height = img.size
@@ -48,7 +55,6 @@ class CustomImage(AbstractImage):
                 self.save(update_fields=["width", "height", "file_size"])
 
 
-
 class CustomRendition(AbstractRendition):
     image = models.ForeignKey(
         CustomImage, on_delete=models.CASCADE, related_name="renditions"
@@ -56,7 +62,6 @@ class CustomRendition(AbstractRendition):
 
     class Meta:
         unique_together = (("image", "filter_spec", "focal_point_key"),)
-
 
 
 class GalleryListingPage(RoutablePageMixin, Page):
@@ -127,7 +132,6 @@ class GalleryDetailPage(Page):
             )
             collection = get_object_or_404(Collection, id=gallery_id)
             context["group"] = collection.get_parent().name.lower()
-            print(context["group"])
             context["gallery"] = gallery
             context["collection"] = collection
         return context
@@ -137,7 +141,10 @@ class PhotogalleryListingPage(Page):
     template = "gallery/photogallery_listing_page.html"
     max_count = 2
     parent_page_types = ["home.HomePage"]
-    subpage_types = ["gallery.PhotogalleryDetailPage", "gallery.PhotogalleryDetailPage2"]
+    subpage_types = [
+        "gallery.PhotogalleryDetailPage",
+        "gallery.PhotogalleryDetailPage2",
+    ]
     password_required_template = "gallery/password_required.html"
 
     class Meta:
@@ -156,9 +163,10 @@ class PhotogalleryListingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        galleries = self.get_children().live().specific().order_by("-first_published_at")
+        galleries = (
+            self.get_children().live().specific().order_by("-first_published_at")
+        )
         context["galleries"] = galleries
-        print(context)
         return context
 
 
@@ -233,9 +241,13 @@ class PhotogalleryDetailPage2(Page):
     @property
     def image(self):
         if self.collection:
-            image = CustomImage.objects.filter(Q(collection_id=self.collection.id)&Q(priority=True)).last()
+            image = CustomImage.objects.filter(
+                Q(collection_id=self.collection.id) & Q(priority=True)
+            ).last()
             if image is None:
-                image = CustomImage.objects.filter(Q(collection_id=self.collection.id)).last()
+                image = CustomImage.objects.filter(
+                    Q(collection_id=self.collection.id)
+                ).last()
             return image
         else:
             image_obj = self.gallery_images2.filter(highlight=True).last()
@@ -244,10 +256,7 @@ class PhotogalleryDetailPage2(Page):
             else:
                 return self.gallery_images2.all().last().image2
 
-
-
     content_panels = Page.content_panels + [
-
         MultiFieldPanel(
             [
                 MultipleChooserPanel(
@@ -268,7 +277,8 @@ class PhotogalleryDetailPage2(Page):
 
 class GalleryImageModel1(Orderable):
     page = ParentalKey(
-        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1")
+        PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1"
+    )
 
     image1 = models.ForeignKey(
         "CustomImage",
@@ -283,7 +293,6 @@ class GalleryImageModel1(Orderable):
         help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
     )
 
-
     panels = [
         FieldRowPanel([FieldPanel("image1"), FieldPanel("highlight")]),
     ]
@@ -294,7 +303,10 @@ class GalleryImageModel1(Orderable):
 
 class GalleryImageModel2(Orderable):
     page = ParentalKey(
-        PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2")
+        PhotogalleryDetailPage2,
+        on_delete=models.CASCADE,
+        related_name="gallery_images2",
+    )
 
     image2 = models.ForeignKey(
         "CustomImage",
@@ -309,18 +321,15 @@ class GalleryImageModel2(Orderable):
         help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
     )
 
-
     panels = [
         FieldRowPanel([FieldPanel("image2"), FieldPanel("highlight")]),
     ]
-
 
     def __str__(self):
         return self.image.title
 
 
 class GalleryImageAbstractModel(Orderable):
-
     image = models.ForeignKey(
         "CustomImage",
         on_delete=models.CASCADE,
@@ -333,7 +342,6 @@ class GalleryImageAbstractModel(Orderable):
         verbose_name="Zdjęcie główne",
         help_text="""Wybrane zdjęcie będzie wyświetlone w wizytówce galerii""",
     )
-
 
     panels = [
         FieldRowPanel([FieldPanel("image"), FieldPanel("highlight")]),
@@ -352,10 +360,8 @@ class GalleryImageAbstractModel(Orderable):
 #         PhotogalleryDetailPage, on_delete=models.CASCADE, related_name="gallery_images1")
 
 
-
 # class GalleryImage2(GalleryImageAbstractModel):
 
 #       page = ParentalKey(
 #         PhotogalleryDetailPage2, on_delete=models.CASCADE, related_name="gallery_images2"
 #     )
-
