@@ -14,13 +14,13 @@
     <div class="main-subpage">
         {% image page.header_image original as img %}
         <header class="heading__box heading__box--event"
-            style="background-image: {% if page.header_image %} url(' {{ img.url }}') {% else %} url({% static 'img/niepo.jpg' %})
-            {% endif %};" id="header">
+            {% if page.header_image %} style="background-image:  url(' {{ img.url }}');"{% endif %} id="header">
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </header>
 
         <div class="content wrapper">
             <main class="posts__list">
+            {% if school_years.length > 0 %}
             {% for year, content in school_years %}
             <h2 class="posts__list-heading center-txt">{{year}}</h2>
             <div class="content__list flex-wrapper">
@@ -42,6 +42,7 @@
                 </aside>
             </div>
             {% endfor %}
+            {% endif %}
             </main>
         </div>
     </div>

@@ -34,9 +34,11 @@
                 <li class="sitemap-item sitemap-item--outside">
                     <a href="{% url 'wagtail_serve' '' %}#news" class="sitemap-link link-underlined">Aktualności</a>
                 </li>
+                {% if chronicle_index_page is not None %}
                    <li class="sitemap-item sitemap-item--outside sitemap-item--outside">
                     <a href="{% pageurl chronicle_index_page %}" class="sitemap-link link-underlined">Kronika wydarzeń</a>
                 </li>
+                {% endif %}
                 {% if thematic1 or thematic2 %}
                 <li class="sitemap-item sitemap-item--outside">Tematyka zajęć
                     <ul class="sitemap__inner">

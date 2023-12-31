@@ -102,8 +102,8 @@ class HomePage(Page):
         if thematic_page2:
             context["thematic2"] = thematic_page2.get_children().live().exists()
 
-        context["chronicle_index_page"] = ChronicleIndexPage.objects.last()
-        
+        context["chronicle_index_page"] = ChronicleIndexPage.objects.live().last()
+
         chronicle_posts = (
             ChroniclePage.objects.live()
             .specific()

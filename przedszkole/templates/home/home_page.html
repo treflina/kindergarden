@@ -68,7 +68,7 @@
                 </div>
             </div>
         </section>
-
+        {% if chronicle_index_page is not None %}
         <section class="chronicle" id="chronicle-section">
             <h2 class="heading-secondary chronicle__heading">Kronika wydarzeń</h2>
             <div class="chronicle__box">
@@ -93,6 +93,7 @@
                 </ul>
             </nav>
         </section>
+        {% endif %}
         <section class="gallery grid-container">
             {% for loop_cycle in self.home_gallery_images.all %}
             {% image loop_cycle.home_gallery_image max-500x300 as img %}

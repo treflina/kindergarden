@@ -36,7 +36,7 @@ def schedule(request):
 def sitemap(request):
     aboutus_children = AboutUsIndexPage.objects.last().get_children().specific()
 
-    chronicle_index_page = ChronicleIndexPage.objects.last()
+    chronicle_index_page = ChronicleIndexPage.objects.live().last()
 
     thematic_page1 = ThematicIndexPage.objects.filter(slug="tematyka1").first()
     thematic_page2 = ThematicIndexPage.objects.filter(slug="tematyka2").first()
