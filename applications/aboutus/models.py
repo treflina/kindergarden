@@ -58,6 +58,7 @@ class CustomPage(Page):
         null=True,
         blank=True,
         use_json_field=True,
+        verbose_name="Tabela"
     )
 
     content_panels = Page.content_panels + [
