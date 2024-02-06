@@ -10,49 +10,41 @@
 {% include 'includes/navbar.html' %}
 
 <div class="container">
-
     <div class="main-subpage">
         {% image page.header_image original as img %}
-        <header class="heading__box heading__box--event"
-            {% if page.header_image %} style="background-image:  url(' {{ img.url }}');"{% endif %} id="header">
+        <header class="heading__box heading__box--event" {% if page.header_image %}
+            style="background-image:  url(' {{ img.url }}');" {% endif %} id="header">
             <h1 class="heading__box-title">{{ page.title }}</h1>
         </header>
-
         <div class="content wrapper">
             <main class="posts__list">
-            {% if school_years.length > 0 %}
-            {% for year, content in school_years %}
-            <h2 class="posts__list-heading center-txt">{{year}}</h2>
-            <div class="content__list flex-wrapper">
-            <ul class="posts__list">
-                {% for subpage in content %}
-                <li class="posts__list-item">
-                    <p class="posts__list-date">{{ subpage.publish_date }}</p>
-                    <a href="{% pageurl subpage %}" class="posts__list-link link-underlined">{{ subpage.title }}</a>
-                </li>
+                {% if school_years|length > 0 %}
+                {% for year, content in school_years %}
+                <h2 class="posts__list-heading center-txt">{{year}}</h2>
+                <div class="content__list flex-wrapper">
+                    <ul class="posts__list">
+                        {% for subpage in content %}
+                        <li class="posts__list-item">
+                            <p class="posts__list-date">{{ subpage.publish_date }}</p>
+                            <a href="{% pageurl subpage %}" class="posts__list-link link-underlined">{{ subpage.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <aside class="posts__aside">
+                        {% for subpage in subpages %}
+                        <div class="posts__aside-img">
+                            {% image subpage.banner_image fill-150x100 as img %}
+                            <img src="{{img.url}}" alt="{{subpage.alt_attr}}">
+                        </div>
+                        {% endfor %}
+                    </aside>
+                </div>
                 {% endfor %}
-            </ul>
-                <aside class="posts__aside">
-                    {% for subpage in subpages %}
-                    <div class="posts__aside-img">
-                        {% image subpage.banner_image fill-150x100 as img %}
-                        <img src="{{img.url}}" alt="{{subpage.alt_attr}}">
-                    </div>
-                    {% endfor %}
-                </aside>
-            </div>
-            {% endfor %}
-            {% endif %}
+                {% endif %}
             </main>
         </div>
     </div>
-
 </div>
-
 {%include 'includes/footer.html'%}
-
 </div>
-
-
-
 {% endblock%}
