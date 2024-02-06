@@ -9,9 +9,13 @@
         <div class="heading__box heading__box--crayons" id="header">
             <h1 class="heading__box-title"> {{ page.title }} </h1>
         </div>
-
         <div class="content wrapper custom_page">
            {{ page.body|richtext }}
+        </div>
+        <div class="content wrapper custom_page" style="margin-top: 2rem;">
+            {% for block in page.table %}
+                {% include_block block %}
+            {% endfor %}
         </div>
     </main>
     {%include 'includes/footer.html'%}

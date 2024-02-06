@@ -4,6 +4,9 @@ from django import forms
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
+from wagtail.contrib.table_block.blocks import TableBlock
+
+from home.blocks import custom_table_options
 from .blocks import ScheduleBlock
 
 
@@ -40,9 +43,26 @@ class CustomPage(Page):
         ],
         verbose_name="Treść strony",
     )
+    table = StreamField(
+        [
+            (
+                "table",
+                TableBlock(
+                    required=False,
+                    label="Tabela",
+                    template="home/table_block.html",
+                    table_options=custom_table_options,
+                ),
+            )
+        ],
+        null=True,
+        blank=True,
+        use_json_field=True,
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel("body"),
+        FieldPanel("table"),
     ]
 
     class Meta:

@@ -12,9 +12,6 @@ custom_table_options = {
         "row_below": {
           'name': 'Wstaw wiersz poniżej',
         },
-        "remove_row": {
-          'name': 'supprimer une ligne',
-        },
         "col_left": {
           'name': 'Wstaw kolumnę z lewej',
         },
@@ -39,6 +36,8 @@ custom_table_options = {
       }
     }
     }
+
+
 
 class ContentBlock(blocks.StreamBlock):
     text = blocks.RichTextBlock(
