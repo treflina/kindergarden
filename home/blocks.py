@@ -56,7 +56,7 @@ class ContentBlock(blocks.StreamBlock):
         ],
         label="Tekst",
     )
-    image = ImageChooserBlock(label="Zdjęcie")
+    image = ImageChooserBlock(label="Zdjęcie", template="home/image_block.html")
     table = TableBlock(
         required=False,
         label="Tabela",
