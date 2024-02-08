@@ -38,10 +38,22 @@ custom_table_options = {
     }
 
 
-
 class ContentBlock(blocks.StreamBlock):
     text = blocks.RichTextBlock(
-        features=["bold", "italic", "ol", "ul", "link", "document-link", "hr"],
+        features=[
+            "bold",
+            "italic",
+            "ol",
+            "ul",
+            "center",
+            "text-green",
+            "text-violet",
+            "text-violetlight",
+            "text-red",
+            "link",
+            "document-link",
+            "hr",
+        ],
         label="Tekst",
     )
     image = ImageChooserBlock(label="Zdjęcie")
