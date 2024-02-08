@@ -40,6 +40,7 @@ class CustomPage(Page):
             "document-link",
             "image",
             "blockquote",
+            "anchor-identifier",
         ],
         verbose_name="Treść strony",
     )
