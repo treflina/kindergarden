@@ -81,6 +81,9 @@
   -o-object-position: center;
      object-position: center;
 }
+.news__info a {
+  font-weight: bold;
+}
 .news__info ul,
 .news__info ol {
   list-style-position: outside;
