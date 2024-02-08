@@ -1587,13 +1587,16 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   margin-left: 2rem;
 }
 .main-subpage .custom_page li {
-  margin: 1rem 0;
+  margin: 0.75rem 0;
 }
 .main-subpage .custom_page p,
-.main-subpage .custom_page ol,
-.main-subpage .custom_page ul,
 .main-subpage .custom_page img {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+}
+.main-subpage .custom_page ul,
+.main-subpage .custom_page ol {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
 .main-subpage .custom_page img {
   max-width: 100%;
@@ -2280,7 +2283,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   font-family: "Poppins";
   src: url("/static/fonts/poppins-bold-webfont.woff2") format("woff2"), url("/static/fonts/poppins-bold-webfont.woff") format("woff");
   font-weight: 700;
-  font-style: bold;
+  font-style: normal;
   font-display: swap;
 }
 @font-face {
@@ -2294,7 +2297,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   font-family: "Kalam";
   src: url("/static/fonts/kalam-bold-webfont.woff2") format("woff2"), url("/static/fonts/kalam-bold-webfont.woff") format("woff");
   font-weight: 700;
-  font-style: bold;
+  font-style: normal;
   font-display: swap;
 }
 @font-face {
@@ -2315,7 +2318,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
   font-family: "Open Sans";
   src: url("/static/fonts/opensans-bold-webfont.woff2") format("woff2"), url("/static/fonts/opensans-bold-webfont.woff") format("woff");
   font-weight: 700;
-  font-style: bold;
+  font-style: normal;
   font-display: swap;
 }
 *,
@@ -2394,6 +2397,12 @@ button span {
   justify-content: center;
   align-items: center;
   height: 300px;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 @media (max-width: 1200px) {
