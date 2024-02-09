@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     "wagtail_multi_upload",
     "wagtail.search",
     "wagtail.admin",
-    "wagtailset.draftail_anchors",
+    "wagtail_draftail_anchors",
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.routable_page",
     "wagtail",

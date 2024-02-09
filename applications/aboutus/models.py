@@ -25,8 +25,6 @@ class CustomPage(Page):
     body = RichTextField(
         features=[
             "anchor-identifier",
-            "link",
-            "document-link",
             "h2",
             "h3",
             "bold",
@@ -40,6 +38,8 @@ class CustomPage(Page):
             "text-red",
             "text-blue",
             "image",
+            "link",
+            "document-link",
             "blockquote",
         ],
         verbose_name="Treść strony",
