@@ -27,6 +27,7 @@ class CustomPage(Page):
             "anchor-identifier",
             "h2",
             "h3",
+            "strong",
             "bold",
             "italic",
             "ol",
@@ -122,7 +123,9 @@ class AccessibilityInfoPage(Page):
     exceptions = RichTextField(
         "Niezgodności z ustawą, wyłączenia",
         help_text="Wypełnij w przypadku częściowej zgodności z ustawą",
-        features=["bold", "italic", "ol", "ul", "hr"], blank=True, null=True
+        features=["strong", "bold", "italic", "ol", "ul", "hr"],
+        blank=True,
+        null=True,
     )
     publish_date = models.DateField(verbose_name="Data sporządzenia deklaracji", blank=False)
     review_date = models.DateField(verbose_name="Data ostatniego przeglądu deklaracji", blank=False)
@@ -131,11 +134,14 @@ class AccessibilityInfoPage(Page):
     phone = models.CharField("Telefon", max_length=30, blank=False)
     architecture_desc = RichTextField(
         "Opis dostępności architektonicznej",
-        features=["bold", "italic", "ol", "ul", "hr"], blank=False
+        features=["strong", "bold", "italic", "ol", "ul", "hr"],
+        blank=False,
     )
     contact_methods = RichTextField(
-        "Komunikacja osób niesłyszących lub słabo słyszących", blank=True, null=True,
-        features=["bold", "italic", "ol", "ul", "hr"],
+        "Komunikacja osób niesłyszących lub słabo słyszących",
+        blank=True,
+        null=True,
+        features=["strong", "bold", "italic", "ol", "ul", "hr"],
     )
 
     content_panels = Page.content_panels + [

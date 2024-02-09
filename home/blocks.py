@@ -41,6 +41,7 @@ custom_table_options = {
 class ContentBlock(blocks.StreamBlock):
     text = blocks.RichTextBlock(
         features=[
+            "strong",
             "bold",
             "italic",
             "ol",
@@ -85,7 +86,7 @@ class TitleTextAndTableBlock(blocks.StructBlock):
         required=True,
         help_text="Wpisz tekst",
         label="Treść",
-        features=["bold", "italic", "ol", "ul", "link", "document-link", "hr", "image"],
+        features=["strong", "bold", "italic", "ol", "ul", "link", "document-link", "hr", "image"],
     )
     table = TableBlock(
         required=False,

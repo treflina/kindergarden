@@ -20,12 +20,48 @@ def register_icons(icons):
     return icons + [
         "home/align-center.svg",
         "home/align-right.svg",
+        "home/exclamation.svg",
         "home/square-blue.svg",
         "home/square-green.svg",
         "home/square-red.svg",
         "home/square-violet.svg",
         "home/square-violetlight.svg",
     ]
+
+
+@hooks.register("register_rich_text_features")
+def register_strong_feature(features):
+    """
+    Registering the `strong` feature. It will render bold text with `strong` tag.
+    Default Wagtail uses the `b` tag.
+    """
+    feature_name = "strong"
+    type_ = "STRONG"
+    tag = "strong"
+
+    # Configure how Draftail handles the feature in its toolbar.
+    control = {
+        "type": type_,
+        "icon": "exclamation",
+        "description": "Wyróżnienie ważnej treści",
+        "style": {
+            "font-weight": "bold",
+        },
+    }
+
+    # Call register_editor_plugin to register the configuration for Draftail.
+    features.register_editor_plugin(
+        "draftail", feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    # Configure the content transform from the DB to the editor and back.
+    db_conversion = {
+        "from_database_format": {tag: InlineStyleElementHandler(type_)},
+        "to_database_format": {"style_map": {type_: tag}},
+    }
+
+    # Call register_converter_rule to register the content transformation conversion.
+    features.register_converter_rule("contentstate", feature_name, db_conversion)
 
 
 @hooks.register("register_rich_text_features")

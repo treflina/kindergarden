@@ -29,7 +29,8 @@ class ThematicContentOrderable(Orderable):
         verbose_name="podtytuł",
     )
     text_content = RichTextField(
-        verbose_name="treść", features=["bold", "italic", "ol", "ul", "link", "hr"]
+        verbose_name="treść",
+        features=["strong", "bold", "italic", "ol", "ul", "link", "hr"],
     )
 
     panels = [FieldPanel("heading"), FieldPanel("text_content")]
