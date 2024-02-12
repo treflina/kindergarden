@@ -67,6 +67,7 @@ class ContentBlock(blocks.StreamBlock):
 
 
 class AccordionBlock(blocks.StructBlock):
+    hidden = blocks.BooleanBlock(default=False, required=False, label="Ukryj")
     title = blocks.CharBlock(required=True, label="Nagłówek")
     content = ContentBlock(label="Treść")
 

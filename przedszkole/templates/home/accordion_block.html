@@ -1,26 +1,28 @@
 {% load wagtailcore_tags static %}
+{% if block.value.hidden is False %}
 <div class="news__item">
     <button class="news__btn">
-        <span class="news__btn-arrow"><svg class="icon circle-chevron-down" aria-hidden="true" focusable="false">
-  <use xlink:href="{% static 'img/sprite.svg#circle-chevron-down' %}"></use>
-</svg></span>
+        <span class="news__btn-arrow"
+            ><svg
+                class="icon circle-chevron-down"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <use
+                    xlink:href="{% static 'img/sprite.svg#circle-chevron-down' %}"
+                ></use></svg
+        ></span>
         {% include_block value.title %}
     </button>
     <div class="news__info">
         {% for block in self.content %}
         {% if block.block_type == 'image' %}
-        <div class="news__info-img">
-            {% include_block block %}
-        </div>
+        <div class="news__info-img">{% include_block block %}</div>
         {% elif block.block_type == 'table' %}
-        <div class="table">
-            {% include_block block %}
-        </div>
+        <div class="table">{% include_block block %}</div>
         {% else %}
-        <div class="news__info-text">
-            {% include_block block %}
-        </div>
-        {% endif %}
-        {% endfor %}
+        <div class="news__info-text">{% include_block block %}</div>
+        {% endif %} {% endfor %}
     </div>
 </div>
+{% endif %}
