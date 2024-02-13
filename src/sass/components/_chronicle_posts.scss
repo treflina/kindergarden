@@ -234,6 +234,14 @@
                 margin-left: 50px;
             }
 
+            &:nth-child(5n) {
+                rotate: 5deg;
+            }
+
+            &:nth-child(6n) {
+                margin-left: 10px;
+            }
+
             img {
                 width: 100%;
                 height: 100%;
@@ -305,7 +313,9 @@
                     display: block;
                 }
             }
-        }}}
+        }
+    }
+}
 
 
 
@@ -337,7 +347,8 @@
         &__aside {
             display: none;
         }
-    }}
+    }
+}
 
 @media(max-width: 37.5em) {
     .images {

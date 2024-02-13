@@ -633,6 +633,12 @@
 .posts__aside-img:nth-child(3n) {
   margin-left: 50px;
 }
+.posts__aside-img:nth-child(5n) {
+  rotate: 5deg;
+}
+.posts__aside-img:nth-child(6n) {
+  margin-left: 10px;
+}
 .posts__aside-img img {
   width: 100%;
   height: 100%;
