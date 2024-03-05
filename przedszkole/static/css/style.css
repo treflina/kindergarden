@@ -1568,7 +1568,7 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
 }
 
 .text-red {
-  color: red !important;
+  color: #eb0000 !important;
 }
 
 .text-blue {

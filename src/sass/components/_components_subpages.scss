@@ -9,7 +9,7 @@
 }
 
 .text-red {
-    color: red !important;
+    color: #eb0000 !important;
 }
 
 .text-blue {
@@ -82,7 +82,7 @@
 
             padding: 2rem;
             padding-left: 5rem;
-            box-shadow: 1px 1px 3px rgba(0,0,0,.7);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .7);
             border-radius: 5px;
             background: #f5f7f2;
             list-style-position: outside;
@@ -136,6 +136,7 @@
             background-position: bottom;
             background-attachment: fixed;
         }
+
         &--event {
             background-position: center;
         }

@@ -146,7 +146,7 @@ def register_textred_feature(features):
         "type": type_,
         "icon": "square-red",
         "description": "Czerwony",
-        "style": {"color": "red"},
+        "style": {"color": "#eb0000"},
     }
     features.register_editor_plugin(
         "draftail", feature_name, draftail_features.InlineStyleFeature(control)
