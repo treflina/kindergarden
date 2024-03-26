@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     };
 
     const getPosts = (page) => {
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("loader");
+        chronicleSection.appendChild(newDiv);
+
         fetch(
             "/" +
                 "?" +
@@ -54,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
 
             getPosts(page);
-            // <!-- let height = chronicleSection.offsetHeight;
-            // chronicleSection.style.minHeight = `${height}px`; -->
 
             removeAndSetActiveClass(page);
             document

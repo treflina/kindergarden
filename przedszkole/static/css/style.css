@@ -2288,6 +2288,40 @@ div[tabindex="0"][aria-labelledby][role=region].colheaders {
     font-size: 3.5rem;
   }
 }
+/* HTML: <div class="loader"></div> */
+.loader {
+  position: absolute;
+  top: 25%;
+  left: calc(50% - 25px);
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid rgba(0, 0, 0, 0);
+  border-right-color: rgba(255, 165, 0, 0.5921568627);
+  animation: l24 1s infinite linear;
+  z-index: 2000;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+
+.loader:after {
+  animation-duration: 4s;
+}
+
+@keyframes l24 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
 @font-face {
   font-family: "Poppins";
   src: url("/static/fonts/poppins-bold-webfont.woff2") format("woff2"), url("/static/fonts/poppins-bold-webfont.woff") format("woff");
