@@ -31,7 +31,7 @@
                         {% endfor %}
                     </ul>
                     <aside class="posts__aside">
-                        {% for subpage in subpages %}
+                        {% for subpage in content %}
                         <div class="posts__aside-img">
                             {% image subpage.banner_image fill-150x100 as img %}
                             <img src="{{img.url}}" alt="{{subpage.alt_attr}}">
