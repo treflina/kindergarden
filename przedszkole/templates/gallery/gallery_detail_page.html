@@ -17,7 +17,8 @@
                 </p>
             </div>
             <div class="wrapper photogallery__content">
-                {% for image in gallery %} {% image image width-600 as img %}
+                {% for image in gallery %}
+                {% image image width-600 as img %}
                 <a class="photogallery-image-link gallery-image"
                     href="{{image.file.url}}"
                     data-lightbox="gallery-set"
