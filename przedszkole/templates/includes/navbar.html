@@ -31,14 +31,10 @@
                     <use xlink:href="{% static 'img/sprite.svg#chevron-down' %}"></use></svg>
                 </button>
                 <ul id="dropdown2" class="nav__dropdown">
-                    <li><a href="{% slugurl 'dyrektor' %}" class="nav__dropdown-link nav-link menu-close">Dyrektor</a>
+                    {% for tpage in todownloadpages %}
+                    <li><a href="{{tpage.get_url}}" class="nav__dropdown-link nav-link menu-close">{{tpage.title}}</a>
                     </li>
-                    <li><a href="{% slugurl 'nauczyciele' %}" class="nav__dropdown-link nav-link menu-close">Materiały od nauczycieli</a>
-                    </li>
-                    <li><a href="{% slugurl 'logopeda' %}" class="nav__dropdown-link nav-link menu-close">Materiały logopedyczne</a>
-                    </li>
-                    <li><a href="{% slugurl 'zapytanie-ofertowe' %}" class="nav__dropdown-link nav-link menu-close">Zapytanie ofertowe</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </li>
             <li class="nav__item">

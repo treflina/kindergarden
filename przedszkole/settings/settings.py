@@ -105,6 +105,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "home.utils.context_processors.todownloadpages_context",
             ],
             "libraries": {
                 "env_extras": "applications.aboutus.templatetags.env_extras",

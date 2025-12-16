@@ -20,18 +20,11 @@
                 </li>
                 <li class="sitemap-item sitemap-item--outside">Do pobrania
                     <ul class="sitemap__inner">
+                        {% for tpage in todownloadpages %}
                         <li class="sitemap-item">
-                            <a href="{% slugurl 'dyrektor' %}" class="sitemap-link link-underlined">Dyrektor</a>
+                            <a href="{{ tpage.get_url }}" class="sitemap-link link-underlined">{{ tpage.title }}</a>
                         </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'nauczyciele' %}" class="sitemap-link link-underlined">Materiały od nauczycieli</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'logopeda' %}" class="sitemap-link link-underlined">Materiały logopedyczne</a>
-                        </li>
-                        <li class="sitemap-item">
-                            <a href="{% slugurl 'zapytanie-ofertowe' %}" class="sitemap-link link-underlined">Zapytanie ofertowe</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="sitemap-item sitemap-item--outside">
