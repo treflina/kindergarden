@@ -72,8 +72,8 @@ def statut(request):
     return render(request, "aboutus/statut.html", {"page_title": "Statut"})
 
 
-def rodo(request):
-    return render(request, "aboutus/rodo.html", {"page_title": "Rodo"})
+# def rodo(request):
+#     return render(request, "aboutus/rodo.html", {"page_title": "Rodo"})
 
 
 def events(request):

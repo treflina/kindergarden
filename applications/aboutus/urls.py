@@ -12,6 +12,6 @@ urlpatterns = [
     path("kontakt/", views.contact, name="contact"),
     path("mapastrony/", views.sitemap, name="sitemap"),
     path("statut/", views.statut, name="statut"),
-    path("rodo/", views.rodo, name="rodo"),
+    # path("rodo/", views.rodo, name="rodo"),
     path("events/", views.events, name="events"),
 ]
